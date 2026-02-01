@@ -3,128 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Will you be my Valentine?</title>
+  <title>Sixtine, will you be my Valentine?</title>
 
   <!-- Confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <style>
-    :root {
-      --bg1: #ffd6e7;
-      --bg2: #ffeef6;
-      --card: #ffffffcc;
-      --yes: #ff3b7a;
-      --yesHover: #ff1f68;
+    :root{
+      --bgA:#ffe3ef;
+      --bgB:#fff7fb;
+      --card: rgba(255,255,255,.72);
+      --text:#161616;
+
+      --yes:#ff2d73;
+      --yesHover:#ff145f;
+      --no:#eceff3;
+
+      --shadow: 0 22px 70px rgba(0,0,0,.14);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
 
-    body {
-      margin: 0;
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
-      font-family: system-ui, sans-serif;
-      overflow: hidden;
-      padding: 16px;
+    body{
+      margin:0;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      color:var(--text);
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow:hidden;
+      padding:16px;
+
+      background:
+        radial-gradient(1200px 800px at 20% 0%, var(--bgB), transparent 60%),
+        radial-gradient(1000px 700px at 80% 10%, #ffd2e4, transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, #ffd6ea, transparent 65%),
+        linear-gradient(180deg, var(--bgB), var(--bgA));
     }
 
     /* FULL-SCREEN CONFETTI CANVAS */
-    #confettiCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 9999;
+    #confettiCanvas{
+      position:fixed;
+      inset:0;
+      width:100vw;
+      height:100vh;
+      pointer-events:none;
+      z-index:9999;
     }
 
-    .card {
-      width: min(720px, 92vw);
-      padding: 26px 22px;
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border-radius: 22px;
-      text-align: center;
-      box-shadow: 0 18px 60px rgba(0,0,0,.15);
+    .card{
+      width:min(740px, 94vw);
+      padding:28px 22px 22px;
+      background:var(--card);
+      backdrop-filter: blur(14px);
+      border-radius:26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.55);
+      position:relative;
+      text-align:center;
     }
 
-    .art {
-      width: min(260px, 80vw);
-      margin: 0 auto 10px;
-      display: block;
-      filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,255,255,.6);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.2px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
     }
 
-    h1 {
-      font-size: clamp(26px, 4vw, 44px);
-      margin: 12px 0 18px;
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(26px, 4vw, 46px);
+      line-height:1.05;
+      letter-spacing:-.6px;
     }
 
-    .button-zone {
-      position: relative;
-      width: min(520px, 92%);
-      height: 150px;
+    .subtitle{
+      margin:0 auto 18px;
+      max-width: 52ch;
+      opacity:.8;
+      font-size: 14px;
+    }
+
+    .button-zone{
+      position:relative;
+      width:min(560px, 96%);
+      height: 160px;
       margin: 0 auto;
-      touch-action: none;
+      touch-action:none;
     }
 
-    button {
-      position: absolute;
-      top: 50%;
+    button{
+      position:absolute;
+      top:50%;
       transform: translateY(-50%);
-      padding: 16px 24px;
+      padding: 16px 26px;
       font-size: 18px;
-      font-weight: 800;
+      font-weight: 900;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.14);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
-      transition: transform .12s ease, background .12s ease;
+      transition: transform .14s ease, filter .14s ease, background .14s ease;
+      box-shadow: 0 16px 34px rgba(0,0,0,.14);
     }
 
-    #yesBtn {
-      left: 18%;
-      background: var(--yes);
-      color: #fff;
+    #yesBtn{
+      left: 16%;
+      background: linear-gradient(135deg, #ff3b7a, #ff0f5c);
+      color:#fff;
     }
-    #yesBtn:hover { background: var(--yesHover); }
+    #yesBtn:hover{ filter: brightness(1.03); }
 
-    #noBtn {
+    #noBtn{
       left: 62%;
-      background: #e5e7eb;
-      color: #111827;
+      background: var(--no);
+      color:#111827;
+
+      /* ✅ makes it literally unclickable */
+      pointer-events: none;
     }
 
-    .hint {
+    .result{
+      display:none;
       margin-top: 10px;
-      font-size: 13px;
-      opacity: .7;
-    }
-
-    .result {
-      display: none;
-      margin-top: 18px;
+      text-align:center;
       animation: pop .35s ease;
     }
-
-    .result h2 {
-      font-size: clamp(30px, 4.5vw, 46px);
-      margin: 10px 0;
+    .result h2{
+      margin: 6px 0 6px;
+      font-size: clamp(30px, 4.6vw, 52px);
+      letter-spacing:-.6px;
     }
 
-    .fireworks {
-      width: min(380px, 90vw);
-      margin: 0 auto;
-      display: block;
+    .gif{
+      width: min(420px, 92vw);
+      border-radius: 18px;
+      display:block;
+      margin: 12px auto 14px;
+      box-shadow: 0 18px 46px rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.55);
     }
 
-    @keyframes pop {
-      from { transform: scale(.96); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 0;
+      cursor:pointer;
+      font-weight: 950;
+      font-size: 17px;
+      color:#fff;
+      background: linear-gradient(135deg, #ff2d73, #ff7aa8);
+      box-shadow: 0 18px 40px rgba(255,45,115,.25);
+    }
+    .cta:hover{ filter: brightness(1.03); }
+
+    @keyframes pop{
+      from{ transform: scale(.96); opacity:0; }
+      to{ transform: scale(1); opacity:1; }
     }
   </style>
 </head>
@@ -133,70 +180,42 @@
   <canvas id="confettiCanvas"></canvas>
 
   <main class="card">
-    <!-- ANIMAL WITH HEART -->
-    <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="fur" x1="0" x2="1">
-          <stop offset="0" stop-color="#f7c7a1"/>
-          <stop offset="1" stop-color="#f2a97b"/>
-        </linearGradient>
-        <linearGradient id="heart" x1="0" x2="1">
-          <stop offset="0" stop-color="#ff4d7d"/>
-          <stop offset="1" stop-color="#ff1f68"/>
-        </linearGradient>
-      </defs>
+    <span class="badge">💌 Valentine’s invitation</span>
 
-      <path d="M250 50 C250 33 270 25 282 38
-               C294 25 314 33 314 50
-               C314 78 282 92 282 106
-               C282 92 250 78 250 50Z"
-            fill="url(#heart)"/>
+    <!-- ✅ image removed -->
 
-      <path d="M90 120 C90 70 140 40 190 60
-               C240 40 290 70 290 120
-               C290 180 240 210 190 210
-               C140 210 90 180 90 120Z"
-            fill="url(#fur)"/>
+    <h1>Sixtine, will you be my Valentine?</h1>
 
-      <path d="M110 92 L95 55 L140 78 Z" fill="#f2a97b"/>
-      <path d="M270 92 L285 55 L240 78 Z" fill="#f2a97b"/>
+    <!-- ✅ replaced text -->
+    <p class="subtitle" id="hint">
+      Normalement t'es pas censé pouvoir reussir a cliquer sur non (ca m'as pris 30 minutes wesh)
+    </p>
 
-      <circle cx="160" cy="130" r="8"/>
-      <circle cx="220" cy="130" r="8"/>
-
-      <path d="M190 144 C186 144 182 148 182 152
-               C182 160 190 164 190 170
-               C190 164 198 160 198 152
-               C198 148 194 144 190 144Z"
-            fill="#ff7aa2"/>
-    </svg>
-
-    <h1>nirali will you be my valentine?</h1>
-
-    <section class="button-zone" id="zone">
-      <button id="yesBtn">Yes</button>
-      <button id="noBtn">No</button>
+    <section class="button-zone" id="zone" aria-label="Valentine choice">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn" aria-disabled="true" tabindex="-1">No 🙈</button>
     </section>
 
-    <!-- HINT -->
-    <div class="hint" id="hint">“No” seems a bit shy 😈</div>
+    <section class="result" id="result" aria-live="polite">
+      <h2>YAY! 💘</h2>
 
-    <section class="result" id="result">
-      <h2>YAY! 🎉</h2>
       <img
-        class="fireworks"
-        src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
-        alt="Fireworks"
+        class="gif"
+        src="https://media.giphy.com/media/b4UHeUnzarvUnjl0fg/giphy.gif"
+        alt="Valentine celebration"
       />
+
+      <button class="cta" id="goBtn">Let’s go! 🚀</button>
     </section>
   </main>
 
   <script>
-    const zone = document.getElementById("zone");
+    const zone   = document.getElementById("zone");
     const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
+    const noBtn  = document.getElementById("noBtn");
     const result = document.getElementById("result");
-    const hint = document.getElementById("hint");
+    const hint   = document.getElementById("hint");
+    const goBtn  = document.getElementById("goBtn");
 
     /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
@@ -234,23 +253,23 @@
 
       setTimeout(() => {
         confettiInstance({
-          particleCount: 300,
+          particleCount: 280,
           spread: 140,
           startVelocity: 60,
           ticks: 220,
           origin: { x: 0.5, y: 0.55 }
         });
-      }, 300);
+      }, 280);
     }
 
     /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
-      yesScale = Math.min(2.2, yesScale + 0.1);
+      yesScale = Math.min(2.6, yesScale + 0.12);
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
     }
 
-    /* ---------- NO BUTTON RUNS AWAY ---------- */
+    /* ---------- NO BUTTON RUNS AWAY (even if unclickable) ---------- */
     function clamp(n, min, max) {
       return Math.max(min, Math.min(max, n));
     }
@@ -265,8 +284,8 @@
       dx /= mag;
       dy /= mag;
 
-      let newLeft = (b.left - z.left) + dx * 150;
-      let newTop  = (b.top - z.top) + dy * 150;
+      let newLeft = (b.left - z.left) + dx * 220;   // ✅ bigger jump
+      let newTop  = (b.top - z.top) + dy * 220;
 
       newLeft = clamp(newLeft, 0, z.width - b.width);
       newTop  = clamp(newTop, 0, z.height - b.height);
@@ -278,28 +297,63 @@
       growYes();
     }
 
-    zone.addEventListener("pointermove", e => {
+    // ✅ Trigger on pointer move AND pointer down for "impossible" feel
+    function reactToPointer(e) {
       const b = noBtn.getBoundingClientRect();
       const d = Math.hypot(
         (b.left + b.width / 2) - e.clientX,
         (b.top + b.height / 2) - e.clientY
       );
-      if (d < 140) moveNo(e.clientX, e.clientY);
-    });
+      if (d < 220) moveNo(e.clientX, e.clientY);
+    }
 
-    noBtn.addEventListener("click", e => e.preventDefault());
+    zone.addEventListener("pointermove", reactToPointer);
+    zone.addEventListener("pointerdown", reactToPointer);
+
+    // ✅ Extra safety: if anything tries to click it, block.
+    noBtn.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    });
 
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
     });
+
+    /* ---------- LET'S GO CLICK ---------- */
+    goBtn.addEventListener("click", () => {
+      goBtn.animate(
+        [{ transform: "scale(1)" }, { transform: "scale(1.06)" }, { transform: "scale(1)" }],
+        { duration: 220, easing: "ease-out" }
+      );
+
+      confettiInstance({
+        particleCount: 220,
+        spread: 120,
+        startVelocity: 55,
+        ticks: 200,
+        origin: { x: 0.5, y: 0.6 }
+      });
+
+      const gif = document.querySelector(".gif");
+      gif.src = "https://media.giphy.com/media/3HBOODLTUxCrfvf8cG/giphy.gif";
+      gif.alt = "Let's go heart celebration";
+    });
+
+    // ✅ Optional: move "No" once on load so it feels alive
+    window.addEventListener("load", () => {
+      const z = zone.getBoundingClientRect();
+      const b = noBtn.getBoundingClientRect();
+      noBtn.style.left = clamp((z.width - b.width) * 0.68, 0, z.width - b.width) + "px";
+      noBtn.style.top  = clamp((z.height - b.height) * 0.52, 0, z.height - b.height) + "px";
+      noBtn.style.transform = "none";
+    });
   </script>
 </body>
 </html>
-
-
-
