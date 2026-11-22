@@ -1,5 +1,43 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s14" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s14"] = gsap.timeline({ paused: true });</script>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .s14-img { position: absolute; left: 510px; top: 220px; width: 900px; height: 640px; }
+    .s14-img img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
+  </style>
+  <div id="root" data-composition-id="s14" data-width="1920" data-height="1080">
+    <!-- montage éclair : 8 images détourées, une toutes les 0,3 s, chacune entourée d'un cercle qui claque -->
+    <div class="s14-img"><img src="assets/nb/ia_duc_nemours.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_prince_cleves.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_princesse_miroir.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_mere_conseil.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_vol_du_portrait.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_joute.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_chuchotement_eventail.png" alt="" /></div>
+    <div class="s14-img"><img src="assets/nb/ia_aveu_couple.png" alt="" /></div>
+    <svg class="encre" id="s14-cercles" viewBox="0 0 1920 1080"></svg>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s14"]');
+      // taille naturelle et point d'intérêt (visage, miniature…) de chaque image, en fraction
+      const info = [[1040, 828, 0.45, 0.25], [1399, 828, 0.63, 0.25], [1591, 828, 0.78, 0.2], [1568, 828, 0.73, 0.22],
+                    [612, 544, 0.25, 0.78], [969, 828, 0.55, 0.22], [1412, 828, 0.5, 0.35], [654, 667, 0.33, 0.17]];
+      const svg = root.querySelector("#s14-cercles"), NS = "http://www.w3.org/2000/svg";
+      const imgs = Array.from(root.querySelectorAll(".s14-img"));
+      imgs.forEach((el, k) => {
+        const [w, h, fx, fy] = info[k], sc = Math.min(900 / w, 640 / h), dw = w * sc, dh = h * sc;
+        const cx = 510 + (900 - dw) / 2 + fx * dw, cy = 220 + (640 - dh) / 2 + fy * dh;
+        const p = document.createElementNS(NS, "path");
+        p.setAttribute("d", INK.circle(cx, cy, 120, 135, { seed: 230 + k })); p.setAttribute("pathLength", "1000"); p.setAttribute("style", "stroke-width:6");
+        svg.appendChild(p);
+        const t0 = k * 0.3, t1 = k < 7 ? t0 + 0.3 : 2.4;
+        INK.cut(tl, el, t0, t1);
+        tl.fromTo(el, { scale: 1.1 }, { scale: 1, duration: 0.12, ease: "expo.out" }, t0);
+        INK.draw(tl, p, t0 + 0.02, 0.1, "power3.out");
+        tl.set(p, { opacity: 0 }, t1);
+      });
+      window.__timelines["s14"] = tl;
+    })();
+  </script>
 </template>

@@ -1,5 +1,52 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s15" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s15"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s15-scene { position: absolute; inset: 0; }
+    #s15-l1 { top: 220px; font-size: 230px; }
+    #s15-l2 { top: 470px; font-size: 230px; }
+    #s15-auteur { top: 772px; font-size: 64px; font-style: italic; }
+    #s15-sep { color: transparent; }
+    #s15-point { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+  </style>
+  <div id="root" data-composition-id="s15" data-width="1920" data-height="1080">
+    <div id="s15-scene">
+      <div class="gros centre lettres" id="s15-l1">LA PRINCESSE</div>
+      <div class="gros centre lettres" id="s15-l2">DE CLÈVES</div>
+      <div class="fell centre" id="s15-auteur">Madame de Lafayette <span id="s15-sep">·</span> 1678</div>
+      <div class="point-rouge" id="s15-point"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 167.0;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s15"]');
+      const $ = (s) => root.querySelector(s);
+      // le titre s'imprime lettre à lettre (une span par lettre)
+      root.querySelectorAll(".lettres").forEach((el) => {
+        const txt = el.textContent; el.textContent = "";
+        for (const ch of txt) { const sp = document.createElement("span"); sp.textContent = ch === " " ? " " : ch; el.appendChild(sp); }
+      });
+      INK.fontsReady(['900 230px "Source Serif 4"', 'italic 64px "IM FELL English"']).then(() => {
+        INK.withLayout(root, () => {
+          const letters = root.querySelectorAll(".lettres span");
+          letters.forEach((sp, i) => tl.fromTo(sp, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power2.out" }, 167.8 - S + i * 0.06));
+          tl.fromTo("#s15-auteur", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 168.8 - S);
+          // le point rouge prend la place du « · »
+          const px = (1920 - 667) / 2 + 534 + 7, py = 772 + 58 - 16; // centre du « · »
+          gsap.set("#s15-point", { left: px, top: py });
+          tl.fromTo("#s15-point", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 168.8 - S + 0.15);
+          // « regarder à l'intérieur d'un cœur » : la caméra plonge dans le point rouge… jusqu'au blanc
+          const W = INK.words("S15", 0), tp = W[5][1] - S - 0.05;
+          tl.fromTo("#s15-scene", { scale: 1 }, { scale: 1.035, transformOrigin: `${px}px ${py}px`, duration: 4.0, ease: "none" }, 169.3 - S); // très lente avancée
+          tl.fromTo("#s15-scene", { scale: 1.035 }, { scale: 130, transformOrigin: `${px}px ${py}px`, duration: 1.7, ease: "power3.in", immediateRender: false }, tp);
+          tl.to("#s15-point", { backgroundColor: "#f5f1e8", duration: 0.45, ease: "power1.in" }, tp + 0.6);
+          tl.set("#s15-scene", { opacity: 0 }, tp + 1.72);
+        });
+        window.__timelines["s15"] = tl;
+      });
+    })();
+  </script>
 </template>

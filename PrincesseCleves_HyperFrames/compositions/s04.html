@@ -19,32 +19,15 @@
         <div class="livre-leaf">
           <div class="livre-page">
             <div class="entete">La Princesse de Clèves</div>
-            <p class="autour">Je n’eusse jamais soupçonné cette haine, interrompit madame de Clèves, après avoir vu le soin que la reine avait d’écrire à M. le connétable pendant sa prison, la joie qu’elle a témoignée à son retour, et comme elle l’appelle toujours mon compère, aussi bien que le roi.</p>
-            <p class="citation">
-              <span class="kw" data-w="0">«&#160;Si</span>
-              <span class="kw" data-w="1">vous</span>
-              <span class="kw" data-w="2">jugez</span>
-              <span class="kw" data-w="3">sur</span>
-              <span class="kw" data-w="4">les</span>
-              <span class="kw" data-w="5"><i class="mk" data-w="5"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>apparences</b></span>
-              <span class="kw" data-w="6">en</span>
-              <span class="kw" data-w="7">ce</span>
-              <span class="kw" data-w="8">lieu-ci,</span>
-              <span class="kw" data-w="9">vous</span>
-              <span class="kw" data-w="10">serez</span>
-              <span class="kw" data-w="11">souvent</span>
-              <span class="kw" data-w="12">trompée&#160;:</span>
-              <span class="kw" data-w="13">ce</span>
-              <span class="kw" data-w="14">qui</span>
-              <span class="kw" data-w="15">paraît</span>
-              <span class="kw" data-w="16">n’est</span>
-              <span class="kw" data-w="17">presque</span>
-              <span class="kw" data-w="18">jamais</span>
-              <span class="kw" data-w="19">la</span>
-              <span class="kw" data-w="20"><i class="mk" data-w="20"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>vérité.&#160;»</b></span>
-            </p>
+            <div class="avant autour" data-layout-ignore>Je n’eusse jamais soupçonné cette haine, interrompit madame de Clèves, après avoir vu le soin que la reine avait d’écrire à M. le connétable pendant sa prison, la joie qu’elle a témoignée à son retour, et comme elle l’appelle toujours mon compère, aussi bien que le roi.</div>
+            <div class="citation">
+              <div class="ligne"><span class="kw" data-w="0">«&#160;Si</span> <span class="kw" data-w="1">vous</span> <span class="kw" data-w="2">jugez</span> <span class="kw" data-w="3">sur</span> <span class="kw" data-w="4">les</span> <span class="kw" data-w="5"><i class="mk" data-w="5"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>apparences</b></span></div>
+              <div class="ligne"><span class="kw" data-w="6">en</span> <span class="kw" data-w="7">ce</span> <span class="kw" data-w="8">lieu-ci,</span> <span class="kw" data-w="9">vous</span> <span class="kw" data-w="10">serez</span> <span class="kw" data-w="11">souvent</span></div>
+              <div class="ligne"><span class="kw" data-w="12">trompée&#160;:</span> <span class="kw" data-w="13">ce</span> <span class="kw" data-w="14">qui</span> <span class="kw" data-w="15">paraît</span> <span class="kw" data-w="16">n’est</span> <span class="kw" data-w="17">presque</span></div>
+              <div class="ligne"><span class="kw" data-w="18">jamais</span> <span class="kw" data-w="19">la</span> <span class="kw" data-w="20"><i class="mk" data-w="20"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>vérité.&#160;»</b></span></div>
+            </div>
             <p class="attribution"><span class="l">— Madame de Chartres à sa fille</span></p>
-            <p class="autour">Mais pour revenir à madame de Valentinois, vous savez qu’elle s’appelle Diane de Poitiers&#160;: sa maison est très-illustre&#160;; elle vient des anciens ducs d’Aquitaine&#160;: son aïeule était fille naturelle de Louis XI, et enfin il n’y a rien que de grand dans sa naissance.</p>
+            <div class="apres autour" data-layout-ignore>Mais pour revenir à madame de Valentinois, vous savez qu’elle s’appelle Diane de Poitiers&#160;: sa maison est très-illustre&#160;; elle vient des anciens ducs d’Aquitaine&#160;: son aïeule était fille naturelle de Louis XI, et enfin il n’y a rien que de grand dans sa naissance.</div>
             <div class="ombre"></div>
           </div>
         </div>
@@ -64,7 +47,7 @@
       const $ = (s) => root.querySelector(s);
       INK.shapes(root);
       INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
-        const L = INK.livre(tl, root, { scene: "S04", phrase: 0, S, ox: 620, oy: 470, width: 1150, rotX: 24, rotZ: 2.5 });
+        const L = INK.livre(tl, root, { scene: "S04", phrase: 0, S, ox: 620, oy: 470, width: 1150, q: 760, rotX: 24, rotZ: 2.5 });
         // la mère et sa fille, à côté de la page
         INK.pin(tl, "#s04-mere", 0.3, { rot: 0, dur: 0.5 });
         // « ce qui paraît » : la princesse se dédouble en miroir (copie inversée et pâlie)

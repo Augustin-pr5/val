@@ -13,8 +13,8 @@
     #s05-elle2 img { left: -713px; top: 0; width: 1230px; height: 640px; }
     #s05-cleves { left: 110px; top: 220px; width: 710px; height: 600px; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
     #s05-cleves img { left: -304px; top: 0; width: 1014px; height: 600px; }
-    #s05-masson { left: 770px; top: 120px; width: 380px; height: 584px; }
-    #s05-cartel-masson { left: 660px; top: 722px; width: 600px; text-align: center; }
+    #s05-masson { left: 770px; top: 120px; width: 380px; height: 584px; z-index: 2; }
+    #s05-cartel-masson { left: 760px; top: 720px; width: 400px; text-align: center; z-index: 3; }
     #s05-aimer { left: 200px; top: 846px; font-size: 140px; }
     #s05-estimer { left: 1190px; top: 846px; font-size: 140px; }
   </style>
@@ -35,7 +35,7 @@
       <div class="recadre" id="s05-cleves"><img src="assets/nb/ia_prince_cleves.png" alt="Le prince de Clèves" /></div>
       <div class="recadre" id="s05-elle2"><img src="assets/nb/ia_princesse_miroir.png" alt="La princesse" /></div>
       <div class="piece archive" id="s05-masson"><img src="assets/nb/archive_rencontre_masson_1878.jpg" alt="La rencontre, gravure de Masson" /></div>
-      <div class="cartel" id="s05-cartel-masson">Gravure de Masson, éd. Quantin, 1878<br />Gallica&#160;/&#160;BnF</div>
+      <div class="cartel" id="s05-cartel-masson">Gravure de Masson,<br />éd. Quantin, 1878<br />Gallica&#160;/&#160;BnF</div>
       <svg class="encre" viewBox="0 0 1920 1080">
         <path id="s05-spirale" class="rouge" data-shape="spiral" data-c="790,470" data-r="6,190" data-turns="3.3" data-seed="163" style="stroke-width:5" />
         <path id="s05-droite" data-shape="line" data-p="1262,470,1020,470" data-wobble="0.8" data-seed="164" style="stroke-width:5" />
@@ -57,10 +57,10 @@
       const t = (p, i) => P[p][i][1] - S;
       INK.shapes(root);
       INK.fontsReady(['900 200px "Source Serif 4"', 'italic 100px "IM FELL English"', 'italic 34px "IM FELL English"']).then(() => {
-        INK.withLayout(root, () => {
+        (() => {
           // ===== temps 1
           tl.fromTo("#s05-elle", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.05);
-          INK.write(tl, $("#s05-nom"), t(0, 2) - 0.05, 1.15, $("#s05-plume")); // le nom s'écrit à la plume
+          INK.write(tl, $("#s05-nom"), t(0, 2) - 0.05, 1.15, $("#s05-plume"), { x: 880, y: 320 + 78, w: 922 }); // le nom s'écrit à la plume
           INK.draw(tl, $("#s05-enclos"), t(1, 4) - 0.05, 0.9, "power2.inOut"); // « loin de la cour »
           INK.draw(tl, $("#s05-regle"), t(1, 11) - 0.05, 0.45, "power2.out");  // « une seule règle »
           INK.cut(tl, "#s05-vertu", t(1, 12) - 0.05);                          // « la vertu. »
@@ -72,18 +72,18 @@
           INK.pin(tl, "#s05-masson", t(2, 0) - 0.1, { rot: -1, dur: 0.45 });
           INK.fade(tl, "#s05-cartel-masson", t(2, 0) + 0.25);
           tl.fromTo("#s05-cleves", { opacity: 0, x: -180 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, t(2, 3) - 0.1); // Clèves entre
-          INK.unpin(tl, "#s05-masson", t(3, 0) - 0.3, { dy: -40 });
-          tl.to("#s05-cartel-masson", { opacity: 0, duration: 0.2 }, t(3, 0) - 0.3);
+          INK.unpin(tl, "#s05-masson", t(3, 0) + 0.05, { dy: -40 });
+          tl.to("#s05-cartel-masson", { opacity: 0, duration: 0.2 }, t(3, 0) + 0.05);
 
           // ===== temps 3 : le point de vue
-          INK.draw(tl, $("#s05-spirale"), t(3, 0) - 0.05, 1.4, "power1.inOut");   // « Lui l'aime à la folie » : spirale rouge
+          INK.draw(tl, $("#s05-spirale"), t(3, 0) + 0.2, 1.25, "power1.inOut");   // « Lui l'aime à la folie » : spirale rouge
           INK.draw(tl, $("#s05-droite"), t(4, 0) - 0.05, 1.1, "power1.inOut");    // « Elle, elle l'estime » : ligne droite, calme
           INK.cut(tl, "#s05-aimer", t(5, 0) - 0.05);                              // « Ce n'est pas la même chose »
           INK.draw(tl, $("#s05-ne1"), t(5, 2) - 0.05, 0.14, "power2.out");
           INK.draw(tl, $("#s05-ne2"), t(5, 2) + 0.08, 0.14, "power2.out");
           INK.draw(tl, $("#s05-ne3"), t(5, 3), 0.16, "power2.out");
           INK.cut(tl, "#s05-estimer", t(5, 5) - 0.05);
-        });
+        })();
         window.__timelines["s05"] = tl;
       });
     })();

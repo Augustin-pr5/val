@@ -23,14 +23,17 @@
     .s02-filet { display: block; margin: 30px auto 64px; width: 420px; height: 24px; overflow: visible; }
     .s02-filet path { fill: none; stroke: #161412; stroke-width: 2.2; stroke-linecap: round; }
     #s02-page p { margin: 0 0 0; text-indent: 0; }
-    #s02-page p.citation { text-align: left; }
+    /* citation composée en lignes explicites (aucune mesure au rendu) */
+    #s02-cit { position: absolute; left: 110px; top: 390px; }
+    #s02-cit .ligne { position: absolute; height: 88px; line-height: 88px; white-space: nowrap; }
+    #s02-suite { position: absolute; left: 110px; right: 110px; top: 1052px; }
     #s02-page p + p { text-indent: 1.4em; }
     /* attribution imprimée juste sous la citation, sur une zone dégagée */
-    #s02-page p.s02-attribution { text-indent: 0; margin: 34px 0 150px 0; font-style: italic; font-size: 46px; line-height: 62px; color: #161412; }
+    #s02-page p.s02-attribution { position: absolute; left: 110px; top: 776px; text-indent: 0; margin: 0; font-style: italic; font-size: 46px; line-height: 62px; color: #161412; }
     #s02-page p.s02-attribution .r { font-style: normal; }
     #s02-page p.s02-attribution .l { display: block; white-space: nowrap; }
     /* lettrine de l'incipit */
-    #s02-lettrine { float: left; position: relative; width: 252px; height: 252px; margin: 8px 30px 0 0; }
+    #s02-lettrine { position: absolute; left: 0; top: 8px; width: 252px; height: 252px; }
     #s02-lettrine svg { position: absolute; inset: 0; overflow: visible; }
     #s02-lettrine path, #s02-lettrine circle { fill: none; stroke: #161412; stroke-width: 2.4; stroke-linecap: round; }
     #s02-L { position: absolute; left: 0; top: 0; width: 252px; height: 252px; display: flex; align-items: center; justify-content: center; font-size: 236px; line-height: 1; padding-top: 30px; color: #b8b2a7; }
@@ -78,7 +81,7 @@
             <div class="s02-partie">Première partie</div>
             <svg class="s02-filet" viewBox="0 0 420 24"><path data-shape="line" data-p="10,12,410,12" data-bow="0" data-wobble="1.2" data-seed="21" /></svg>
 
-            <p class="citation">
+            <div id="s02-cit">
               <span id="s02-lettrine">
                 <svg viewBox="0 0 252 252">
                   <path id="s02-cadre1" data-shape="line" data-p="4,4,248,4" data-wobble="1" data-seed="31" />
@@ -91,37 +94,21 @@
                   <circle id="s02-dot0" cx="126" cy="126" r="9" />
                 </svg>
                 <span id="s02-L" class="kw" data-w="0">L</span>
-              </span><span class="kw" data-w="0">a</span>
-              <span class="kw hl" data-w="1"><i class="mk" id="s02-mk1"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>magnificence</b></span>
-              <span class="kw" data-w="2">et</span>
-              <span class="kw" data-w="3">la</span>
-              <span class="kw hl" data-w="4"><i class="mk" id="s02-mk2"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>galanterie</b></span>
-              <span class="kw" data-w="5">n’ont</span>
-              <span class="kw" data-w="6">jamais</span>
-              <span class="kw" data-w="7">paru</span>
-              <span class="kw" data-w="8">en</span>
-              <span class="kw" data-w="9">France</span>
-              <span class="kw" data-w="10">avec</span>
-              <span class="kw" data-w="11">tant</span>
-              <span class="kw" data-w="12">d’éclat</span>
-              <span class="kw" data-w="13">que</span>
-              <span class="kw" data-w="14">dans</span>
-              <span class="kw" data-w="15">les</span>
-              <span class="kw" data-w="16">dernières</span>
-              <span class="kw" data-w="17">années</span>
-              <span class="kw" data-w="18">du</span>
-              <span class="kw" data-w="19">règne</span>
-              <span class="kw" data-w="20">de</span>
-              <span class="kw" data-w="21"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul1" d="M1 6 C 30 3, 60 8, 99 4" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>Henri</b></span>
-              <span class="kw" data-w="22"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul2" d="M1 5 C 35 8, 70 3, 92 6" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>second</b></span><span class="kw" data-w="22" id="s02-point">.</span>
-            </p>
+              </span>
+              <div class="ligne" style="left:282px;top:0px"><span class="kw" data-w="0">a</span> <span class="kw hl" data-w="1"><i class="mk" id="s02-mk1"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>magnificence</b></span> <span class="kw" data-w="2">et</span> <span class="kw" data-w="3">la</span> <span class="kw hl" data-w="4"><i class="mk" id="s02-mk2"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>galanterie</b></span></div>
+              <div class="ligne" style="left:282px;top:88px"><span class="kw" data-w="5">n’ont</span> <span class="kw" data-w="6">jamais</span> <span class="kw" data-w="7">paru</span> <span class="kw" data-w="8">en</span> <span class="kw" data-w="9">France</span> <span class="kw" data-w="10">avec</span></div>
+              <div class="ligne" style="left:282px;top:176px"><span class="kw" data-w="11">tant</span> <span class="kw" data-w="12">d’éclat</span> <span class="kw" data-w="13">que</span> <span class="kw" data-w="14">dans</span> <span class="kw" data-w="15">les</span></div>
+              <div class="ligne" style="left:0px;top:264px"><span class="kw" data-w="16">dernières</span> <span class="kw" data-w="17">années</span> <span class="kw" data-w="18">du</span> <span class="kw" data-w="19">règne</span> <span class="kw" data-w="20">de</span> <span class="kw" data-w="21"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul1" d="M1 6 C 30 3, 60 8, 99 4" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>Henri</b></span> <span class="kw" data-w="22"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul2" d="M1 5 C 35 8, 70 3, 92 6" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>second</b></span><span class="kw" data-w="22" id="s02-point" data-layout-allow-overlap>.</span></div>
+            </div>
             <p class="s02-attribution">
               <span class="l" id="s02-attr1">— Madame de Lafayette, <span class="r">La Princesse de Clèves</span>, 1678</span>
               <span class="l" id="s02-attr2">première phrase du roman</span>
             </p>
-            <p class="autour">Ce prince était galant, bien fait, et amoureux&#160;: quoique sa passion pour Diane de Poitiers, duchesse de Valentinois, eût commencé il y avait plus de vingt ans, elle n’en était pas moins violente, et il n’en donnait pas des témoignages moins éclatants.</p>
-            <p class="autour">Comme il réussissait admirablement dans tous les exercices du corps, il en faisait une de ses plus grandes occupations&#160;: c’était tous les jours des parties de chasse et de paume, des ballets, des courses de bagues, ou de semblables divertissements. Les couleurs et les chiffres de madame de Valentinois paraissaient par-tout, et elle paraissait elle-même avec tous les ajustements que pouvait avoir mademoiselle de la Marck, sa petite-fille, qui était alors à marier.</p>
-            <p class="autour">La présence de la reine autorisait la sienne&#160;: cette princesse était belle, quoiqu’elle eût passé la première jeunesse&#160;; elle aimait la grandeur, la magnificence, et les plaisirs.</p>
+            <div id="s02-suite">
+            <p class="autour" data-layout-ignore>Ce prince était galant, bien fait, et amoureux&#160;: quoique sa passion pour Diane de Poitiers, duchesse de Valentinois, eût commencé il y avait plus de vingt ans, elle n’en était pas moins violente, et il n’en donnait pas des témoignages moins éclatants.</p>
+            <p class="autour" data-layout-ignore>Comme il réussissait admirablement dans tous les exercices du corps, il en faisait une de ses plus grandes occupations&#160;: c’était tous les jours des parties de chasse et de paume, des ballets, des courses de bagues, ou de semblables divertissements. Les couleurs et les chiffres de madame de Valentinois paraissaient par-tout, et elle paraissait elle-même avec tous les ajustements que pouvait avoir mademoiselle de la Marck, sa petite-fille, qui était alors à marier.</p>
+            <p class="autour" data-layout-ignore>La présence de la reine autorisait la sienne&#160;: cette princesse était belle, quoiqu’elle eût passé la première jeunesse&#160;; elle aimait la grandeur, la magnificence, et les plaisirs.</p>
+            </div>
             <div id="s02-shade"></div>
           </div>
         </div>
@@ -164,16 +151,9 @@
       INK.fontsReady(['60px "IM FELL English"', 'italic 34px "IM FELL English"', '38px "IM FELL English SC"']).then(() => {
         INK.withLayout(root, () => {
         const page = root.querySelector("#s02-page");
-        // ---- mesure des lignes de la citation (une seule fois, avant les tweens)
-        const kws = Array.from(page.querySelectorAll(".kw")).filter((el) => el.id !== "s02-L");
-        const lines = [];
-        kws.forEach((el) => {
-          const top = Math.round(el.offsetTop / 20) * 20;
-          let L = lines.find((l) => Math.abs(l.top - top) < 30);
-          if (!L) lines.push((L = { top, w: +el.dataset.w, h: el.offsetHeight }));
-        });
-        lines.sort((a, b) => a.top - b.top);
-        const yOf = (L) => -(L.top + 38);
+        // ---- lignes de la citation : positions connues (Q = 390, interligne 88)
+        const lines = [0, 5, 11, 16].map((w, k) => ({ top: 390 + k * 88, w }));
+        const yOf = (L) => -(L.top + 44);
         const X0 = -(110 + 540);
 
         // ---- caméra : la page entre en tournant, puis glisse de ligne en ligne
@@ -220,10 +200,9 @@
         tl.to("#s02-page", { opacity: 0.45, duration: 0.8, ease: "power1.inOut" }, tEnd + 0.2);
         tl.to(["#s02-dof-h1", "#s02-dof-h2", "#s02-dof-b1", "#s02-dof-b2"], { opacity: 0.4, duration: 0.6 }, tEnd);
         tl.to(["#s02-chenonceau", "#s02-cartel-chenonceau"], { x: 90, opacity: 0, duration: 0.3, ease: "power3.in" }, tEnd);
-        tl.to("#s02-cartel-bal", { opacity: 0, duration: 0.2, ease: "power1.in" }, tEnd);
+        tl.to("#s02-cartel-bal", { opacity: 0, duration: 0.2, ease: "power1.in" }, tEnd + 0.3);
         // le Bal (520×313) rejoint le centre : 960,520 ; échelle 1,74 ≈ ovale 904×545
-        const bal = root.querySelector("#s02-bal");
-        const dx = 960 - (bal.offsetLeft + bal.offsetWidth / 2), dy = 520 - (bal.offsetTop + bal.offsetHeight / 2);
+        const dx = 960 - (1290 + 520 / 2), dy = 520 - (604 + 313 / 2); // centre du Bal → centre de l'image
         tl.to("#s02-bal", { x: dx, y: dy, scale: 1.74, rotation: 0, duration: 0.75, ease: "power2.inOut" }, tEnd + 0.05);
         tl.to("#s02-bal", { padding: 0, backgroundColor: "rgba(251,249,243,0)", boxShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.3, ease: "power1.inOut" }, tEnd + 0.5);
         tl.fromTo("#s02-bal-cadre", { clipPath: "ellipse(80% 80% at 50% 50%)" }, { clipPath: "ellipse(49.6% 49.6% at 50% 50%)", duration: 0.35, ease: "power2.inOut" }, tEnd + 0.5);

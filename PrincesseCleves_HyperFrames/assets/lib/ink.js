@@ -153,10 +153,10 @@
   };
 
   // Écriture à la plume : la ligne se révèle de gauche à droite, la plume suit le bord.
-  INK.write = function (tl, line, t, dur, nib) {
+  INK.write = function (tl, line, t, dur, nib, g) {
     tl.fromTo(line, { clipPath: 'inset(-30% 103% -30% -3%)' }, { clipPath: 'inset(-30% 0% -30% -3%)', duration: dur, ease: 'none' }, t);
     if (nib) {
-      var w = line.offsetWidth, x0 = line.offsetLeft, y0 = line.offsetTop + line.offsetHeight * 0.62;
+      var w = g ? g.w : line.offsetWidth, x0 = g ? g.x : line.offsetLeft, y0 = g ? g.y : line.offsetTop + line.offsetHeight * 0.62;
       tl.set(nib, { opacity: 1 }, t);
       tl.fromTo(nib, { x: x0, y: y0 }, { x: x0 + w, y: y0, duration: dur, ease: 'none' }, t);
       // petit va-et-vient vertical de la plume (fini, déterministe)
@@ -224,16 +224,23 @@
     var stage = root.querySelector('.livre-stage'), cam = root.querySelector('.livre-cam'), leaf = root.querySelector('.livre-leaf'), page = root.querySelector('.livre-page');
     stage.style.perspectiveOrigin = cfg.ox + 'px ' + cfg.oy + 'px';
     cam.style.left = cfg.ox + 'px'; cam.style.top = cfg.oy + 'px';
-    page.style.width = cfg.width + 'px'; page.style.height = (cfg.height || 2000) + 'px';
-    var kws = Array.prototype.slice.call(page.querySelectorAll('.kw'));
-    var lines = [];
-    kws.forEach(function (el) {
-      var top = Math.round(el.offsetTop / 20) * 20, L = null;
-      for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - top) < 30) L = lines[k];
-      if (!L) lines.push({ top: top, w: +el.dataset.w });
-    });
-    lines.sort(function (a, b) { return a.top - b.top; });
-    var X0 = -(cfg.width / 2), yOf = function (L) { return -(L.top + 36); };
+    page.style.width = cfg.width + 'px';
+    // la citation est composée en lignes explicites (.ligne) à partir de la hauteur Q ; interligne LH
+    var Q = cfg.q || 700, LH = cfg.lh || 86, AH = 62;
+    var lignes = page.querySelectorAll('.citation .ligne'), kws = Array.prototype.slice.call(page.querySelectorAll('.kw')), lines = [];
+    var cit = page.querySelector('.citation'); cit.style.top = Q + 'px';
+    for (var k = 0; k < lignes.length; k++) {
+      lignes[k].style.top = (k * LH) + 'px';
+      var first = lignes[k].querySelector('.kw'); lines.push({ top: Q + k * LH, w: first ? +first.dataset.w : 0 });
+    }
+    var attrP = page.querySelector('p.attribution'), nA = attrP ? attrP.querySelectorAll('.l').length : 0;
+    var topA = Q + lignes.length * LH + 30;
+    if (attrP) attrP.style.top = topA + 'px';
+    // hauteur de page : fixe, ou « fit » = la page s'arrête juste sous l'attribution (S08 : le bord de la page)
+    var H = cfg.height === 'fit' ? topA + nA * AH + 150 : (cfg.height || 2000); page.style.height = H + 'px';
+    var avant = page.querySelector('.avant'); if (avant) avant.style.bottom = (H - Q + 26) + 'px';
+    var apres = page.querySelector('.apres'); if (apres) apres.style.top = (topA + nA * AH + 120) + 'px';
+    var X0 = -(cfg.width / 2), yOf = function (L) { return -(L.top + LH / 2); };
     var rx = cfg.rotX != null ? cfg.rotX : 24, rz = cfg.rotZ != null ? cfg.rotZ : -2.5, t0 = cfg.t0 || 0;
     // entrée : la page tourne (ou monte) et la caméra se pose
     tl.fromTo(cam, { rotationX: rx + 14, rotationZ: rz - 1.5, z: -260 }, { rotationX: rx, rotationZ: rz, z: 0, duration: 1.1, ease: 'power3.out' }, t0);
@@ -257,24 +264,13 @@
     var ta = cfg.attrAt != null ? cfg.attrAt : t(last.w) + 0.25;
     for (var a = 0; a < attr.length; a++) INK.write(tl, attr[a], ta + a * 0.8, attr[a].textContent.length > 18 ? 0.75 : 0.45);
     tl.to(leaf, { y: yOf(last) - (cfg.descente != null ? cfg.descente : 80), duration: 1.0, ease: 'power2.inOut' }, ta);
-    return { t: t, lines: lines, cam: cam, leaf: leaf, page: page, W: W };
+    return { t: t, lines: lines, cam: cam, leaf: leaf, page: page, W: W, yFin: yOf(last) - (cfg.descente != null ? cfg.descente : 80), X0: X0 };
   };
 
-  // Exécute fn avec la scène mesurable : HyperFrames masque (display:none) les scènes hors de leur créneau,
-  // et les mesures (offsetLeft, offsetTop…) valent alors 0. On affiche temporairement les ancêtres masqués
-  // (visibility:hidden, donc rien ne s'affiche), on mesure, puis on rétablit exactement l'état d'origine.
-  INK.withLayout = function (el, fn) {
-    var changed = [];
-    for (var n = el; n && n.nodeType === 1 && n !== document.documentElement; n = n.parentElement) {
-      if (getComputedStyle(n).display === 'none') {
-        changed.push([n, n.style.display, n.style.visibility]);
-        n.style.display = 'block'; n.style.visibility = 'hidden';
-      }
-    }
-    try { return fn(); } finally {
-      for (var i = changed.length - 1; i >= 0; i--) { changed[i][0].style.display = changed[i][1]; changed[i][0].style.visibility = changed[i][2]; }
-    }
-  };
+  // Ancien outil de mesure : il modifiait le style des conteneurs de scène et perturbait le moteur
+  // de rendu de HyperFrames. Les scènes ne mesurent plus rien à la construction : toutes les positions
+  // sont écrites dans le HTML (lignes de citation explicites) ou calculées à l'avance avec les polices.
+  INK.withLayout = function (el, fn) { return fn(); };
 
   // Charge les polices avant toute mesure de mise en page
   INK.fontsReady = function (specs) {

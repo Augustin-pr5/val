@@ -1,5 +1,27 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s17" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s17"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    /* derrière, très pâles, des pages qui tournent (opacité 15 %) */
+    #s17-pages-cadre { position: absolute; inset: 0; opacity: 0.15; mix-blend-mode: multiply; }
+    #s17-pages { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    #s17-mot { top: 370px; font-size: 300px; }
+  </style>
+  <div id="root" data-composition-id="s17" data-width="1920" data-height="1080">
+    <div id="s17-pages-cadre">
+      <video id="s17-pages" class="clip" data-start="0" data-duration="4" data-media-start="1" data-track-index="2" muted playsinline src="assets/nb/pexels_pages_livre.mp4"></video>
+    </div>
+    <div class="gros centre" id="s17-mot"><span id="s17-txt">Lisez-le</span><span class="rouge-txt" id="s17-point">.</span></div>
+  </div>
+  <script>
+    (function () {
+      const S = 182.5;
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s17-txt", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 182.9 - S);
+      // le point final est le point rouge
+      tl.fromTo("#s17-point", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 183.35 - S);
+      tl.set("#s17-mot", { opacity: 0 }, 186.2 - S);
+      window.__timelines["s17"] = tl;
+    })();
+  </script>
 </template>

@@ -1,5 +1,53 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s11" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s11"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s11-jardin { left: 160px; top: 170px; width: 1240px; height: 535px; }
+    #s11-jardin video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #s11-ombre { left: 1300px; top: 300px; width: 703px; height: 560px; filter: none; }
+    #s11-ombre img { transform: scaleX(-1); }
+    #s11-ondes path { stroke-width: 4; }
+    #s11-masson { left: 740px; top: 96px; width: 440px; height: 661px; overflow: hidden; }
+    #s11-cartel { left: 610px; top: 784px; width: 700px; text-align: center; }
+  </style>
+  <div id="root" data-composition-id="s11" data-width="1920" data-height="1080">
+    <div class="piece" id="s11-jardin"><div class="cadre" id="s11-jardin-cadre">
+      <video id="s11-jardin-video" class="clip" data-start="0" data-duration="6.1" data-playback-rate="0.65" data-track-index="2" muted playsinline src="assets/nb/ia_video_jardin_nuit_1920x828.mp4"></video>
+    </div></div>
+    <!-- « quelqu'un, dans l'ombre » : une silhouette d'encre noire au bord du cadre -->
+    <div class="detoure" id="s11-ombre"><img src="assets/nb/silhouette_nemours.png" alt="Une silhouette dans l'ombre" /></div>
+    <!-- des ondes relient le pavillon à cette ombre -->
+    <svg class="encre" id="s11-ondes" viewBox="0 0 1920 1080">
+      <path id="s11-o1" d="M 1379 270 A 430 430 0 0 1 1379 554" pathLength="1000" />
+      <path id="s11-o2" d="M 1462 250 A 512 512 0 0 1 1462 574" pathLength="1000" />
+      <path id="s11-o3" d="M 1545 232 A 596 596 0 0 1 1545 592" pathLength="1000" style="stroke-width:3" />
+    </svg>
+    <div class="piece archive" id="s11-masson"><img src="assets/nb/archive_aveu_masson_1878.jpg" alt="L'aveu, gravure de Masson" /></div>
+    <div class="cartel" id="s11-cartel">L’aveu, gravure de Masson,<br />éd. Quantin, 1878 · Gallica&#160;/&#160;BnF</div>
+  </div>
+  <script>
+    (function () {
+      const S = 136.0;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s11"]');
+      const $ = (s) => root.querySelector(s);
+      const W = INK.words("S11", 0); // Elle ignore que quelqu'un, dans l'ombre, entend tout.
+      const t = (i) => W[i][1] - S;
+      // 136,0 : retour au papier, le jardin la nuit
+      INK.pin(tl, "#s11-jardin", 0, { rot: -0.5, dur: 0.45 });
+      tl.fromTo("#s11-jardin-cadre", { scale: 1 }, { scale: 1.06, duration: 6, ease: "none" }, 0);
+      // la silhouette se dessine à l'encre, du sol vers la tête
+      tl.fromTo("#s11-ombre", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power2.out" }, t(3) - 0.05);
+      ["#s11-o1", "#s11-o2", "#s11-o3"].forEach((id, k) => INK.draw(tl, $(id), t(6) - 0.05 + k * 0.18, 0.35, "power2.out"));
+      // la gravure de Masson « L'aveu »
+      const tm = 142.0 - S;
+      INK.unpin(tl, "#s11-jardin", tm, { dx: -160, dy: 0, dur: 0.35 });
+      tl.to("#s11-ondes", { opacity: 0, duration: 0.3 }, tm);
+      tl.to("#s11-ombre", { x: 90, duration: 0.8, ease: "power2.inOut" }, tm);
+      INK.pin(tl, "#s11-masson", tm + 0.2, { rot: 1, dur: 0.5 });
+      INK.fade(tl, "#s11-cartel", tm + 0.55);
+      tl.fromTo("#s11-masson img", { scale: 1 }, { scale: 1.05, duration: 4.8, ease: "none" }, tm + 0.3);
+      window.__timelines["s11"] = tl;
+    })();
+  </script>
 </template>

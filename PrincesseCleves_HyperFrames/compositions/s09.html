@@ -1,5 +1,128 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s09" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s09"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .s09-mot { font-size: 130px; }
+    /* tournois */
+    #s09-tournoi { left: 460px; top: 96px; width: 1000px; height: 638px; }
+    #s09-cartel-tournoi { left: 466px; top: 750px; }
+    #s09-joute { left: 1240px; top: 290px; width: 552px; height: 472px; }
+    #s09-m1 { top: 830px; }
+    /* lettres perdues */
+    #s09-lettre { left: 410px; top: 130px; width: 1100px; height: 486px; }
+    #s09-cachet { left: 726px; top: 372px; width: 360px; height: 277px; }
+    #s09-m2 { top: 700px; }
+    /* rumeurs */
+    #s09-eventail { left: 482px; top: 100px; width: 955px; height: 560px; }
+    #s09-m3 { top: 720px; }
+    /* le regard piège */
+    #s09-m4 { top: 800px; font-size: 110px; font-weight: 800; }
+    #s09-oeil .pupille { fill: #161412; stroke: none; }
+    #s09-toile path { stroke-width: 2.4; }
+    /* la fuite */
+    #s09-carrosse { left: 0; top: 230px; width: 716px; height: 560px; }
+    #s09-double, #s09-elle { left: 602px; top: 200px; width: 716px; height: 560px; }
+    #s09-double img { transform: scaleX(-1); }
+  </style>
+  <div id="root" data-composition-id="s09" data-width="1920" data-height="1080">
+    <div class="calque" id="s09-a">
+      <div class="piece archive" id="s09-tournoi"><img src="assets/nb/archive_tournoi_1559_tortorel_perrissin.jpg" alt="Le tournoi de 1559" /></div>
+      <div class="cartel" id="s09-cartel-tournoi">Le tournoi de 1559 · Tortorel et Perrissin</div>
+      <div class="detoure" id="s09-joute"><img src="assets/nb/ia_joute.png" alt="Une joute" /></div>
+      <div class="gros centre s09-mot mots" id="s09-m1"><span data-w="0">Les</span> <span data-w="1">tournois.</span></div>
+    </div>
+    <div class="calque" id="s09-b">
+      <div class="piece" id="s09-lettre"><img src="assets/nb/ia_lettre_cachet.jpg" alt="Une lettre cachetée" /></div>
+      <!-- le cachet de cire reste rouge : la seule tache rouge de la séquence -->
+      <div class="detoure" id="s09-cachet"><img src="assets/images_ia_detourees/element_cachet_de_cire_rouge.png" alt="Cachet de cire rouge" /></div>
+      <div class="gros centre s09-mot mots" id="s09-m2"><span data-w="0">Les</span> <span data-w="1">lettres</span> <span data-w="2">perdues.</span></div>
+    </div>
+    <div class="calque" id="s09-c">
+      <div class="detoure" id="s09-eventail"><img src="assets/nb/ia_chuchotement_eventail.png" alt="Chuchotements derrière un éventail" /></div>
+      <svg class="encre" viewBox="0 0 1920 1080">
+        <path id="s09-o1" d="M 640 250 A 300 300 0 0 0 640 520" pathLength="1000" />
+        <path id="s09-o2" d="M 560 200 A 380 380 0 0 0 560 580" pathLength="1000" style="stroke-width:4" />
+        <path id="s09-o3" d="M 480 150 A 460 460 0 0 0 480 640" pathLength="1000" style="stroke-width:3" />
+        <path id="s09-o4" d="M 1280 250 A 300 300 0 0 1 1280 520" pathLength="1000" />
+        <path id="s09-o5" d="M 1360 200 A 380 380 0 0 1 1360 580" pathLength="1000" style="stroke-width:4" />
+        <path id="s09-o6" d="M 1440 150 A 460 460 0 0 1 1440 640" pathLength="1000" style="stroke-width:3" />
+      </svg>
+      <div class="gros centre s09-mot mots" id="s09-m3"><span data-w="0">Les</span> <span data-w="1">rumeurs.</span></div>
+    </div>
+    <div class="calque" id="s09-d">
+      <svg class="encre" id="s09-toile" viewBox="0 0 1920 1080"></svg>
+      <svg class="encre" id="s09-oeil" viewBox="0 0 1920 1080">
+        <path id="s09-paupiere" d="M 720 410 Q 960 250 1200 410 Q 960 570 720 410 Z" pathLength="1000" style="stroke-width:7" />
+        <circle class="trait" id="s09-iris" cx="960" cy="410" r="78" pathLength="1000" style="stroke-width:5" />
+        <circle class="pupille" id="s09-pupille" cx="960" cy="410" r="32" />
+      </svg>
+      <div class="moyen centre mots" id="s09-m4"><span data-w="0">Chaque</span> <span data-w="1">regard</span> <span data-w="2">est</span> <span data-w="3">un</span> <span data-w="4">piège.</span></div>
+    </div>
+    <div class="calque" id="s09-e">
+      <svg class="encre" viewBox="0 0 1920 1080"><path id="s09-route" data-shape="line" data-p="90,880,1830,860" data-bow="-18" data-wobble="3" data-seed="191" style="stroke-width:5" /></svg>
+      <div class="detoure" id="s09-carrosse"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle fuit" /></div>
+    </div>
+    <div class="calque" id="s09-f">
+      <div class="detoure" id="s09-double"><img src="assets/nb/ia_carrosse_fuite.png" alt="" /></div>
+      <div class="detoure" id="s09-elle"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle se fuit elle-même" /></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 116.2;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s09"]');
+      const $ = (s) => root.querySelector(s);
+      const P = [0, 1, 2, 3, 4, 5, 6].map((p) => INK.words("S09", p));
+      const t = (p, i) => P[p][i][1] - S;
+      // la toile : rayons et fils autour de l'œil (graine fixe)
+      const toile = $("#s09-toile"), NS = "http://www.w3.org/2000/svg", cx = 960, cy = 410;
+      for (let k = 0; k < 14; k++) {
+        const a = (k / 14) * Math.PI * 2, p = document.createElementNS(NS, "path");
+        p.setAttribute("d", INK.line(cx + Math.cos(a) * 150, cy + Math.sin(a) * 105, cx + Math.cos(a) * 520, cy + Math.sin(a) * 330, { seed: 200 + k, wobble: 2 }));
+        p.setAttribute("pathLength", "1000"); p.setAttribute("class", "rayon"); toile.appendChild(p);
+      }
+      [230, 330, 430].forEach((R, j) => {
+        const pts = [];
+        for (let k = 0; k <= 14; k++) { const a = (k / 14) * Math.PI * 2; pts.push([cx + Math.cos(a) * R * (1 + 0.04 * Math.sin(k * 2.1)), cy + Math.sin(a) * R * 0.64]); }
+        const p = document.createElementNS(NS, "path"); p.setAttribute("d", INK.smooth(pts)); p.setAttribute("pathLength", "1000"); p.setAttribute("class", "fil"); toile.appendChild(p);
+      });
+      INK.shapes(root);
+      INK.fontsReady(['900 130px "Source Serif 4"', '800 110px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
+        INK.withLayout(root, () => {
+          const cuts = [0, t(1, 0) - 0.1, t(2, 0) - 0.1, t(3, 0) - 0.1, t(4, 0) - 0.1, t(6, 0) - 0.1, 10.4];
+          ["#s09-a", "#s09-b", "#s09-c", "#s09-d", "#s09-e", "#s09-f"].forEach((id, k) => INK.cut(tl, id, cuts[k], cuts[k + 1]));
+          // Les tournois. (116,2 très fort / 116,9)
+          tl.fromTo("#s09-tournoi", { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "expo.out" }, 0);
+          INK.fade(tl, "#s09-cartel-tournoi", 0.2, 0.25);
+          tl.fromTo("#s09-joute", { opacity: 0, x: 160, scale: 1.15 }, { opacity: 1, x: 0, scale: 1, duration: 0.22, ease: "expo.out" }, 116.9 - S);
+          INK.wordsIn(tl, root.querySelectorAll("#s09-m1 span"), P[0], S);
+          // Les lettres perdues. (117,83)
+          INK.pin(tl, "#s09-lettre", cuts[1], { rot: -1, dur: 0.3 });
+          tl.fromTo("#s09-cachet", { opacity: 0, scale: 1.6, rotation: -20 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.25, ease: "back.out(2)" }, 117.83 - S);
+          INK.wordsIn(tl, root.querySelectorAll("#s09-m2 span"), P[1], S);
+          // Les rumeurs. (118,85) : l'éventail et des ondes d'encre
+          tl.fromTo("#s09-eventail", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, cuts[2]);
+          ["#s09-o1", "#s09-o4", "#s09-o2", "#s09-o5", "#s09-o3", "#s09-o6"].forEach((id, k) => INK.draw(tl, $(id), 118.85 - S + Math.floor(k / 2) * 0.12, 0.22, "power2.out"));
+          INK.wordsIn(tl, root.querySelectorAll("#s09-m3 span"), P[2], S);
+          // Chaque regard est un piège. (119,7) : un œil pris dans une toile
+          INK.draw(tl, $("#s09-paupiere"), cuts[3], 0.25, "power2.out");
+          INK.draw(tl, $("#s09-iris"), cuts[3] + 0.12, 0.2, "power2.out");
+          tl.fromTo("#s09-pupille", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, cuts[3] + 0.25);
+          toile.querySelectorAll(".rayon").forEach((p, k) => INK.draw(tl, p, 119.7 - S + k * 0.025, 0.25, "power2.out"));
+          toile.querySelectorAll(".fil").forEach((p, k) => INK.draw(tl, p, 119.7 - S + 0.35 + k * 0.18, 0.4, "power1.inOut"));
+          INK.wordsIn(tl, root.querySelectorAll("#s09-m4 span"), P[3], S);
+          // Alors elle fuit la cour. Elle fuit Paris. : le carrosse file, la route se dessine
+          tl.fromTo("#s09-carrosse", { x: -760 }, { x: 330, duration: t(5, 0) - cuts[4], ease: "power2.out" }, cuts[4]);
+          tl.to("#s09-carrosse", { x: 1960, duration: 0.9, ease: "power3.in" }, t(5, 0));
+          INK.draw(tl, $("#s09-route"), cuts[4] + 0.05, t(5, 0) + 0.8 - cuts[4], "power1.inOut");
+          // Elle se fuit elle-même. : la princesse se sépare de son propre double
+          tl.fromTo("#s09-elle", { x: 0 }, { x: 190, duration: 1.0, ease: "power2.inOut" }, t(6, 2) - 0.05);
+          tl.fromTo("#s09-double", { x: 0, opacity: 0.0 }, { x: -380, opacity: 0.34, duration: 1.0, ease: "power2.inOut" }, t(6, 2) - 0.05);
+        });
+        window.__timelines["s09"] = tl;
+      });
+    })();
+  </script>
 </template>

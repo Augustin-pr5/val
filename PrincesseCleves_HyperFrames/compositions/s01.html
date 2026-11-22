@@ -30,7 +30,7 @@
       INK.fontsReady(['300px "IM FELL English"', '700 120px "Source Serif 4"']).then(() => {
         INK.withLayout(root, () => {
         const an = $("#s01-annee");
-        const x0 = an.offsetLeft, x1 = an.offsetLeft + an.offsetWidth, yb = an.offsetTop + an.offsetHeight * 0.78;
+        const x0 = 712, x1 = 712 + 496, yb = 110 + 300 * 0.78; // « 1678 » : left 712, top 110, largeur mesurée 496 px
         // 2,8 s : la main arrive ; 3,2 → 4,1 s : « 1678 » s'écrit sous la pointe de la plume
         tl.fromTo("#s01-main", { x: x0 + 420, y: yb - 160, opacity: 0, rotation: 8 }, { x: x0, y: yb, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, 0.15);
         tl.fromTo(an, { clipPath: "inset(-20% 103% -20% -3%)" }, { clipPath: "inset(-20% 0% -20% -3%)", duration: 0.9, ease: "none" }, 0.6);

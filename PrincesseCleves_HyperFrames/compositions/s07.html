@@ -155,7 +155,7 @@
         tl.fromTo("#s07-enlu", { opacity: 0, scale: 1.06, rotation: -4 }, { opacity: 1, scale: 1, rotation: -1.2, duration: 0.34, ease: "expo.out" }, 0.02); // en place à 84,96 s
         tl.fromTo("#s07-cartel-enlu", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.3);
         // « Cinq siècles plus tôt » : un grand « vers 1180 » s'écrit à la plume
-        INK.write(tl, $("#s07-date"), t(0, 0) - 0.05, 1.05, $("#s07-plume-pt2"));
+        INK.write(tl, $("#s07-date"), t(0, 0) - 0.05, 1.05, $("#s07-plume-pt2"), { x: 1010, y: 612 + 118, w: 658 });
         INK.draw(tl, $("#s07-date-trait"), t(0, 3) + 0.12, 0.35, "power2.out");
         INK.draw(tl, $("#s07-cercle"), t(0, 6) - 0.05, 0.42, "power2.inOut"); // se referme sur « Lancelot »
         INK.draw(tl, $("#s07-tan1"), t(0, 7) + 0.12, 0.25, "power2.out");
@@ -177,14 +177,12 @@
         tl.to("#s07-point", { scale: 0.6, duration: 0.3, ease: "power2.out" }, t(0, 14) + 0.6);
 
         // ===== E. « Chrétien de Troyes… » : écrit à la plume =====
-        const date = $("#s07-date"), ecrit = $("#s07-ecrit"), l2 = $("#s07-l2"), vers = $("#s07-vers"), txt = $("#s07-date-txt");
-        const sc = 60 / 190;
-        const dx = ecrit.offsetLeft + l2.offsetLeft + vers.offsetLeft - (date.offsetLeft + txt.offsetLeft * sc);
-        const dy = ecrit.offsetTop + l2.offsetTop + vers.offsetTop - (date.offsetTop + txt.offsetTop * sc);
+        // le grand « vers 1180 » (190 px) rejoint sa place à la fin de la 2e ligne écrite (60 px) : lignes de base alignées
+        const sc = 60 / 190, dx = 730 + 590 + 29 - 1010, dy = 112;
         tl.to("#s07-date-trait", { opacity: 0, duration: 0.2 }, t(1, 0) - 0.4);
         tl.fromTo("#s07-date", { x: 0, y: 0, scale: 1 }, { x: dx, y: dy, scale: sc, duration: 0.6, ease: "power2.inOut", immediateRender: false }, t(1, 0) - 0.4);
-        INK.write(tl, $("#s07-l1"), t(1, 0) - 0.05, 0.95, $("#s07-plume-pt"));
-        INK.write(tl, $("#s07-l2"), t(1, 0) + 1.0, 1.55, $("#s07-plume-pt"));
+        INK.write(tl, $("#s07-l1"), t(1, 0) - 0.05, 0.95, $("#s07-plume-pt"), { x: 0, y: 57, w: 492 });
+        INK.write(tl, $("#s07-l2"), t(1, 0) + 1.0, 1.55, $("#s07-plume-pt"), { x: 0, y: 92 + 57, w: 827 });
 
         // ===== F. coupe franche : trois gros mots, chacun barré de rouge =====
         const tCut = t(2, 0) - 0.16;
@@ -200,7 +198,7 @@
           const tg = t(p, 3) - 0.09; // le gros mot claque quand il est dit
           tl.fromTo(gros, { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.18, ease: "expo.out" }, tg);
           // rature rouge sur l'impact (au plus tôt juste après l'apparition du mot)
-          const x = rang.offsetLeft + gros.offsetLeft, y = rang.offsetTop + gros.offsetTop, w = gros.offsetWidth, h = gros.offsetHeight;
+          const x = 736, y = [120, 400, 680][k - 1] + 6, w = [811, 422, 709][k - 1], h = 200; // largeurs mesurées (Source Serif 900, 200 px)
           const path = $("#s07-x" + k);
           path.setAttribute("d", INK.strike(x - 34, y + h * 0.58, x + w + 34, y + h * 0.5, { seed: 70 + k, bow: -12 }));
           const ts = Math.max(impacts[k - 1] - S - 0.08, tg + 0.08);

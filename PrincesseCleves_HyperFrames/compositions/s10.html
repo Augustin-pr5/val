@@ -1,5 +1,54 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s10" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s10"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+    #s10-elle { left: 1250px; top: 200px; width: 588px; height: 600px; }
+    /* le seul plan sombre (et en couleur) du film : les bougies */
+    #s10-nuit { position: absolute; inset: 0; background: #000; }
+    #s10-bougies { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  </style>
+  <div id="root" data-composition-id="s10" data-width="1920" data-height="1080">
+    <div class="calque" id="s10-livre">
+      <div class="livre-stage">
+        <div class="livre-cam">
+          <div class="livre-leaf">
+            <div class="livre-page">
+              <div class="entete">La Princesse de Clèves</div>
+              <div class="avant autour" data-layout-ignore>Madame de Clèves ne répondit point&#160;; et son silence achevant de confirmer son mari dans ce qu’il avait pensé&#160;: Vous ne me dites rien, reprit-il, et c’est me dire que je ne me trompe pas. Hé bien&#160;! monsieur, lui répondit-elle en se jetant à ses genoux,</div>
+              <div class="citation">
+              <div class="ligne"><span class="kw" data-w="0">«&#160;Je</span> <span class="kw" data-w="1">vais</span> <span class="kw" data-w="2">vous</span> <span class="kw" data-w="3">faire</span> <span class="kw" data-w="4">un</span> <span class="kw" data-w="5"><i class="mk" data-w="5"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>aveu</b></span> <span class="kw" data-w="6">que</span> <span class="kw" data-w="7">l’on</span></div>
+              <div class="ligne"><span class="kw" data-w="8">n’a</span> <span class="kw" data-w="9"><i class="mk" data-w="9"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>jamais</b></span> <span class="kw" data-w="10">fait</span> <span class="kw" data-w="11">à</span> <span class="kw" data-w="12">son</span> <span class="kw" data-w="13">mari.&#160;»</span></div>
+            </div>
+              <p class="attribution"><span class="l">— La princesse de Clèves</span></p>
+              <div class="apres autour" data-layout-ignore>mais l’innocence de ma conduite et de mes intentions m’en donne la force.</div>
+              <div class="ombre"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dof h1"></div><div class="dof h2"></div><div class="dof b1"></div><div class="dof b2"></div>
+      <div class="detoure" id="s10-elle"><img src="assets/nb/ia_aveu_couple.png" alt="La princesse fait l'aveu" /></div>
+    </div>
+    <!-- 134,0 : coupe franche sur les bougies (extinction à 1,94 s dans le clip → 135,05 s) -->
+    <div class="calque" id="s10-nuit">
+      <video id="s10-bougies" class="clip" data-start="7.4" data-duration="2" data-media-start="0.89" data-track-index="2" muted playsinline src="assets/videos/pexels_bougies_extinction.mp4"></video>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 126.6;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s10"]');
+      INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
+        const W = INK.words("S10", 0);
+        INK.livre(tl, root, { scene: "S10", phrase: 0, S, ox: 640, oy: 480, width: 1150, q: 760, rotX: 22, rotZ: -2.5, t0: 0.3 });
+        INK.pin(tl, "#s10-elle", 0.6, { rot: 0, dur: 0.6, dy: 0 });
+        INK.cut(tl, "#s10-nuit", 134.0 - S);
+        tl.set("#s10-livre", { opacity: 0 }, 134.0 - S);
+        window.__timelines["s10"] = tl;
+      });
+    })();
+  </script>
 </template>

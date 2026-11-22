@@ -1,5 +1,23 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s16" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s16"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s16-l1 { top: 360px; font-size: 120px; font-weight: 800; }
+    #s16-l2 { top: 530px; font-size: 120px; font-weight: 800; }
+  </style>
+  <div id="root" data-composition-id="s16" data-width="1920" data-height="1080">
+    <div class="moyen centre mots" id="s16-l1"><span>Son</span> <span>choix,</span></div>
+    <div class="moyen centre mots" id="s16-l2"><span>personne</span> <span>ne</span> <span>l’a</span> <span>vu</span> <span>venir.</span></div>
+  </div>
+  <script>
+    (function () {
+      const S = 177.5;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s16"]');
+      // « Son choix, » (177,9) / « personne ne l'a vu venir. » (178,7), mot par mot
+      INK.seqIn(tl, root.querySelectorAll(".mots span"), [177.9, 178.2, 178.7, 178.98, 179.2, 179.42, 179.66].map((x) => x - S));
+      tl.set(["#s16-l1", "#s16-l2"], { opacity: 0 }, 182.2 - S);
+      window.__timelines["s16"] = tl;
+    })();
+  </script>
 </template>

@@ -42,7 +42,7 @@
   font-family: "IM FELL English", serif; font-size: 58px; line-height: 86px; text-align: left; hyphens: none; color: #b8b2a7; }
 .livre-page .entete { font-family: "IM FELL English SC", serif; font-size: 34px; letter-spacing: 0.2em; text-align: center; color: #161412; line-height: 1.2; margin-bottom: 70px; }
 .livre-page p { margin: 0; }
-.livre-page p.autour { color: transparent; text-shadow: 0 0 3px rgba(150, 143, 132, 0.95); text-align: justify; text-indent: 1.4em; margin-bottom: 40px; }
+.livre-page .autour { color: transparent; text-shadow: 0 0 3px rgba(150, 143, 132, 0.95); text-align: justify; text-indent: 1.4em; }
 .livre-page p.citation { margin: 0 0 0; }
 .livre-page p.attribution { margin: 30px 0 140px 0; font-style: italic; font-size: 46px; line-height: 62px; color: #161412; }
 .livre-page p.attribution .l { display: block; white-space: nowrap; }
@@ -57,3 +57,9 @@
 .dof.h2 { top: 0; height: 170px; backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(#000 30%, transparent); mask-image: linear-gradient(#000 30%, transparent); }
 .dof.b1 { bottom: 0; height: 330px; backdrop-filter: blur(6px); -webkit-mask-image: linear-gradient(transparent, #000 65%); mask-image: linear-gradient(transparent, #000 65%); }
 .dof.b2 { bottom: 0; height: 160px; backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(transparent, #000 70%); mask-image: linear-gradient(transparent, #000 70%); }
+
+/* page de livre : blocs placés (aucune mesure à la construction) */
+.livre-page .avant, .livre-page .apres { position: absolute; left: 100px; right: 100px; }
+.livre-page .citation { position: absolute; left: 100px; right: 100px; height: 1px; }
+.livre-page .citation .ligne { position: absolute; left: 0; height: 86px; line-height: 86px; white-space: nowrap; }
+.livre-page p.attribution { position: absolute; left: 100px; margin: 0; }

@@ -1,5 +1,59 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s08" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s08"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+    #s08-mere { left: 1290px; top: 110px; width: 520px; height: 224px; }
+    #s08-point { left: 960px; top: 560px; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s08" data-width="1920" data-height="1080">
+    <div class="livre-stage">
+      <div class="livre-cam">
+        <div class="livre-leaf">
+          <div class="livre-page">
+            <div class="entete">La Princesse de Clèves</div>
+            <div class="avant autour" data-layout-ignore>Il y a déjà long-temps que je me suis aperçue de cette inclination&#160;; mais je ne vous en ai pas voulu parler d’abord, de peur de vous en faire apercevoir vous-même. Vous ne la connaissez que trop présentement&#160;:</div>
+            <!-- la citation est imprimée au bord de la page -->
+            <div class="citation">
+              <div class="ligne"><span class="kw" data-w="0">«&#160;Vous</span> <span class="kw" data-w="1">êtes</span> <span class="kw" data-w="2">sur</span> <span class="kw" data-w="3">le</span> <span class="kw" data-w="4">bord</span> <span class="kw" data-w="5">du</span> <span class="kw" data-w="6"><i class="mk" data-w="6"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>précipice.&#160;»</b></span></div>
+            </div>
+            <p class="attribution"><span class="l">— Madame de Chartres, mourante</span></p>
+            <div class="ombre"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dof h1"></div><div class="dof h2"></div><div class="dof b1"></div><div class="dof b2"></div>
+    <div class="piece" id="s08-mere"><img src="assets/nb/ia_mere_mourante.jpg" alt="Madame de Chartres mourante" /></div>
+    <!-- derrière le bord : le vide, une spirale d'encre et le point rouge au centre -->
+    <svg class="encre" viewBox="0 0 1920 1080"><path id="s08-spirale" data-shape="spiral" data-c="960,560" data-r="430,10" data-turns="4.6" data-seed="181" style="stroke-width:5" /></svg>
+    <div class="point-rouge" id="s08-point"></div>
+  </div>
+  <script>
+    (function () {
+      const S = 109.0;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s08"]');
+      const $ = (s) => root.querySelector(s);
+      INK.shapes(root);
+      INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
+        const W = INK.words("S08", 0);
+        const L = INK.livre(tl, root, { scene: "S08", phrase: 0, S, ox: 900, oy: 470, width: 1150, height: "fit", q: 640, rotX: 26, rotZ: -1.5, entree: "monte",
+                                       attrAt: W[6][1] - S + 0.45, descente: 70 });
+        INK.pin(tl, "#s08-mere", 0.35, { rot: 1.2, dur: 0.5 });
+        // la caméra bascule par-dessus le bord de la page
+        const tb = 113.9 - S;
+        tl.to(L.cam, { rotationX: 80, z: 260, duration: 1.0, ease: "power2.in" }, tb);
+        tl.to(L.leaf, { y: L.yFin - 1100, duration: 1.0, ease: "power2.in" }, tb);
+        tl.to(root.querySelectorAll(".dof"), { opacity: 0, duration: 0.6 }, tb + 0.3);
+        INK.unpin(tl, "#s08-mere", tb, { dy: -60, dur: 0.4 });
+        tl.to(L.page, { opacity: 0, duration: 0.3, ease: "power1.in" }, tb + 0.7);
+        // le vide : une spirale d'encre qui s'enroule jusqu'au point rouge
+        INK.draw(tl, $("#s08-spirale"), tb + 0.35, 1.35, "power2.in");
+        tl.fromTo("#s08-point", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.3, duration: 0.3, ease: "back.out(3)" }, tb + 1.65);
+        window.__timelines["s08"] = tl;
+      });
+    })();
+  </script>
 </template>

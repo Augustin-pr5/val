@@ -1,5 +1,37 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s13" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s13"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .s13-mot { top: 290px; font-size: 220px; }
+  </style>
+  <div id="root" data-composition-id="s13" data-width="1920" data-height="1080">
+    <!-- trois mots, un par impact (158 / 160 / 162), chacun avec son signe d'encre -->
+    <div class="calque" id="s13-a">
+      <div class="gros centre s13-mot">Le devoir.</div>
+      <svg class="encre" viewBox="0 0 1920 1080"><path id="s13-verticale" data-shape="line" data-p="960,600,960,970" data-wobble="1" data-seed="221" style="stroke-width:8" /></svg>
+    </div>
+    <div class="calque" id="s13-b">
+      <div class="gros centre s13-mot">La passion.</div>
+      <svg class="encre" viewBox="0 0 1920 1080"><path id="s13-spirale" class="rouge" data-shape="spiral" data-c="960,800" data-r="6,170" data-turns="3.2" data-seed="222" style="stroke-width:7" /></svg>
+    </div>
+    <div class="calque" id="s13-c">
+      <div class="gros centre s13-mot">Le repos.</div>
+      <svg class="encre" viewBox="0 0 1920 1080"><path id="s13-horizon" data-shape="line" data-p="330,790,1590,790" data-wobble="1.5" data-seed="223" style="stroke-width:7" /></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s13"]');
+      const $ = (s) => root.querySelector(s);
+      INK.shapes(root);
+      INK.cut(tl, "#s13-a", 0.0, 1.9);
+      INK.draw(tl, $("#s13-verticale"), 0.1, 0.5, "power2.out");
+      INK.cut(tl, "#s13-b", 2.0, 3.9);
+      INK.draw(tl, $("#s13-spirale"), 2.1, 0.9, "power1.out");
+      INK.cut(tl, "#s13-c", 4.0, 5.9);
+      INK.draw(tl, $("#s13-horizon"), 4.1, 0.9, "power2.inOut");
+      window.__timelines["s13"] = tl;
+    })();
+  </script>
 </template>

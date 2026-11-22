@@ -1,5 +1,49 @@
 <template>
-  <style>#root { position: absolute; inset: 0; }</style>
-  <div id="root" data-composition-id="s18" data-width="1920" data-height="1080"></div>
-  <script>window.__timelines["s18"] = gsap.timeline({ paused: true });</script>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+    /* les points noirs qui dérivent */
+    #s18-points-cadre { position: absolute; inset: 0; opacity: 0.42; mix-blend-mode: multiply; }
+    #s18-points { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    .carton { position: absolute; left: 120px; width: 1680px; top: 0; height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .rubrique { font-family: "IM FELL English SC", serif; font-size: 46px; letter-spacing: 0.24em; line-height: 1.3; margin-bottom: 26px; }
+    .nom { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 96px; line-height: 1.12; letter-spacing: -0.01em; }
+    .ligne { font-family: "IM FELL English", serif; font-size: 54px; line-height: 1.45; }
+    .titre { font-family: "Source Serif 4", serif; font-weight: 900; font-size: 110px; line-height: 1.05; letter-spacing: -0.015em; }
+    .sous { font-family: "IM FELL English", serif; font-style: italic; font-size: 62px; margin-top: 22px; }
+    .fin-point { position: relative; width: 26px; height: 26px; border-radius: 50%; background: #b3261e; margin-top: 46px; }
+  </style>
+  <div id="root" data-composition-id="s18" data-width="1920" data-height="1080">
+    <div id="s18-points-cadre">
+      <video id="s18-points" class="clip" data-start="0" data-duration="25.5" data-playback-rate="0.68" data-track-index="2" muted playsinline src="assets/nb/pexels_etincelles_points_noirs_sur_blanc.mp4"></video>
+    </div>
+    <div class="carton" id="s18-c1"><div class="titre">LA PRINCESSE DE CLÈVES</div><div class="sous">Bande-annonce</div></div>
+    <div class="carton" id="s18-c2"><div class="rubrique">RÉALISATION</div><div class="nom">Augustin PERRON</div></div>
+    <div class="carton" id="s18-c3"><div class="rubrique">D’APRÈS LE ROMAN DE</div><div class="nom">Madame de Lafayette (1678)</div></div>
+    <div class="carton" id="s18-c4"><div class="rubrique">IMAGES</div>
+      <div class="ligne">Générées par intelligence artificielle</div>
+      <div class="ligne">Archives&#160;: Gallica / BnF (œuvres du domaine public)</div>
+      <div class="ligne">Vidéos et photos&#160;: Pexels (libres de droits)</div></div>
+    <div class="carton" id="s18-c5"><div class="rubrique">VOIX OFF, MUSIQUE ET BRUITAGES</div><div class="ligne">Générés par intelligence artificielle</div></div>
+    <div class="carton" id="s18-c6"><div class="rubrique">LOGICIELS UTILISÉS</div><div class="ligne">ElevenLabs · HyperFrames · Claude Code</div></div>
+    <div class="carton" id="s18-c7"><div class="titre" style="font-size:88px">100&#160;% LIBRE DE DROITS</div><div class="sous">Merci d’avoir regardé</div><div class="fin-point" id="s18-fin"></div></div>
+  </div>
+  <script>
+    (function () {
+      const S = 186.5;
+      const tl = gsap.timeline({ paused: true });
+      // cartons successifs : [début, fin] en temps absolu
+      const slots = [[186.6, 190.2], [190.4, 193.6], [193.8, 197.2], [197.4, 201.8], [202.0, 205.2], [205.4, 208.4], [208.6, 212.1]];
+      slots.forEach(([a, b], k) => {
+        const el = "#s18-c" + (k + 1);
+        tl.fromTo(el, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, a - S);
+        if (b < 212) tl.to(el, { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power2.in" }, b - S - 0.22);
+      });
+      tl.fromTo("#s18-fin", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 209.3 - S);
+      window.__timelines["s18"] = tl;
+    })();
+  </script>
 </template>
