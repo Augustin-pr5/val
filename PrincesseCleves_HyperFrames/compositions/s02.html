@@ -1,0 +1,236 @@
+<template>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+
+    /* ---------- la page de livre, filmée en 3D ---------- */
+    #s02-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 700px 470px; }
+    #s02-cam { position: absolute; left: 700px; top: 470px; width: 0; height: 0; transform-style: preserve-3d; }
+    #s02-leaf { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+    #s02-page {
+      position: absolute; left: 0; top: 0; width: 1300px; height: 2100px; padding: 150px 110px 0;
+      background: #faf7f0 url("assets/textures/papier_ivoire.jpg") center / 1300px 2100px;
+      box-shadow: 0 0 0 1px rgba(22, 20, 18, 0.06), 6px 10px 40px rgba(22, 20, 18, 0.18);
+      transform-origin: 0% 50%; backface-visibility: hidden;
+      font-family: "IM FELL English", serif; font-size: 60px; line-height: 88px; text-align: justify; hyphens: none;
+      color: #b8b2a7;
+    }
+    #s02-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,20,18,0.35), rgba(22,20,18,0.05)); pointer-events: none; }
+    .s02-entete { font-family: "IM FELL English SC", serif; font-size: 38px; letter-spacing: 0.18em; text-align: center; color: #161412; line-height: 1.2; }
+    .s02-partie { font-family: "IM FELL English SC", serif; font-size: 34px; letter-spacing: 0.22em; text-align: center; color: #161412; margin: 26px 0 0; line-height: 1.2; }
+    .s02-filet { display: block; margin: 30px auto 64px; width: 420px; height: 24px; overflow: visible; }
+    .s02-filet path { fill: none; stroke: #161412; stroke-width: 2.2; stroke-linecap: round; }
+    #s02-page p { margin: 0 0 0; text-indent: 0; }
+    #s02-page p.citation { text-align: left; }
+    #s02-page p + p { text-indent: 1.4em; }
+    /* lettrine de l'incipit */
+    #s02-lettrine { float: left; position: relative; width: 252px; height: 252px; margin: 8px 30px 0 0; }
+    #s02-lettrine svg { position: absolute; inset: 0; overflow: visible; }
+    #s02-lettrine path, #s02-lettrine circle { fill: none; stroke: #161412; stroke-width: 2.4; stroke-linecap: round; }
+    #s02-L { position: absolute; left: 0; top: 0; width: 252px; height: 252px; display: flex; align-items: center; justify-content: center; font-size: 236px; line-height: 1; padding-top: 30px; color: #b8b2a7; }
+    #s02-lettrine #s02-dot0 { fill: #b3261e; stroke: none; }
+    .kw { position: relative; }
+    .kw b { position: relative; font-weight: 400; z-index: 1; }
+    /* surlignage au marqueur rouge (35 %, bords irréguliers) */
+    .mk { position: absolute; left: -6px; right: -8px; top: 20px; bottom: 6px; z-index: 0; display: block; }
+    .mk svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    .mk path { fill: #b3261e; fill-opacity: 0.35; }
+    .ul { position: absolute; left: -2px; right: -2px; bottom: -2px; height: 14px; display: block; }
+    .ul svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    .ul path { fill: none; stroke: #161412; stroke-width: 3.2; stroke-linecap: round; }
+    #s02-point { display: inline-block; }
+    /* le texte autour de la citation : vrai texte du roman, flou */
+    .autour { color: transparent; text-shadow: 0 0 3px rgba(150, 143, 132, 0.95); }
+
+    /* profondeur de champ : bords de l'image flous */
+    .s02-dof { position: absolute; left: 0; right: 0; pointer-events: none; }
+    #s02-dof-h1 { top: 0; height: 330px; backdrop-filter: blur(6px); -webkit-mask-image: linear-gradient(#000 35%, transparent); mask-image: linear-gradient(#000 35%, transparent); }
+    #s02-dof-h2 { top: 0; height: 170px; backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(#000 30%, transparent); mask-image: linear-gradient(#000 30%, transparent); }
+    #s02-dof-b1 { bottom: 0; height: 330px; backdrop-filter: blur(6px); -webkit-mask-image: linear-gradient(transparent, #000 65%); mask-image: linear-gradient(transparent, #000 65%); }
+    #s02-dof-b2 { bottom: 0; height: 160px; backdrop-filter: blur(12px); -webkit-mask-image: linear-gradient(transparent, #000 70%); mask-image: linear-gradient(transparent, #000 70%); }
+
+    /* ---------- collage ---------- */
+    .piece { position: absolute; background: #fbf9f3; padding: 10px; box-shadow: 0 1px 2px rgba(22,20,18,0.28), 0 8px 22px rgba(22,20,18,0.20); }
+    .piece img, .piece video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .piece .cadre { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .cartel { position: absolute; font-family: "IM FELL English", serif; font-style: italic; font-size: 34px; line-height: 40px; color: #161412; }
+    #s02-chenonceau { left: 1300px; top: 112px; width: 540px; height: 367px; }
+    #s02-cartel-chenonceau { left: 1306px; top: 494px; width: 520px; }
+    #s02-bal { left: 1290px; top: 604px; width: 520px; height: 313px; }
+    #s02-cartel-bal { left: 1296px; top: 930px; width: 560px; }
+    #s02-bal-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #s02-attribution { left: 110px; top: 862px; padding: 16px 28px 18px; background: #f7f3ea; box-shadow: 0 1px 2px rgba(22,20,18,0.22), 0 6px 16px rgba(22,20,18,0.14); }
+    #s02-attribution .l { display: block; white-space: nowrap; }
+    #s02-attribution .r { font-style: normal; }
+    #s02-ovale { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; pointer-events: none; }
+    #s02-ovale path { fill: none; stroke: #161412; stroke-linecap: round; filter: url(#boil); }
+  </style>
+
+  <div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+    <div id="s02-stage">
+      <div id="s02-cam">
+        <div id="s02-leaf">
+          <div id="s02-page">
+            <div class="s02-entete">La Princesse de Clèves</div>
+            <div class="s02-partie">Première partie</div>
+            <svg class="s02-filet" viewBox="0 0 420 24"><path data-shape="line" data-p="10,12,410,12" data-bow="0" data-wobble="1.2" data-seed="21" /></svg>
+
+            <p class="citation">
+              <span id="s02-lettrine">
+                <svg viewBox="0 0 252 252">
+                  <path id="s02-cadre1" data-shape="line" data-p="4,4,248,4" data-wobble="1" data-seed="31" />
+                  <path id="s02-cadre2" data-shape="line" data-p="248,4,248,248" data-wobble="1" data-seed="32" />
+                  <path id="s02-cadre3" data-shape="line" data-p="248,248,4,248" data-wobble="1" data-seed="33" />
+                  <path id="s02-cadre4" data-shape="line" data-p="4,248,4,4" data-wobble="1" data-seed="34" />
+                  <path id="s02-diag1" data-shape="line" data-p="14,14,238,238" data-wobble="1" data-seed="35" style="stroke-width:1.2;opacity:.7" />
+                  <path id="s02-diag2" data-shape="line" data-p="238,14,14,238" data-wobble="1" data-seed="36" style="stroke-width:1.2;opacity:.7" />
+                  <path id="s02-rond" data-shape="circle" data-c="126,126" data-r="104,104" data-seed="37" data-sweep="365" style="stroke-width:1.4;opacity:.8" />
+                  <circle id="s02-dot0" cx="126" cy="126" r="9" />
+                </svg>
+                <span id="s02-L" class="kw" data-w="0">L</span>
+              </span><span class="kw" data-w="0">a</span>
+              <span class="kw hl" data-w="1"><i class="mk" id="s02-mk1"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>magnificence</b></span>
+              <span class="kw" data-w="2">et</span>
+              <span class="kw" data-w="3">la</span>
+              <span class="kw hl" data-w="4"><i class="mk" id="s02-mk2"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>galanterie</b></span>
+              <span class="kw" data-w="5">n’ont</span>
+              <span class="kw" data-w="6">jamais</span>
+              <span class="kw" data-w="7">paru</span>
+              <span class="kw" data-w="8">en</span>
+              <span class="kw" data-w="9">France</span>
+              <span class="kw" data-w="10">avec</span>
+              <span class="kw" data-w="11">tant</span>
+              <span class="kw" data-w="12">d’éclat</span>
+              <span class="kw" data-w="13">que</span>
+              <span class="kw" data-w="14">dans</span>
+              <span class="kw" data-w="15">les</span>
+              <span class="kw" data-w="16">dernières</span>
+              <span class="kw" data-w="17">années</span>
+              <span class="kw" data-w="18">du</span>
+              <span class="kw" data-w="19">règne</span>
+              <span class="kw" data-w="20">de</span>
+              <span class="kw" data-w="21"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul1" d="M1 6 C 30 3, 60 8, 99 4" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>Henri</b></span>
+              <span class="kw" data-w="22"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul2" d="M1 5 C 35 8, 70 3, 92 6" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>second</b></span><span class="kw" data-w="22" id="s02-point">.</span>
+              <span class="autour">Ce prince était galant, bien fait, et amoureux&#160;: quoique sa passion pour Diane de Poitiers, duchesse de Valentinois, eût commencé il y avait plus de vingt ans, elle n’en était pas moins violente, et il n’en donnait pas des témoignages moins éclatants.</span>
+            </p>
+            <p class="autour">Comme il réussissait admirablement dans tous les exercices du corps, il en faisait une de ses plus grandes occupations&#160;: c’était tous les jours des parties de chasse et de paume, des ballets, des courses de bagues, ou de semblables divertissements. Les couleurs et les chiffres de madame de Valentinois paraissaient par-tout, et elle paraissait elle-même avec tous les ajustements que pouvait avoir mademoiselle de la Marck, sa petite-fille, qui était alors à marier.</p>
+            <p class="autour">La présence de la reine autorisait la sienne&#160;: cette princesse était belle, quoiqu’elle eût passé la première jeunesse&#160;; elle aimait la grandeur, la magnificence, et les plaisirs.</p>
+            <div id="s02-shade"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s02-dof" id="s02-dof-h1"></div>
+    <div class="s02-dof" id="s02-dof-h2"></div>
+    <div class="s02-dof" id="s02-dof-b1"></div>
+    <div class="s02-dof" id="s02-dof-b2"></div>
+
+    <!-- collage autour de la page -->
+    <div class="piece" id="s02-chenonceau"><div class="cadre"><img src="assets/nb/photo_chenonceau_arches_aube.jpg" alt="Château de Chenonceau" /></div></div>
+    <div class="cartel" id="s02-cartel-chenonceau">Chenonceau, château de Diane de Poitiers et de Catherine de Médicis</div>
+    <div class="piece" id="s02-bal">
+      <div class="cadre" id="s02-bal-cadre">
+        <img src="assets/nb/archive_bal_cour_valois_1582.jpg" alt="Bal à la cour des Valois, 1582" />
+        <video id="s02-bal-video" class="clip" data-start="8.7" data-duration="0.9" data-track-index="2" muted playsinline src="assets/nb/ia_video_bal_danse_1920x828.mp4"></video>
+      </div>
+    </div>
+    <div class="cartel" id="s02-cartel-bal">Bal à la cour des Valois, 1582 · Gallica&#160;/&#160;BnF</div>
+    <div class="cartel" id="s02-attribution">
+      <span class="l" id="s02-attr1">— Madame de Lafayette, <span class="r">La Princesse de Clèves</span>, 1678</span>
+      <span class="l" id="s02-attr2">première phrase du roman</span>
+    </div>
+
+    <!-- cadre ovale gravé du bal animé -->
+    <svg id="s02-ovale" viewBox="0 0 1920 1080">
+      <path id="s02-ov1" data-shape="circle" data-c="960,520" data-r="452,274" data-seed="41" data-wobble="0.012" data-sweep="366" style="stroke-width:5" />
+      <path id="s02-ov2" data-shape="circle" data-c="960,520" data-r="474,294" data-seed="42" data-wobble="0.014" data-sweep="364" data-a0="80" style="stroke-width:2" />
+      <path id="s02-ov3" data-shape="circle" data-c="960,520" data-r="489,307" data-seed="43" data-wobble="0.02" data-sweep="362" data-a0="-30" style="stroke-width:1.2" />
+    </svg>
+  </div>
+
+  <script>
+    (function () {
+      const S = 10.0; // début absolu de la scène
+      const tl = gsap.timeline({ paused: true });
+      const W = INK.words("S02", 0); // 23 mots, temps absolus
+      const t = (i) => W[i][1] - S; // temps local du mot i
+      const root = document.querySelector('[data-composition-id="s02"]');
+      INK.shapes(root);
+
+      INK.fontsReady(['60px "IM FELL English"', 'italic 34px "IM FELL English"', '38px "IM FELL English SC"']).then(() => {
+        const page = root.querySelector("#s02-page");
+        // ---- mesure des lignes de la citation (une seule fois, avant les tweens)
+        const kws = Array.from(page.querySelectorAll(".kw")).filter((el) => el.id !== "s02-L");
+        const lines = [];
+        kws.forEach((el) => {
+          const top = Math.round(el.offsetTop / 20) * 20;
+          let L = lines.find((l) => Math.abs(l.top - top) < 30);
+          if (!L) lines.push((L = { top, w: +el.dataset.w, h: el.offsetHeight }));
+        });
+        lines.sort((a, b) => a.top - b.top);
+        const yOf = (L) => -(L.top + 38);
+        const X0 = -(110 + 540);
+
+        // ---- caméra : la page entre en tournant, puis glisse de ligne en ligne
+        tl.fromTo("#s02-cam", { rotationX: 38, rotationZ: -4, z: -260 }, { rotationX: 24, rotationZ: -2.5, z: 0, duration: 1.1, ease: "power3.out" }, 0);
+        tl.fromTo("#s02-cam", { rotationZ: -2.5 }, { rotationZ: -1.2, duration: 7.2, ease: "none", immediateRender: false }, 1.1);
+        tl.fromTo("#s02-leaf", { x: X0 + 20, y: yOf(lines[0]) + 40 }, { x: X0, y: yOf(lines[0]), duration: 1.1, ease: "power3.out" }, 0);
+        tl.fromTo("#s02-page", { rotationY: -104 }, { rotationY: 0, duration: 0.75, ease: "power2.out" }, 0.05);
+        tl.fromTo("#s02-shade", { opacity: 1 }, { opacity: 0, duration: 0.7, ease: "power1.out" }, 0.1);
+        for (let k = 1; k < lines.length; k++) {
+          const tk = Math.max(1.2, t(lines[k].w) - 0.42);
+          tl.to("#s02-leaf", { y: yOf(lines[k]), x: X0 + 12 * k, duration: 0.7, ease: "power2.inOut" }, tk);
+        }
+
+        // ---- lettrine : le cadre se dessine sur « La »
+        ["#s02-cadre1", "#s02-cadre2", "#s02-cadre3", "#s02-cadre4"].forEach((id, i) => INK.draw(tl, root.querySelector(id), t(0) - 0.25 + i * 0.09, 0.28, "power2.out"));
+        INK.draw(tl, root.querySelector("#s02-diag1"), t(0) + 0.15, 0.35);
+        INK.draw(tl, root.querySelector("#s02-diag2"), t(0) + 0.22, 0.35);
+        INK.draw(tl, root.querySelector("#s02-rond"), t(0) + 0.1, 0.55);
+        tl.fromTo("#s02-dot0", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, t(0) + 0.55);
+
+        // ---- karaoké mot à mot
+        INK.karaoke(tl, page.querySelectorAll(".kw"), W, S);
+        INK.highlight(tl, root.querySelector("#s02-mk1"), t(1) + 0.05, 0.3);
+        INK.highlight(tl, root.querySelector("#s02-mk2"), t(4) + 0.05, 0.3);
+        INK.draw(tl, root.querySelector("#s02-ul1"), t(21) + 0.02, 0.22, "power1.inOut");
+        INK.draw(tl, root.querySelector("#s02-ul2"), t(22) + 0.02, 0.22, "power1.inOut");
+        // le point final devient le point rouge
+        tl.fromTo("#s02-point", { color: "#161412", scale: 1 }, { color: "#b3261e", scale: 1.5, transformOrigin: "50% 80%", duration: 0.25, ease: "back.out(3)", immediateRender: false }, t(22) + 0.3);
+
+        // ---- collage : Chenonceau sur « France », le Bal sur « les dernières années »
+        tl.fromTo("#s02-chenonceau", { opacity: 0, scale: 1.08, rotation: 4, y: -18 }, { opacity: 1, scale: 1, rotation: 1.5, y: 0, duration: 0.45, ease: "expo.out" }, t(9) - 0.05);
+        INK.write(tl, root.querySelector("#s02-cartel-chenonceau"), t(9) + 0.3, 0.7);
+        tl.fromTo("#s02-bal", { opacity: 0, scale: 1.08, rotation: -4.5, y: 18 }, { opacity: 1, scale: 1, rotation: -1.2, y: 0, duration: 0.45, ease: "expo.out" }, t(16) - 0.05);
+        INK.write(tl, root.querySelector("#s02-cartel-bal"), t(16) + 0.3, 0.6);
+        tl.fromTo("#s02-attribution", { opacity: 0, rotation: -2.5, y: 14 }, { opacity: 1, rotation: -1, y: 0, duration: 0.4, ease: "expo.out" }, t(14) - 0.1);
+        INK.write(tl, root.querySelector("#s02-attr1"), t(14) + 0.15, 0.85);
+        INK.write(tl, root.querySelector("#s02-attr2"), t(14) + 1.0, 0.45);
+
+        // ---- fin : la caméra recule, le Bal vient au centre et s'anime dans un ovale gravé
+        const tEnd = t(22) + 0.2; // ≈ 8,4 s
+        tl.to("#s02-cam", { z: -1100, rotationX: 14, rotationZ: -4, duration: 1.0, ease: "power2.inOut" }, tEnd);
+        tl.to("#s02-page", { opacity: 0.45, duration: 0.8, ease: "power1.inOut" }, tEnd + 0.2);
+        tl.to(["#s02-dof-h1", "#s02-dof-h2", "#s02-dof-b1", "#s02-dof-b2"], { opacity: 0.4, duration: 0.6 }, tEnd);
+        tl.to(["#s02-chenonceau", "#s02-cartel-chenonceau"], { x: 90, opacity: 0, duration: 0.3, ease: "power3.in" }, tEnd);
+        tl.to("#s02-attribution", { x: -90, opacity: 0, duration: 0.3, ease: "power3.in" }, tEnd + 0.05);
+        tl.to("#s02-cartel-bal", { opacity: 0, duration: 0.2, ease: "power1.in" }, tEnd);
+        // le Bal (520×313) rejoint le centre : 960,520 ; échelle 1,74 ≈ ovale 904×545
+        const bal = root.querySelector("#s02-bal");
+        const dx = 960 - (bal.offsetLeft + bal.offsetWidth / 2), dy = 520 - (bal.offsetTop + bal.offsetHeight / 2);
+        tl.to("#s02-bal", { x: dx, y: dy, scale: 1.74, rotation: 0, duration: 0.75, ease: "power2.inOut" }, tEnd + 0.05);
+        tl.to("#s02-bal", { padding: 0, backgroundColor: "rgba(251,249,243,0)", boxShadow: "0 0 0 rgba(0,0,0,0)", duration: 0.3, ease: "power1.inOut" }, tEnd + 0.5);
+        tl.fromTo("#s02-bal-cadre", { clipPath: "ellipse(80% 80% at 50% 50%)" }, { clipPath: "ellipse(49.6% 49.6% at 50% 50%)", duration: 0.35, ease: "power2.inOut" }, tEnd + 0.5);
+        INK.draw(tl, root.querySelector("#s02-ov1"), tEnd + 0.62, 0.42, "power2.out");
+        INK.draw(tl, root.querySelector("#s02-ov2"), tEnd + 0.7, 0.42, "power2.out");
+        INK.draw(tl, root.querySelector("#s02-ov3"), tEnd + 0.78, 0.4, "power2.out");
+        tl.fromTo("#s02-bal-video", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, tEnd + 0.55);
+
+        window.__timelines["s02"] = tl;
+      });
+    })();
+  </script>
+</template>

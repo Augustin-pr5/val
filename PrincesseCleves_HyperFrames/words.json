@@ -1,0 +1,2274 @@
+[
+ {
+  "text": "La",
+  "start": 10.92,
+  "end": 11.38,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w0"
+ },
+ {
+  "text": "magnificence",
+  "start": 11.38,
+  "end": 11.78,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w1"
+ },
+ {
+  "text": "et",
+  "start": 11.78,
+  "end": 12.02,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w2"
+ },
+ {
+  "text": "la",
+  "start": 12.02,
+  "end": 12.26,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w3"
+ },
+ {
+  "text": "galanterie",
+  "start": 12.26,
+  "end": 12.72,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w4"
+ },
+ {
+  "text": "n'ont",
+  "start": 12.72,
+  "end": 13.3,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w5"
+ },
+ {
+  "text": "jamais",
+  "start": 13.3,
+  "end": 13.52,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w6"
+ },
+ {
+  "text": "paru",
+  "start": 13.52,
+  "end": 13.78,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w7"
+ },
+ {
+  "text": "en",
+  "start": 13.78,
+  "end": 14.1,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w8"
+ },
+ {
+  "text": "France",
+  "start": 14.1,
+  "end": 14.48,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w9"
+ },
+ {
+  "text": "avec",
+  "start": 14.48,
+  "end": 14.72,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w10"
+ },
+ {
+  "text": "tant",
+  "start": 14.72,
+  "end": 14.86,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w11"
+ },
+ {
+  "text": "d'éclat",
+  "start": 14.86,
+  "end": 15.92,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w12"
+ },
+ {
+  "text": "que",
+  "start": 15.92,
+  "end": 16.12,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w13"
+ },
+ {
+  "text": "dans",
+  "start": 16.12,
+  "end": 16.34,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w14"
+ },
+ {
+  "text": "les",
+  "start": 16.34,
+  "end": 16.56,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w15"
+ },
+ {
+  "text": "dernières",
+  "start": 16.56,
+  "end": 16.92,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w16"
+ },
+ {
+  "text": "années",
+  "start": 16.92,
+  "end": 17.18,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w17"
+ },
+ {
+  "text": "du",
+  "start": 17.18,
+  "end": 17.4,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w18"
+ },
+ {
+  "text": "règne",
+  "start": 17.4,
+  "end": 17.72,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w19"
+ },
+ {
+  "text": "de",
+  "start": 17.72,
+  "end": 17.98,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w20"
+ },
+ {
+  "text": "Henri",
+  "start": 17.98,
+  "end": 18.18,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w21"
+ },
+ {
+  "text": "second.",
+  "start": 18.18,
+  "end": 18.23,
+  "scene": "S02",
+  "phrase": 0,
+  "id": "w22"
+ },
+ {
+  "text": "1558.",
+  "start": 20.34,
+  "end": 21.41,
+  "scene": "S03",
+  "phrase": 0,
+  "id": "w23"
+ },
+ {
+  "text": "La",
+  "start": 22.0,
+  "end": 22.26,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w24"
+ },
+ {
+  "text": "cour",
+  "start": 22.26,
+  "end": 22.46,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w25"
+ },
+ {
+  "text": "du",
+  "start": 22.46,
+  "end": 22.66,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w26"
+ },
+ {
+  "text": "roi",
+  "start": 22.66,
+  "end": 23.04,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w27"
+ },
+ {
+  "text": "Henri",
+  "start": 23.04,
+  "end": 23.16,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w28"
+ },
+ {
+  "text": "II.",
+  "start": 23.16,
+  "end": 23.41,
+  "scene": "S03",
+  "phrase": 1,
+  "id": "w29"
+ },
+ {
+  "text": "Des",
+  "start": 24.1,
+  "end": 24.24,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w30"
+ },
+ {
+  "text": "fêtes,",
+  "start": 24.24,
+  "end": 25.02,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w31"
+ },
+ {
+  "text": "des",
+  "start": 25.02,
+  "end": 25.26,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w32"
+ },
+ {
+  "text": "bals,",
+  "start": 25.26,
+  "end": 25.86,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w33"
+ },
+ {
+  "text": "des",
+  "start": 25.86,
+  "end": 26.16,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w34"
+ },
+ {
+  "text": "tournois.",
+  "start": 26.16,
+  "end": 26.41,
+  "scene": "S03",
+  "phrase": 2,
+  "id": "w35"
+ },
+ {
+  "text": "Derrière",
+  "start": 27.5,
+  "end": 27.82,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w36"
+ },
+ {
+  "text": "les",
+  "start": 27.82,
+  "end": 28.08,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w37"
+ },
+ {
+  "text": "sourires,",
+  "start": 28.08,
+  "end": 28.88,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w38"
+ },
+ {
+  "text": "des",
+  "start": 28.88,
+  "end": 29.44,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w39"
+ },
+ {
+  "text": "ambitions,",
+  "start": 29.44,
+  "end": 29.96,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w40"
+ },
+ {
+  "text": "des",
+  "start": 29.96,
+  "end": 30.16,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w41"
+ },
+ {
+  "text": "rumeurs,",
+  "start": 30.16,
+  "end": 30.41,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w42"
+ },
+ {
+  "text": "des",
+  "start": 30.41,
+  "end": 30.66,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w43"
+ },
+ {
+  "text": "secrets.",
+  "start": 30.66,
+  "end": 30.65,
+  "scene": "S03",
+  "phrase": 3,
+  "id": "w44"
+ },
+ {
+  "text": "Ici,",
+  "start": 32.52,
+  "end": 32.98,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w45"
+ },
+ {
+  "text": "une",
+  "start": 32.98,
+  "end": 33.16,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w46"
+ },
+ {
+  "text": "réputation",
+  "start": 33.16,
+  "end": 33.88,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w47"
+ },
+ {
+  "text": "se",
+  "start": 33.88,
+  "end": 34.04,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w48"
+ },
+ {
+  "text": "perd",
+  "start": 34.04,
+  "end": 34.2,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w49"
+ },
+ {
+  "text": "en",
+  "start": 34.2,
+  "end": 34.52,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w50"
+ },
+ {
+  "text": "un",
+  "start": 34.52,
+  "end": 34.78,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w51"
+ },
+ {
+  "text": "regard.",
+  "start": 34.78,
+  "end": 34.75,
+  "scene": "S03",
+  "phrase": 4,
+  "id": "w52"
+ },
+ {
+  "text": "Si",
+  "start": 36.7,
+  "end": 36.94,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w53"
+ },
+ {
+  "text": "vous",
+  "start": 36.94,
+  "end": 37.2,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w54"
+ },
+ {
+  "text": "jugez",
+  "start": 37.2,
+  "end": 37.5,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w55"
+ },
+ {
+  "text": "sur",
+  "start": 37.5,
+  "end": 37.74,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w56"
+ },
+ {
+  "text": "les",
+  "start": 37.74,
+  "end": 38.06,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w57"
+ },
+ {
+  "text": "apparences",
+  "start": 38.06,
+  "end": 38.38,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w58"
+ },
+ {
+  "text": "en",
+  "start": 38.38,
+  "end": 38.48,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w59"
+ },
+ {
+  "text": "ce",
+  "start": 38.48,
+  "end": 38.78,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w60"
+ },
+ {
+  "text": "lieu-ci,",
+  "start": 38.78,
+  "end": 39.42,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w61"
+ },
+ {
+  "text": "vous",
+  "start": 39.42,
+  "end": 39.68,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w62"
+ },
+ {
+  "text": "serez",
+  "start": 39.68,
+  "end": 40.2,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w63"
+ },
+ {
+  "text": "souvent",
+  "start": 40.2,
+  "end": 40.48,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w64"
+ },
+ {
+  "text": "trompée :",
+  "start": 40.48,
+  "end": 41.46,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w65"
+ },
+ {
+  "text": "ce",
+  "start": 41.46,
+  "end": 41.82,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w66"
+ },
+ {
+  "text": "qui",
+  "start": 41.82,
+  "end": 42.0,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w67"
+ },
+ {
+  "text": "paraît",
+  "start": 42.0,
+  "end": 42.4,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w68"
+ },
+ {
+  "text": "n'est",
+  "start": 42.4,
+  "end": 42.88,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w69"
+ },
+ {
+  "text": "presque",
+  "start": 42.88,
+  "end": 43.32,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w70"
+ },
+ {
+  "text": "jamais",
+  "start": 43.32,
+  "end": 43.54,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w71"
+ },
+ {
+  "text": "la",
+  "start": 43.54,
+  "end": 43.78,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w72"
+ },
+ {
+  "text": "vérité.",
+  "start": 43.78,
+  "end": 43.99,
+  "scene": "S04",
+  "phrase": 0,
+  "id": "w73"
+ },
+ {
+  "text": "Elle",
+  "start": 46.24,
+  "end": 46.5,
+  "scene": "S05",
+  "phrase": 0,
+  "id": "w74"
+ },
+ {
+  "text": "s'appelle",
+  "start": 46.5,
+  "end": 47.16,
+  "scene": "S05",
+  "phrase": 0,
+  "id": "w75"
+ },
+ {
+  "text": "Mademoiselle",
+  "start": 47.16,
+  "end": 47.58,
+  "scene": "S05",
+  "phrase": 0,
+  "id": "w76"
+ },
+ {
+  "text": "de",
+  "start": 47.58,
+  "end": 47.62,
+  "scene": "S05",
+  "phrase": 0,
+  "id": "w77"
+ },
+ {
+  "text": "Chartres.",
+  "start": 47.62,
+  "end": 47.83,
+  "scene": "S05",
+  "phrase": 0,
+  "id": "w78"
+ },
+ {
+  "text": "Sa",
+  "start": 48.66,
+  "end": 48.82,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w79"
+ },
+ {
+  "text": "mère",
+  "start": 48.82,
+  "end": 49.0,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w80"
+ },
+ {
+  "text": "l'a",
+  "start": 49.0,
+  "end": 49.24,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w81"
+ },
+ {
+  "text": "élevée",
+  "start": 49.24,
+  "end": 49.58,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w82"
+ },
+ {
+  "text": "loin",
+  "start": 49.58,
+  "end": 49.74,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w83"
+ },
+ {
+  "text": "de",
+  "start": 49.74,
+  "end": 49.96,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w84"
+ },
+ {
+  "text": "la",
+  "start": 49.96,
+  "end": 50.22,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w85"
+ },
+ {
+  "text": "cour,",
+  "start": 50.22,
+  "end": 50.7,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w86"
+ },
+ {
+  "text": "avec",
+  "start": 50.7,
+  "end": 51.0,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w87"
+ },
+ {
+  "text": "une",
+  "start": 51.0,
+  "end": 51.16,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w88"
+ },
+ {
+  "text": "seule",
+  "start": 51.16,
+  "end": 51.4,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w89"
+ },
+ {
+  "text": "règle :",
+  "start": 51.4,
+  "end": 52.12,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w90"
+ },
+ {
+  "text": "la",
+  "start": 52.12,
+  "end": 52.36,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w91"
+ },
+ {
+  "text": "vertu.",
+  "start": 52.36,
+  "end": 52.61,
+  "scene": "S05",
+  "phrase": 1,
+  "id": "w92"
+ },
+ {
+  "text": "Elle",
+  "start": 53.58,
+  "end": 53.76,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w93"
+ },
+ {
+  "text": "épouse",
+  "start": 53.76,
+  "end": 54.12,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w94"
+ },
+ {
+  "text": "le",
+  "start": 54.12,
+  "end": 54.28,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w95"
+ },
+ {
+  "text": "prince",
+  "start": 54.28,
+  "end": 54.52,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w96"
+ },
+ {
+  "text": "de",
+  "start": 54.52,
+  "end": 54.66,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w97"
+ },
+ {
+  "text": "Clèves.",
+  "start": 54.66,
+  "end": 55.05,
+  "scene": "S05",
+  "phrase": 2,
+  "id": "w98"
+ },
+ {
+  "text": "Lui",
+  "start": 55.36,
+  "end": 55.96,
+  "scene": "S05",
+  "phrase": 3,
+  "id": "w99"
+ },
+ {
+  "text": "l'aime",
+  "start": 55.96,
+  "end": 56.16,
+  "scene": "S05",
+  "phrase": 3,
+  "id": "w100"
+ },
+ {
+  "text": "à",
+  "start": 56.16,
+  "end": 56.44,
+  "scene": "S05",
+  "phrase": 3,
+  "id": "w101"
+ },
+ {
+  "text": "la",
+  "start": 56.44,
+  "end": 56.58,
+  "scene": "S05",
+  "phrase": 3,
+  "id": "w102"
+ },
+ {
+  "text": "folie.",
+  "start": 56.58,
+  "end": 56.83,
+  "scene": "S05",
+  "phrase": 3,
+  "id": "w103"
+ },
+ {
+  "text": "Elle,",
+  "start": 57.66,
+  "end": 58.16,
+  "scene": "S05",
+  "phrase": 4,
+  "id": "w104"
+ },
+ {
+  "text": "elle",
+  "start": 58.16,
+  "end": 58.34,
+  "scene": "S05",
+  "phrase": 4,
+  "id": "w105"
+ },
+ {
+  "text": "l'estime.",
+  "start": 58.34,
+  "end": 58.87,
+  "scene": "S05",
+  "phrase": 4,
+  "id": "w106"
+ },
+ {
+  "text": "Ce",
+  "start": 59.38,
+  "end": 59.56,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w107"
+ },
+ {
+  "text": "n'est",
+  "start": 59.56,
+  "end": 59.72,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w108"
+ },
+ {
+  "text": "pas",
+  "start": 59.72,
+  "end": 59.82,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w109"
+ },
+ {
+  "text": "la",
+  "start": 59.82,
+  "end": 59.9,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w110"
+ },
+ {
+  "text": "même",
+  "start": 59.9,
+  "end": 60.28,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w111"
+ },
+ {
+  "text": "chose.",
+  "start": 60.28,
+  "end": 60.95,
+  "scene": "S05",
+  "phrase": 5,
+  "id": "w112"
+ },
+ {
+  "text": "Un",
+  "start": 62.3,
+  "end": 62.58,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w113"
+ },
+ {
+  "text": "soir",
+  "start": 62.58,
+  "end": 62.82,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w114"
+ },
+ {
+  "text": "de",
+  "start": 62.82,
+  "end": 62.92,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w115"
+ },
+ {
+  "text": "bal",
+  "start": 62.92,
+  "end": 63.06,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w116"
+ },
+ {
+  "text": "au",
+  "start": 63.06,
+  "end": 63.32,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w117"
+ },
+ {
+  "text": "Louvre,",
+  "start": 63.32,
+  "end": 64.06,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w118"
+ },
+ {
+  "text": "le",
+  "start": 64.06,
+  "end": 64.18,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w119"
+ },
+ {
+  "text": "roi",
+  "start": 64.18,
+  "end": 64.52,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w120"
+ },
+ {
+  "text": "lui",
+  "start": 64.52,
+  "end": 64.64,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w121"
+ },
+ {
+  "text": "ordonne",
+  "start": 64.64,
+  "end": 64.92,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w122"
+ },
+ {
+  "text": "de",
+  "start": 64.92,
+  "end": 65.24,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w123"
+ },
+ {
+  "text": "danser",
+  "start": 65.24,
+  "end": 65.54,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w124"
+ },
+ {
+  "text": "avec",
+  "start": 65.54,
+  "end": 65.72,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w125"
+ },
+ {
+  "text": "un",
+  "start": 65.72,
+  "end": 65.92,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w126"
+ },
+ {
+  "text": "homme",
+  "start": 65.92,
+  "end": 66.18,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w127"
+ },
+ {
+  "text": "qui",
+  "start": 66.18,
+  "end": 66.26,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w128"
+ },
+ {
+  "text": "vient",
+  "start": 66.26,
+  "end": 66.51,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w129"
+ },
+ {
+  "text": "d'entrer.",
+  "start": 66.51,
+  "end": 66.25,
+  "scene": "S06",
+  "phrase": 0,
+  "id": "w130"
+ },
+ {
+  "text": "Toute",
+  "start": 74.14,
+  "end": 74.62,
+  "scene": "S06",
+  "phrase": 1,
+  "id": "w131"
+ },
+ {
+  "text": "la",
+  "start": 74.62,
+  "end": 74.78,
+  "scene": "S06",
+  "phrase": 1,
+  "id": "w132"
+ },
+ {
+  "text": "cour",
+  "start": 74.78,
+  "end": 75.04,
+  "scene": "S06",
+  "phrase": 1,
+  "id": "w133"
+ },
+ {
+  "text": "les",
+  "start": 75.04,
+  "end": 75.5,
+  "scene": "S06",
+  "phrase": 1,
+  "id": "w134"
+ },
+ {
+  "text": "regarde.",
+  "start": 75.5,
+  "end": 75.73,
+  "scene": "S06",
+  "phrase": 1,
+  "id": "w135"
+ },
+ {
+  "text": "Eux",
+  "start": 76.38,
+  "end": 76.9,
+  "scene": "S06",
+  "phrase": 2,
+  "id": "w136"
+ },
+ {
+  "text": "ne",
+  "start": 76.9,
+  "end": 77.02,
+  "scene": "S06",
+  "phrase": 2,
+  "id": "w137"
+ },
+ {
+  "text": "voient",
+  "start": 77.02,
+  "end": 77.3,
+  "scene": "S06",
+  "phrase": 2,
+  "id": "w138"
+ },
+ {
+  "text": "qu'eux.",
+  "start": 77.3,
+  "end": 77.61,
+  "scene": "S06",
+  "phrase": 2,
+  "id": "w139"
+ },
+ {
+  "text": "Plus",
+  "start": 78.54,
+  "end": 78.96,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w140"
+ },
+ {
+  "text": "tard,",
+  "start": 78.96,
+  "end": 79.32,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w141"
+ },
+ {
+  "text": "il",
+  "start": 79.32,
+  "end": 79.52,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w142"
+ },
+ {
+  "text": "vole",
+  "start": 79.52,
+  "end": 79.76,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w143"
+ },
+ {
+  "text": "son",
+  "start": 79.76,
+  "end": 80.02,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w144"
+ },
+ {
+  "text": "portrait.",
+  "start": 80.02,
+  "end": 80.27,
+  "scene": "S06",
+  "phrase": 3,
+  "id": "w145"
+ },
+ {
+  "text": "Elle",
+  "start": 81.02,
+  "end": 81.26,
+  "scene": "S06",
+  "phrase": 4,
+  "id": "w146"
+ },
+ {
+  "text": "le",
+  "start": 81.26,
+  "end": 81.44,
+  "scene": "S06",
+  "phrase": 4,
+  "id": "w147"
+ },
+ {
+  "text": "voit",
+  "start": 81.44,
+  "end": 81.98,
+  "scene": "S06",
+  "phrase": 4,
+  "id": "w148"
+ },
+ {
+  "text": "faire.",
+  "start": 81.98,
+  "end": 82.09,
+  "scene": "S06",
+  "phrase": 4,
+  "id": "w149"
+ },
+ {
+  "text": "Et",
+  "start": 82.62,
+  "end": 82.66,
+  "scene": "S06",
+  "phrase": 5,
+  "id": "w150"
+ },
+ {
+  "text": "elle",
+  "start": 82.66,
+  "end": 82.92,
+  "scene": "S06",
+  "phrase": 5,
+  "id": "w151"
+ },
+ {
+  "text": "se",
+  "start": 82.92,
+  "end": 83.1,
+  "scene": "S06",
+  "phrase": 5,
+  "id": "w152"
+ },
+ {
+  "text": "tait.",
+  "start": 83.1,
+  "end": 83.55,
+  "scene": "S06",
+  "phrase": 5,
+  "id": "w153"
+ },
+ {
+  "text": "Cinq",
+  "start": 85.54,
+  "end": 85.88,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w154"
+ },
+ {
+  "text": "siècles",
+  "start": 85.88,
+  "end": 86.36,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w155"
+ },
+ {
+  "text": "plus",
+  "start": 86.36,
+  "end": 86.44,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w156"
+ },
+ {
+  "text": "tôt,",
+  "start": 86.44,
+  "end": 87.04,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w157"
+ },
+ {
+  "text": "un",
+  "start": 87.04,
+  "end": 87.24,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w158"
+ },
+ {
+  "text": "chevalier",
+  "start": 87.24,
+  "end": 87.74,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w159"
+ },
+ {
+  "text": "nommé",
+  "start": 87.74,
+  "end": 88.16,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w160"
+ },
+ {
+  "text": "Lancelot",
+  "start": 88.16,
+  "end": 88.64,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w161"
+ },
+ {
+  "text": "montait",
+  "start": 88.64,
+  "end": 88.88,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w162"
+ },
+ {
+  "text": "dans",
+  "start": 88.88,
+  "end": 89.12,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w163"
+ },
+ {
+  "text": "une",
+  "start": 89.12,
+  "end": 89.32,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w164"
+ },
+ {
+  "text": "charrette",
+  "start": 89.32,
+  "end": 89.64,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w165"
+ },
+ {
+  "text": "d'infamie",
+  "start": 89.64,
+  "end": 90.32,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w166"
+ },
+ {
+  "text": "pour",
+  "start": 90.32,
+  "end": 90.54,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w167"
+ },
+ {
+  "text": "la",
+  "start": 90.54,
+  "end": 90.72,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w168"
+ },
+ {
+  "text": "reine",
+  "start": 90.72,
+  "end": 90.9,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w169"
+ },
+ {
+  "text": "qu'il",
+  "start": 90.9,
+  "end": 91.02,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w170"
+ },
+ {
+  "text": "aimait.",
+  "start": 91.02,
+  "end": 91.25,
+  "scene": "S07",
+  "phrase": 0,
+  "id": "w171"
+ },
+ {
+  "text": "Chrétien",
+  "start": 91.94,
+  "end": 92.4,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w172"
+ },
+ {
+  "text": "de",
+  "start": 92.4,
+  "end": 92.54,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w173"
+ },
+ {
+  "text": "Troyes",
+  "start": 92.54,
+  "end": 92.84,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w174"
+ },
+ {
+  "text": "venait",
+  "start": 92.84,
+  "end": 92.98,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w175"
+ },
+ {
+  "text": "d'inventer",
+  "start": 92.98,
+  "end": 93.44,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w176"
+ },
+ {
+  "text": "l'amour",
+  "start": 93.44,
+  "end": 94.0,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w177"
+ },
+ {
+  "text": "plus",
+  "start": 94.0,
+  "end": 94.22,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w178"
+ },
+ {
+  "text": "fort",
+  "start": 94.22,
+  "end": 94.42,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w179"
+ },
+ {
+  "text": "que",
+  "start": 94.42,
+  "end": 94.46,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w180"
+ },
+ {
+  "text": "tout :",
+  "start": 94.46,
+  "end": 94.59,
+  "scene": "S07",
+  "phrase": 1,
+  "id": "w181"
+ },
+ {
+  "text": "plus",
+  "start": 95.26,
+  "end": 95.46,
+  "scene": "S07",
+  "phrase": 2,
+  "id": "w182"
+ },
+ {
+  "text": "fort",
+  "start": 95.46,
+  "end": 95.62,
+  "scene": "S07",
+  "phrase": 2,
+  "id": "w183"
+ },
+ {
+  "text": "que",
+  "start": 95.62,
+  "end": 95.72,
+  "scene": "S07",
+  "phrase": 2,
+  "id": "w184"
+ },
+ {
+  "text": "l'honneur,",
+  "start": 95.72,
+  "end": 96.37,
+  "scene": "S07",
+  "phrase": 2,
+  "id": "w185"
+ },
+ {
+  "text": "plus",
+  "start": 96.64,
+  "end": 96.82,
+  "scene": "S07",
+  "phrase": 3,
+  "id": "w186"
+ },
+ {
+  "text": "fort",
+  "start": 96.82,
+  "end": 96.96,
+  "scene": "S07",
+  "phrase": 3,
+  "id": "w187"
+ },
+ {
+  "text": "que",
+  "start": 96.96,
+  "end": 97.18,
+  "scene": "S07",
+  "phrase": 3,
+  "id": "w188"
+ },
+ {
+  "text": "le",
+  "start": 97.18,
+  "end": 97.34,
+  "scene": "S07",
+  "phrase": 3,
+  "id": "w189"
+ },
+ {
+  "text": "roi,",
+  "start": 97.34,
+  "end": 97.75,
+  "scene": "S07",
+  "phrase": 3,
+  "id": "w190"
+ },
+ {
+  "text": "plus",
+  "start": 98.04,
+  "end": 98.26,
+  "scene": "S07",
+  "phrase": 4,
+  "id": "w191"
+ },
+ {
+  "text": "fort",
+  "start": 98.26,
+  "end": 98.4,
+  "scene": "S07",
+  "phrase": 4,
+  "id": "w192"
+ },
+ {
+  "text": "que",
+  "start": 98.4,
+  "end": 98.6,
+  "scene": "S07",
+  "phrase": 4,
+  "id": "w193"
+ },
+ {
+  "text": "la",
+  "start": 98.6,
+  "end": 98.74,
+  "scene": "S07",
+  "phrase": 4,
+  "id": "w194"
+ },
+ {
+  "text": "raison.",
+  "start": 98.74,
+  "end": 99.2,
+  "scene": "S07",
+  "phrase": 4,
+  "id": "w195"
+ },
+ {
+  "text": "Madame",
+  "start": 100.26,
+  "end": 100.4,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w196"
+ },
+ {
+  "text": "de",
+  "start": 100.4,
+  "end": 100.56,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w197"
+ },
+ {
+  "text": "Lafayette",
+  "start": 100.56,
+  "end": 101.18,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w198"
+ },
+ {
+  "text": "pose",
+  "start": 101.18,
+  "end": 101.46,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w199"
+ },
+ {
+  "text": "une",
+  "start": 101.46,
+  "end": 101.68,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w200"
+ },
+ {
+  "text": "autre",
+  "start": 101.68,
+  "end": 101.94,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w201"
+ },
+ {
+  "text": "question.",
+  "start": 101.94,
+  "end": 101.89,
+  "scene": "S07",
+  "phrase": 5,
+  "id": "w202"
+ },
+ {
+  "text": "Vous",
+  "start": 111.24,
+  "end": 111.48,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w203"
+ },
+ {
+  "text": "êtes",
+  "start": 111.48,
+  "end": 111.84,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w204"
+ },
+ {
+  "text": "sur",
+  "start": 111.84,
+  "end": 112.08,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w205"
+ },
+ {
+  "text": "le",
+  "start": 112.08,
+  "end": 112.26,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w206"
+ },
+ {
+  "text": "bord",
+  "start": 112.26,
+  "end": 112.5,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w207"
+ },
+ {
+  "text": "du",
+  "start": 112.5,
+  "end": 112.88,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w208"
+ },
+ {
+  "text": "précipice.",
+  "start": 112.88,
+  "end": 113.45,
+  "scene": "S08",
+  "phrase": 0,
+  "id": "w209"
+ },
+ {
+  "text": "Les",
+  "start": 116.88,
+  "end": 117.1,
+  "scene": "S09",
+  "phrase": 0,
+  "id": "w210"
+ },
+ {
+  "text": "tournois.",
+  "start": 117.1,
+  "end": 117.63,
+  "scene": "S09",
+  "phrase": 0,
+  "id": "w211"
+ },
+ {
+  "text": "Les",
+  "start": 117.74,
+  "end": 117.99,
+  "scene": "S09",
+  "phrase": 1,
+  "id": "w212"
+ },
+ {
+  "text": "lettres",
+  "start": 117.99,
+  "end": 118.24,
+  "scene": "S09",
+  "phrase": 1,
+  "id": "w213"
+ },
+ {
+  "text": "perdues.",
+  "start": 118.24,
+  "end": 118.49,
+  "scene": "S09",
+  "phrase": 1,
+  "id": "w214"
+ },
+ {
+  "text": "Les",
+  "start": 118.84,
+  "end": 119.09,
+  "scene": "S09",
+  "phrase": 2,
+  "id": "w215"
+ },
+ {
+  "text": "rumeurs.",
+  "start": 119.09,
+  "end": 119.34,
+  "scene": "S09",
+  "phrase": 2,
+  "id": "w216"
+ },
+ {
+  "text": "Chaque",
+  "start": 119.78,
+  "end": 120.08,
+  "scene": "S09",
+  "phrase": 3,
+  "id": "w217"
+ },
+ {
+  "text": "regard",
+  "start": 120.08,
+  "end": 120.26,
+  "scene": "S09",
+  "phrase": 3,
+  "id": "w218"
+ },
+ {
+  "text": "est",
+  "start": 120.26,
+  "end": 120.44,
+  "scene": "S09",
+  "phrase": 3,
+  "id": "w219"
+ },
+ {
+  "text": "un",
+  "start": 120.44,
+  "end": 120.54,
+  "scene": "S09",
+  "phrase": 3,
+  "id": "w220"
+ },
+ {
+  "text": "piège.",
+  "start": 120.54,
+  "end": 121.09,
+  "scene": "S09",
+  "phrase": 3,
+  "id": "w221"
+ },
+ {
+  "text": "Alors",
+  "start": 121.54,
+  "end": 121.76,
+  "scene": "S09",
+  "phrase": 4,
+  "id": "w222"
+ },
+ {
+  "text": "elle",
+  "start": 121.76,
+  "end": 121.84,
+  "scene": "S09",
+  "phrase": 4,
+  "id": "w223"
+ },
+ {
+  "text": "fuit",
+  "start": 121.84,
+  "end": 122.1,
+  "scene": "S09",
+  "phrase": 4,
+  "id": "w224"
+ },
+ {
+  "text": "la",
+  "start": 122.1,
+  "end": 122.28,
+  "scene": "S09",
+  "phrase": 4,
+  "id": "w225"
+ },
+ {
+  "text": "cour.",
+  "start": 122.28,
+  "end": 122.61,
+  "scene": "S09",
+  "phrase": 4,
+  "id": "w226"
+ },
+ {
+  "text": "Elle",
+  "start": 122.78,
+  "end": 122.88,
+  "scene": "S09",
+  "phrase": 5,
+  "id": "w227"
+ },
+ {
+  "text": "fuit",
+  "start": 122.88,
+  "end": 123.24,
+  "scene": "S09",
+  "phrase": 5,
+  "id": "w228"
+ },
+ {
+  "text": "Paris.",
+  "start": 123.24,
+  "end": 123.49,
+  "scene": "S09",
+  "phrase": 5,
+  "id": "w229"
+ },
+ {
+  "text": "Elle",
+  "start": 123.8,
+  "end": 124.12,
+  "scene": "S09",
+  "phrase": 6,
+  "id": "w230"
+ },
+ {
+  "text": "se",
+  "start": 124.12,
+  "end": 124.26,
+  "scene": "S09",
+  "phrase": 6,
+  "id": "w231"
+ },
+ {
+  "text": "fuit",
+  "start": 124.26,
+  "end": 124.58,
+  "scene": "S09",
+  "phrase": 6,
+  "id": "w232"
+ },
+ {
+  "text": "elle-même.",
+  "start": 124.58,
+  "end": 124.83,
+  "scene": "S09",
+  "phrase": 6,
+  "id": "w233"
+ },
+ {
+  "text": "Je",
+  "start": 128.48,
+  "end": 128.7,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w234"
+ },
+ {
+  "text": "vais",
+  "start": 128.7,
+  "end": 128.9,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w235"
+ },
+ {
+  "text": "vous",
+  "start": 128.9,
+  "end": 129.08,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w236"
+ },
+ {
+  "text": "faire",
+  "start": 129.08,
+  "end": 129.34,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w237"
+ },
+ {
+  "text": "un",
+  "start": 129.34,
+  "end": 129.5,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w238"
+ },
+ {
+  "text": "aveu",
+  "start": 129.5,
+  "end": 130.68,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w239"
+ },
+ {
+  "text": "que",
+  "start": 130.68,
+  "end": 130.78,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w240"
+ },
+ {
+  "text": "l'on",
+  "start": 130.78,
+  "end": 130.96,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w241"
+ },
+ {
+  "text": "n'a",
+  "start": 130.96,
+  "end": 131.48,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w242"
+ },
+ {
+  "text": "jamais",
+  "start": 131.48,
+  "end": 131.6,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w243"
+ },
+ {
+  "text": "fait",
+  "start": 131.6,
+  "end": 131.78,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w244"
+ },
+ {
+  "text": "à",
+  "start": 131.78,
+  "end": 131.94,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w245"
+ },
+ {
+  "text": "son",
+  "start": 131.94,
+  "end": 132.18,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w246"
+ },
+ {
+  "text": "mari.",
+  "start": 132.18,
+  "end": 132.43,
+  "scene": "S10",
+  "phrase": 0,
+  "id": "w247"
+ },
+ {
+  "text": "Elle",
+  "start": 138.8,
+  "end": 139.16,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w248"
+ },
+ {
+  "text": "ignore",
+  "start": 139.16,
+  "end": 139.34,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w249"
+ },
+ {
+  "text": "que",
+  "start": 139.34,
+  "end": 139.72,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w250"
+ },
+ {
+  "text": "quelqu'un,",
+  "start": 139.72,
+  "end": 140.32,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w251"
+ },
+ {
+  "text": "dans",
+  "start": 140.32,
+  "end": 140.46,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w252"
+ },
+ {
+  "text": "l'ombre,",
+  "start": 140.46,
+  "end": 141.32,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w253"
+ },
+ {
+  "text": "entend",
+  "start": 141.32,
+  "end": 141.54,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w254"
+ },
+ {
+  "text": "tout.",
+  "start": 141.54,
+  "end": 141.79,
+  "scene": "S11",
+  "phrase": 0,
+  "id": "w255"
+ },
+ {
+  "text": "Lancelot",
+  "start": 148.62,
+  "end": 149.5,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w256"
+ },
+ {
+  "text": "est",
+  "start": 149.5,
+  "end": 149.82,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w257"
+ },
+ {
+  "text": "monté",
+  "start": 149.82,
+  "end": 150.04,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w258"
+ },
+ {
+  "text": "dans",
+  "start": 150.04,
+  "end": 150.28,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w259"
+ },
+ {
+  "text": "la",
+  "start": 150.28,
+  "end": 150.44,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w260"
+ },
+ {
+  "text": "charrette.",
+  "start": 150.44,
+  "end": 150.75,
+  "scene": "S12",
+  "phrase": 0,
+  "id": "w261"
+ },
+ {
+  "text": "Elle,",
+  "start": 152.22,
+  "end": 152.47,
+  "scene": "S12",
+  "phrase": 1,
+  "id": "w262"
+ },
+ {
+  "text": "elle",
+  "start": 152.66,
+  "end": 152.76,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w263"
+ },
+ {
+  "text": "a",
+  "start": 152.76,
+  "end": 152.94,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w264"
+ },
+ {
+  "text": "le",
+  "start": 152.94,
+  "end": 153.32,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w265"
+ },
+ {
+  "text": "courage",
+  "start": 153.32,
+  "end": 153.5,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w266"
+ },
+ {
+  "text": "de",
+  "start": 153.5,
+  "end": 153.78,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w267"
+ },
+ {
+  "text": "rester",
+  "start": 153.78,
+  "end": 154.04,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w268"
+ },
+ {
+  "text": "sur",
+  "start": 154.04,
+  "end": 154.2,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w269"
+ },
+ {
+  "text": "le",
+  "start": 154.2,
+  "end": 154.32,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w270"
+ },
+ {
+  "text": "chemin.",
+  "start": 154.32,
+  "end": 154.57,
+  "scene": "S12",
+  "phrase": 2,
+  "id": "w271"
+ },
+ {
+  "text": "Mais",
+  "start": 155.5,
+  "end": 156.22,
+  "scene": "S12",
+  "phrase": 3,
+  "id": "w272"
+ },
+ {
+  "text": "jusqu'où ?",
+  "start": 156.22,
+  "end": 156.76,
+  "scene": "S12",
+  "phrase": 3,
+  "id": "w273"
+ },
+ {
+  "text": "Le",
+  "start": 171.64,
+  "end": 172.04,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w274"
+ },
+ {
+  "text": "premier",
+  "start": 172.04,
+  "end": 172.4,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w275"
+ },
+ {
+  "text": "roman",
+  "start": 172.4,
+  "end": 172.76,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w276"
+ },
+ {
+  "text": "qui",
+  "start": 172.76,
+  "end": 173.08,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w277"
+ },
+ {
+  "text": "ose",
+  "start": 173.08,
+  "end": 173.62,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w278"
+ },
+ {
+  "text": "regarder",
+  "start": 173.62,
+  "end": 173.8,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w279"
+ },
+ {
+  "text": "à",
+  "start": 173.8,
+  "end": 173.88,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w280"
+ },
+ {
+  "text": "l'intérieur",
+  "start": 173.88,
+  "end": 174.38,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w281"
+ },
+ {
+  "text": "d'un",
+  "start": 174.38,
+  "end": 174.58,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w282"
+ },
+ {
+  "text": "cœur.",
+  "start": 174.58,
+  "end": 174.83,
+  "scene": "S15",
+  "phrase": 0,
+  "id": "w283"
+ }
+]

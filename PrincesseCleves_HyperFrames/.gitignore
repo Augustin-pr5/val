@@ -1,0 +1,16 @@
+# rendus et fichiers de travail
+renders/
+.hyperframes/
+.work/
+# compétences HyperFrames (réinstallables : npx skills add heygen-com/hyperframes)
+.claude/skills/
+# médias lourds : fournis dans les zips PrincesseCleves_partie_01…06
+assets/audio/
+assets/images_ia/
+assets/images_ia_detourees/
+assets/archives/
+assets/photos/
+assets/videos/
+assets/nb/
+DA/
+reference/

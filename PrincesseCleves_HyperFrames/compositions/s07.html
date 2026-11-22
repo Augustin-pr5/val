@@ -1,0 +1,223 @@
+<template>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+    .calque { position: absolute; inset: 0; }
+    .encre { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; pointer-events: none; }
+    .encre path { fill: none; stroke: #161412; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; filter: url(#boil); }
+    .encre .rouge { stroke: #b3261e; }
+    .piece { position: absolute; background: #fbf9f3; padding: 10px; box-shadow: 0 1px 2px rgba(22,20,18,0.28), 0 8px 22px rgba(22,20,18,0.22); }
+    .piece img, .piece video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .cartel { position: absolute; font-family: "IM FELL English", serif; font-style: italic; font-size: 34px; line-height: 40px; color: #161412; }
+
+    /* ---------- monde médiéval : le parchemin ---------- */
+    #s07-medieval { position: absolute; inset: 0; }
+    #s07-parchemin { position: absolute; inset: 0; background: #ece1c8 url("assets/textures/parchemin.jpg") center / cover no-repeat; }
+    #s07-enlu { left: 150px; top: 120px; width: 500px; height: 690px; padding: 0; background: none; }
+    #s07-enlu img { object-position: 50% 0%; }
+    #s07-cartel-enlu { left: 150px; top: 836px; width: 640px; }
+    #s07-loupe { position: absolute; left: 630px; top: 160px; width: 340px; height: 340px; border-radius: 50%; overflow: hidden;
+      background: url("assets/nb/archive_lancelot_guenievre_enluminure_1405.jpg") no-repeat; background-size: 1078px 1532px; background-position: -276px -2px; }
+    #s07-charrette { left: 990px; top: 150px; width: 840px; height: 372px; }
+    #s07-ecrit { position: absolute; left: 730px; top: 616px; width: 1110px; height: 220px; font-family: "IM FELL English", serif; font-size: 60px; line-height: 92px; color: #161412; }
+    #s07-ecrit .ligne { position: absolute; left: 0; white-space: nowrap; filter: url(#boil-texte); }
+    #s07-ecrit em { font-style: italic; }
+    #s07-plume-pt { position: absolute; left: 0; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #161412; opacity: 0; }
+    #s07-point { position: absolute; left: 0; top: 0; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: #b3261e; opacity: 0; }
+
+    /* gros mots barrés */
+    #s07-mots .rang { position: absolute; left: 0; width: 1920px; height: 240px; }
+    #s07-mots .rang > .petit { position: absolute; right: 1220px; bottom: 50px; }
+    #s07-mots .rang > .gros { position: absolute; left: 736px; bottom: 34px; }
+    #s07-mots .petit { font-family: "IM FELL English", serif; font-style: italic; font-size: 68px; display: flex; gap: 18px; }
+    #s07-mots .gros { font-family: "Source Serif 4", serif; font-weight: 900; font-size: 200px; line-height: 1; letter-spacing: -0.02em; }
+    #s07-mots span { display: inline-block; }
+    #s07-ratures path { stroke: #b3261e; stroke-width: 20; }
+
+    /* ---------- retour au XVIIe siècle : la femme qui écrit ---------- */
+    #s07-femme { left: 150px; top: 190px; width: 1060px; height: 616px; }
+    #s07-qpoint { position: absolute; left: 1471px; top: 756px; width: 48px; height: 48px; border-radius: 50%; background: #b3261e; }
+
+    /* ---------- carton ---------- */
+    #s07-carton { background: #f5f1e8 url("assets/textures/papier_ivoire.jpg") center / cover no-repeat; }
+    .fumee-cadre { position: absolute; inset: 0; mix-blend-mode: multiply; }
+    .fumee-cadre video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    #s07-fumee-cadre { transform-origin: 55% 30%; }
+    #s07-fumee-cadre-b { transform-origin: 45% 32%; opacity: 0.75; }
+    #s07-carton-texte { position: absolute; left: 160px; right: 160px; top: 330px; text-align: center; font-family: "Source Serif 4", serif; font-weight: 700; font-size: 104px; line-height: 132px; letter-spacing: -0.01em; color: #161412; }
+    #s07-carton-texte span { display: inline-block; }
+    #s07-carton-texte .q { color: #b3261e; font-size: 1.12em; line-height: 0.9; }
+  </style>
+
+  <div id="root" data-composition-id="s07" data-width="1920" data-height="1080">
+    <!-- XVIIe : la femme qui écrit (sous le parchemin, révélée quand il se retire) -->
+    <div class="calque" id="s07-plume">
+      <div class="piece" id="s07-femme">
+        <video id="s07-femme-video" class="clip" data-start="15.1" data-duration="4.3" data-track-index="2" muted playsinline src="assets/nb/pexels_femme_ecrit_plume.mp4"></video>
+      </div>
+      <svg class="encre" id="s07-q-svg" viewBox="0 0 1920 1080">
+        <path id="s07-q" d="M820 606 C 930 572, 1130 492, 1268 404 C 1290 282, 1388 196, 1494 194 C 1604 192, 1672 268, 1656 350 C 1640 432, 1530 466, 1502 540 C 1490 580, 1494 620, 1495 668" pathLength="1000" style="stroke-width:15" />
+      </svg>
+      <div id="s07-qpoint"></div>
+    </div>
+
+    <!-- carton final de la scène -->
+    <div class="calque" id="s07-carton">
+      <div class="fumee-cadre" id="s07-fumee-cadre-b">
+        <video id="s07-fumee-b" class="clip" data-start="19.4" data-duration="5" data-media-start="0.8" data-playback-rate="0.7" data-track-index="4" muted playsinline src="assets/nb/pexels_fumee_encre_dense.mp4"></video>
+      </div>
+      <div class="fumee-cadre" id="s07-fumee-cadre">
+        <video id="s07-fumee" class="clip" data-start="19.4" data-duration="5" data-media-start="2.2" data-playback-rate="0.7" data-track-index="3" muted playsinline src="assets/nb/pexels_fumee_encre_dense.mp4"></video>
+      </div>
+      <div id="s07-carton-texte">
+        <span>Et</span> <span>si</span> <span>l’amour</span> <span>plus</span> <span>fort</span> <span>que</span> <span>tout</span><br />
+        <span>était</span> <span>un</span> <span>danger</span>&#160;<span class="q">?</span>
+      </div>
+    </div>
+
+    <!-- monde médiéval -->
+    <div id="s07-medieval">
+      <div id="s07-parchemin"></div>
+      <svg class="encre" id="s07-reglure" viewBox="0 0 1920 1080">
+        <path id="s07-r1" data-shape="line" data-p="96,92,1824,92" data-wobble="1.5" data-seed="51" style="stroke-width:2" />
+        <path id="s07-r2" data-shape="line" data-p="1824,92,1824,988" data-wobble="1.5" data-seed="52" style="stroke-width:2" />
+        <path id="s07-r3" data-shape="line" data-p="1824,988,96,988" data-wobble="1.5" data-seed="53" style="stroke-width:2" />
+        <path id="s07-r4" data-shape="line" data-p="96,988,96,92" data-wobble="1.5" data-seed="54" style="stroke-width:2" />
+        <path id="s07-r5" data-shape="line" data-p="110,106,1810,106" data-wobble="1.2" data-seed="55" style="stroke-width:1" />
+        <path id="s07-r6" data-shape="line" data-p="110,974,1810,974" data-wobble="1.2" data-seed="56" style="stroke-width:1" />
+      </svg>
+
+      <div class="calque" id="s07-monde1">
+        <div class="piece" id="s07-enlu"><img src="assets/nb/archive_lancelot_guenievre_enluminure_1405.jpg" alt="Lancelot et Guenièvre, enluminure" /></div>
+        <div class="cartel" id="s07-cartel-enlu">Lancelot et Guenièvre · <span style="font-style:normal">Lancelot du Lac</span>,<br />BnF ms. fr. 118, vers 1405</div>
+        <div id="s07-loupe"></div>
+        <div class="piece" id="s07-charrette"><img src="assets/nb/ia_lancelot_charrette_nb.jpg" alt="Lancelot monte dans la charrette" /></div>
+        <svg class="encre" id="s07-traits" viewBox="0 0 1920 1080">
+          <path id="s07-cercle" data-shape="circle" data-c="354,200" data-r="112,98" data-seed="61" />
+          <path id="s07-tan1" data-shape="line" data-p="330,306,752,488" data-wobble="2" data-seed="62" style="stroke-width:3" />
+          <path id="s07-tan2" data-shape="line" data-p="398,104,848,168" data-wobble="2" data-seed="63" style="stroke-width:3" />
+          <path id="s07-loupe-c" data-shape="circle" data-c="800,330" data-r="176,176" data-seed="64" data-wobble="0.02" />
+          <path id="s07-fleche" data-shape="line" data-p="1300,566,1600,566" data-bow="34" data-wobble="2" data-seed="65" />
+          <path id="s07-fleche-a" d="M1572 548 L 1604 567 L 1574 592" pathLength="1000" />
+          <path id="s07-passion-halo" data-shape="line" data-p="1292,246,978,300" data-bow="-70" data-wobble="3" data-seed="66" style="stroke:#f5f1e8;stroke-width:11;opacity:.55" />
+          <path id="s07-passion" class="rouge" data-shape="line" data-p="1292,246,978,300" data-bow="-70" data-wobble="3" data-seed="66" style="stroke-width:5" />
+        </svg>
+        <div id="s07-ecrit">
+          <div class="ligne" id="s07-l1" style="top:0">Chrétien de Troyes,</div>
+          <div class="ligne" id="s07-l2" style="top:92px"><em>Le Chevalier de la charrette</em>, vers 1180</div>
+          <div id="s07-plume-pt"></div>
+        </div>
+        <div id="s07-point"></div>
+      </div>
+
+      <div class="calque" id="s07-mots">
+        <div class="rang" id="s07-rang1" style="top:120px"><span class="petit"><span>plus</span><span>fort</span><span>que</span></span><span class="gros" id="s07-g1">l’honneur</span></div>
+        <div class="rang" id="s07-rang2" style="top:400px"><span class="petit"><span>plus</span><span>fort</span><span>que</span></span><span class="gros" id="s07-g2">le roi</span></div>
+        <div class="rang" id="s07-rang3" style="top:680px"><span class="petit"><span>plus</span><span>fort</span><span>que</span></span><span class="gros" id="s07-g3">la raison</span></div>
+        <svg class="encre" id="s07-ratures" viewBox="0 0 1920 1080">
+          <path id="s07-x1" d="" pathLength="1000" />
+          <path id="s07-x2" d="" pathLength="1000" />
+          <path id="s07-x3" d="" pathLength="1000" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const S = 84.6; // début absolu de la scène
+      const tl = gsap.timeline({ paused: true });
+      const P = [0, 1, 2, 3, 4, 5].map((p) => INK.words("S07", p));
+      const t = (p, i) => P[p][i][1] - S; // temps local du mot i de la phrase p
+      const root = document.querySelector('[data-composition-id="s07"]');
+      const $ = (s) => root.querySelector(s);
+      INK.shapes(root);
+
+      INK.fontsReady(['200px "Source Serif 4"', 'italic 68px "IM FELL English"', '60px "IM FELL English"', 'italic 34px "IM FELL English"']).then(() => {
+        // ===== A. 84,6 : changement de monde, le papier devient parchemin =====
+        tl.fromTo("#s07-medieval", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.5, ease: "power2.inOut" }, 0);
+        ["#s07-r1", "#s07-r2", "#s07-r3", "#s07-r4"].forEach((id, i) => INK.draw(tl, $(id), 0.3 + i * 0.16, 0.36, "power1.inOut"));
+        INK.draw(tl, $("#s07-r5"), 0.7, 0.6); INK.draw(tl, $("#s07-r6"), 0.8, 0.6);
+
+        // ===== B. « Cinq siècles plus tôt… Lancelot » : l'enluminure, la loupe =====
+        tl.fromTo("#s07-enlu", { opacity: 0, scale: 1.06, rotation: -4 }, { opacity: 1, scale: 1, rotation: -1.2, duration: 0.5, ease: "expo.out" }, t(0, 0) - 0.1);
+        INK.write(tl, $("#s07-cartel-enlu"), t(0, 0) + 0.35, 1.1);
+        INK.draw(tl, $("#s07-cercle"), t(0, 6) - 0.05, 0.42, "power2.inOut"); // se referme sur « Lancelot »
+        INK.draw(tl, $("#s07-tan1"), t(0, 7) + 0.12, 0.25, "power2.out");
+        INK.draw(tl, $("#s07-tan2"), t(0, 7) + 0.16, 0.25, "power2.out");
+        INK.draw(tl, $("#s07-loupe-c"), t(0, 7) + 0.3, 0.42, "power2.out");
+        tl.fromTo("#s07-loupe", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(50% at 50% 50%)", duration: 0.4, ease: "power2.out" }, t(0, 7) + 0.34);
+
+        // ===== C. « montait dans une charrette d'infamie » =====
+        tl.fromTo("#s07-charrette", { opacity: 0, x: 140, rotation: 4 }, { opacity: 1, x: 0, rotation: 1, duration: 0.5, ease: "expo.out" }, t(0, 5) - 0.1); // « un chevalier »
+        INK.draw(tl, $("#s07-fleche"), t(0, 11), 0.45, "power2.inOut"); // « charrette »
+        INK.draw(tl, $("#s07-fleche-a"), t(0, 11) + 0.42, 0.14, "power2.out");
+
+        // ===== D. « pour la reine qu'il aimait » : le point rouge part de Lancelot vers la reine =====
+        INK.draw(tl, $("#s07-passion-halo"), t(0, 14), 0.6, "power2.inOut");
+        tl.set("#s07-passion-halo", { opacity: 0.55 }, t(0, 14));
+        INK.draw(tl, $("#s07-passion"), t(0, 14), 0.6, "power2.inOut");
+        tl.fromTo("#s07-point", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, t(0, 14) - 0.1);
+        INK.travel(tl, $("#s07-point"), INK.linePts(1292, 246, 978, 300, { seed: 66, bow: -70, wobble: 3 }), t(0, 14), 0.6, "power2.inOut");
+        tl.to("#s07-point", { scale: 0.6, duration: 0.3, ease: "power2.out" }, t(0, 14) + 0.6);
+
+        // ===== E. « Chrétien de Troyes… » : écrit à la plume =====
+        INK.write(tl, $("#s07-l1"), t(1, 0) - 0.05, 0.95, $("#s07-plume-pt"));
+        INK.write(tl, $("#s07-l2"), t(1, 0) + 1.0, 1.55, $("#s07-plume-pt"));
+
+        // ===== F. coupe franche : trois gros mots, chacun barré de rouge =====
+        const tCut = t(2, 0) - 0.16;
+        tl.set("#s07-monde1", { opacity: 0 }, tCut);
+        tl.set("#s07-mots", { opacity: 0 }, 0);
+        tl.set("#s07-mots", { opacity: 1 }, tCut);
+        const mots = root.querySelector("#s07-mots");
+        const impacts = [95.96, 97.3, 98.6];
+        [1, 2, 3].forEach((k) => {
+          const p = k + 1; // phrases 2, 3, 4
+          const rang = $("#s07-rang" + k), petits = rang.querySelectorAll(".petit span"), gros = $("#s07-g" + k);
+          petits.forEach((el, i) => tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none" }, t(p, i) - 0.02));
+          const tg = t(p, 3) - 0.02; // le gros mot claque quand il est dit
+          tl.fromTo(gros, { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.18, ease: "expo.out" }, tg);
+          // rature rouge sur l'impact (au plus tôt juste après l'apparition du mot)
+          const x = rang.offsetLeft + gros.offsetLeft, y = rang.offsetTop + gros.offsetTop, w = gros.offsetWidth, h = gros.offsetHeight;
+          const path = $("#s07-x" + k);
+          path.setAttribute("d", INK.strike(x - 34, y + h * 0.58, x + w + 34, y + h * 0.5, { seed: 70 + k, bow: -12 }));
+          const ts = Math.max(impacts[k - 1] - S - 0.08, tg + 0.08);
+          INK.draw(tl, path, ts, 0.13, "power3.out");
+        });
+
+        // ===== G. « Madame de Lafayette pose une autre question » : retour au papier du XVIIe =====
+        const tWipe = t(5, 0) - 0.42;
+        tl.fromTo("#s07-medieval", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.45, ease: "power2.inOut", immediateRender: false }, tWipe);
+        tl.set("#s07-medieval", { opacity: 0 }, tWipe + 0.46);
+        tl.set("#s07-plume", { opacity: 0 }, 0);
+        tl.set("#s07-plume", { opacity: 1 }, tWipe);
+        tl.fromTo("#s07-femme", { rotation: -1, scale: 1.02 }, { rotation: -1, scale: 1, duration: 4, ease: "none" }, tWipe);
+        // sa plume trace un grand « ? »
+        INK.draw(tl, $("#s07-q"), t(5, 3) - 0.2, 1.75, "power1.inOut");
+        tl.fromTo("#s07-qpoint", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, t(5, 3) + 1.6);
+
+        // ===== H. 104,0 : carton « Et si l'amour plus fort que tout / était un danger ? » =====
+        const tC = 104.0 - S;
+        tl.set("#s07-plume", { opacity: 0 }, tC);
+        tl.set("#s07-carton", { opacity: 0 }, 0);
+        tl.set("#s07-carton", { opacity: 1 }, tC);
+        tl.fromTo("#s07-fumee-cadre", { scale: 1.85, yPercent: 6 }, { scale: 1.75, yPercent: -2, duration: 5, ease: "none" }, tC);
+        tl.fromTo("#s07-fumee-cadre-b", { scaleX: -1.6, scaleY: 1.6, yPercent: 10 }, { scaleX: -1.5, scaleY: 1.5, yPercent: 2, duration: 5, ease: "none" }, tC);
+        const mc = Array.from(root.querySelectorAll("#s07-carton-texte span"));
+        mc.forEach((el, i) => {
+          const tw = i < 7 ? 104.4 - S + i * 0.09 : 105.2 - S + (i - 7) * 0.11;
+          if (el.classList.contains("q")) {
+            tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 105.2 - S + 0.55);
+          } else {
+            tl.fromTo(el, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, ease: "power2.out" }, tw);
+          }
+        });
+
+        window.__timelines["s07"] = tl;
+      });
+    })();
+  </script>
+</template>

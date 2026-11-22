@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>La Princesse de Clèves — bande-annonce dessinée</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <script src="assets/lib/words.js"></script>
+    <script src="assets/lib/ink.js"></script>
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+      @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Italic-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: italic; }
+      @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+      :root {
+        --papier: #f5f1e8;
+        --encre: #161412;
+        --gris: #b8b2a7;
+        --cire: #b3261e;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--papier); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      /* grain de papier très léger, fixe */
+      #papier { position: absolute; inset: 0; background: var(--papier) url("assets/textures/papier_ivoire.jpg") center / cover no-repeat; }
+      #encre-defs { position: absolute; width: 0; height: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="212" data-width="1920" data-height="1080">
+      <div id="papier"></div>
+
+      <!-- « boil » : les traits tremblent comme un dessin fait main (graine changée toutes les 2 images) -->
+      <svg id="encre-defs" aria-hidden="true">
+        <defs>
+          <filter id="boil" filterUnits="userSpaceOnUse" x="-200" y="-200" width="2400" height="1500">
+            <feTurbulence id="boil-turb" type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="1" result="bruit" />
+            <feDisplacementMap in="SourceGraphic" in2="bruit" scale="4.5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="boil-texte" x="-5%" y="-20%" width="110%" height="140%">
+            <feTurbulence id="boil-turb-texte" type="fractalNoise" baseFrequency="0.06" numOctaves="1" seed="1" result="bruit" />
+            <feDisplacementMap in="SourceGraphic" in2="bruit" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- Bande-son définitive : référence absolue, jamais coupée ni décalée -->
+      <audio id="bande-son" class="clip" data-start="0" data-duration="212" data-track-index="0" data-volume="1" src="assets/audio/bande_son_finale_212s.m4a"></audio>
+
+      <!-- Scènes (une sous-composition par scène) -->
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="10" data-duration="9.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s07" data-composition-id="s07" data-composition-src="compositions/s07.html" data-start="84.6" data-duration="24.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // boil : 212 s × 12,5 changements par seconde = 2650 graines
+      tl.fromTo("#boil-turb", { attr: { seed: 1 } }, { attr: { seed: 2651 }, duration: 212, ease: "steps(2650)" }, 0);
+      tl.fromTo("#boil-turb-texte", { attr: { seed: 7 } }, { attr: { seed: 2657 }, duration: 212, ease: "steps(2650)" }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
