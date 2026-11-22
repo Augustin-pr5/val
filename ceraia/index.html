@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CERAÏA · Douche filtrante</title>
+  <meta name="description" content="CERAÏA, le pommeau de douche filtrant né à Nantes. Double filtration sulfite de calcium et KDF, design en anneau blanc mat. L'eau, en mieux." />
+  <meta name="theme-color" content="#F3EFE8" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       1. VARIABLES
+       ========================================================= */
+    :root {
+      --bg: #F3EFE8;
+      --sand: #E6DCCB;
+      --text: #2B2520;
+      --bronze: #8C6D46;
+      --line: #C9BBA4;
+      --muted: #5C5145;
+      --white: #FBF9F5;
+
+      --serif: "Bodoni Moda", "Didot", Georgia, serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+      --gutter: 16px;
+      --maxw: 1180px;
+      --nav-h: 68px;
+      --section-y: clamp(72px, 12vw, 140px);
+      --ease: cubic-bezier(.22, .61, .36, 1);
+    }
+
+    @media (min-width: 640px)  { :root { --gutter: 32px; } }
+    @media (min-width: 1024px) { :root { --gutter: 48px; --nav-h: 80px; } }
+
+    /* =========================================================
+       2. BASE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    p { margin: 0 0 1em; }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.12;
+      margin: 0;
+      letter-spacing: -0.005em;
+    }
+
+    em, .italic { font-style: italic; }
+
+    section[id] { scroll-margin-top: var(--nav-h); }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .section { padding: var(--section-y) 0; }
+    .section--sand { background: var(--sand); }
+    .section + .section:not(.section--sand) { border-top: 1px solid var(--line); }
+
+    .skip-link {
+      position: absolute;
+      left: 8px; top: -60px;
+      background: var(--text); color: var(--bg);
+      padding: 10px 16px; z-index: 200;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 8px; }
+
+    :focus-visible { outline: 1px solid var(--bronze); outline-offset: 4px; }
+
+    /* Eyebrow + titres de section */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px; height: 1px;
+      background: var(--bronze);
+    }
+
+    .section-head { max-width: 720px; margin-bottom: clamp(44px, 7vw, 80px); }
+    .section-head h2 { font-size: clamp(32px, 6vw, 56px); }
+    .section-head h2 em { color: var(--bronze); }
+    .section-head p {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 18px);
+      max-width: 580px;
+    }
+
+    .note {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* =========================================================
+       3. LOGO
+       ========================================================= */
+    .logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1;
+    }
+    .logo__name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      margin-right: -0.16em; /* compense l'espacement de la dernière lettre */
+    }
+    .logo__rule {
+      width: 26px; height: 1px;
+      background: var(--bronze);
+      margin: 7px 0 6px;
+    }
+    .logo__tag {
+      font-family: var(--sans);
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      margin-right: -0.32em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .logo--large .logo__name { font-size: clamp(40px, 9vw, 72px); }
+    .logo--large .logo__rule { width: 48px; margin: 14px 0 12px; }
+    .logo--large .logo__tag  { font-size: 10px; }
+
+    /* =========================================================
+       4. NAVIGATION
+       ========================================================= */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: rgba(243, 239, 232, 0.9);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s var(--ease);
+    }
+    .nav.is-scrolled { border-bottom-color: var(--line); }
+
+    .nav__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav__links {
+      display: none;
+      list-style: none;
+      margin: 0; padding: 0;
+      gap: clamp(18px, 2.2vw, 34px);
+    }
+    .nav__links a {
+      position: relative;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 0;
+      transition: color .25s var(--ease);
+    }
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: var(--bronze);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
+    }
+    .nav__links a:hover,
+    .nav__links a.is-active { color: var(--text); }
+    .nav__links a:hover::after,
+    .nav__links a.is-active::after { transform: scaleX(1); }
+
+    .burger {
+      width: 44px; height: 44px;
+      margin-right: -10px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .burger span {
+      width: 24px; height: 1px;
+      background: currentColor;
+      transition: transform .35s var(--ease), opacity .2s;
+    }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: var(--nav-h) 0 0 0;
+      z-index: 99;
+      background: var(--bg);
+      padding: 32px var(--gutter) 48px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+      overflow-y: auto;
+    }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; transform: none; }
+    .mobile-menu ul { list-style: none; margin: 0; padding: 0; }
+    .mobile-menu li { border-bottom: 1px solid var(--line); }
+    .mobile-menu li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 18px 0;
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 26px;
+    }
+    .mobile-menu a small {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--bronze);
+    }
+    .mobile-menu .btn { margin-top: 32px; }
+
+    @media (min-width: 1024px) {
+      .nav__links { display: flex; }
+      .burger, .mobile-menu { display: none; }
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    /* =========================================================
+       5. BOUTONS
+       ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 14px 28px;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: var(--bg);
+      cursor: pointer;
+      transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+      text-align: center;
+    }
+    .btn:hover { background: var(--bronze); border-color: var(--bronze); }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .btn--ghost:hover { background: transparent; border-color: var(--text); color: var(--text); }
+
+    .btn .arrow {
+      width: 18px; height: 1px;
+      background: currentColor;
+      position: relative;
+      transition: width .3s var(--ease);
+    }
+    .btn .arrow::after {
+      content: "";
+      position: absolute;
+      right: 0; top: -3px;
+      width: 7px; height: 7px;
+      border-top: 1px solid currentColor;
+      border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .btn:hover .arrow { width: 26px; }
+
+    /* Bouton Amazon : état désactivé tant que AMAZON_URL est vide */
+    .btn-amazon {
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .btn-amazon .btn-amazon__soon {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      font-weight: 400;
+      color: var(--bronze);
+    }
+    .btn-amazon[aria-disabled="true"] {
+      cursor: not-allowed;
+      background: transparent;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+    }
+    .btn-amazon[aria-disabled="true"]:hover {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--line);
+    }
+    .btn-amazon:not([aria-disabled="true"]) .btn-amazon__soon { display: none; }
+
+    .btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .btn-row .btn { width: 100%; }
+    @media (min-width: 560px) {
+      .btn-row { flex-direction: row; flex-wrap: wrap; width: auto; }
+      .btn-row .btn { width: auto; min-width: 250px; }
+    }
+
+    /* =========================================================
+       6. EMPLACEMENTS PHOTO
+       ========================================================= */
+    .photo-placeholder {
+      position: relative;
+      width: 100%;
+      background: var(--sand);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      overflow: hidden;
+    }
+    .photo-placeholder::before {
+      /* petit cadre intérieur, purement décoratif */
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(201, 187, 164, 0.55);
+      pointer-events: none;
+    }
+    .photo-placeholder span { position: relative; max-width: 28ch; }
+    .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+    .ratio-4x5  { aspect-ratio: 4 / 5; }
+    .ratio-1x1  { aspect-ratio: 1 / 1; }
+    .ratio-3x4  { aspect-ratio: 3 / 4; }
+    .ratio-16x9 { aspect-ratio: 16 / 9; }
+    .section--sand .photo-placeholder { background: var(--bg); }
+
+    /* =========================================================
+       7. HERO (#accueil)
+       ========================================================= */
+    .hero {
+      padding-top: calc(var(--nav-h) + clamp(40px, 8vw, 96px));
+      padding-bottom: var(--section-y);
+    }
+    .hero__grid {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero__text { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero .logo { align-items: flex-start; }
+    .hero .logo__rule { margin-left: 0; }
+    .hero h1 {
+      margin-top: clamp(36px, 6vw, 56px);
+      font-size: clamp(44px, 10vw, 96px);
+      font-style: italic;
+      line-height: 1.02;
+    }
+    .hero__sub {
+      margin-top: 24px;
+      font-size: clamp(16px, 1.7vw, 19px);
+      color: var(--muted);
+      max-width: 460px;
+    }
+    .hero .btn-row { margin-top: 36px; }
+    .hero__meta {
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      width: 100%;
+      max-width: 520px;
+    }
+
+    @media (min-width: 900px) {
+      .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 72px; }
+    }
+
+    /* =========================================================
+       8. PRODUIT
+       ========================================================= */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+    }
+    .feature {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature__icon {
+      width: 44px; height: 44px;
+      color: var(--bronze);
+      margin-bottom: 24px;
+    }
+    .feature__icon svg { width: 100%; height: 100%; }
+    .feature h3 { font-size: 24px; margin-bottom: 12px; }
+    .feature p { color: var(--muted); margin: 0; }
+    .feature .note { margin-top: 14px; display: block; }
+
+    @media (min-width: 640px) {
+      .features { grid-template-columns: 1fr 1fr; }
+      .feature { padding: 40px 32px 40px 0; }
+      .feature:nth-child(even) { padding: 40px 0 40px 32px; border-left: 1px solid var(--line); }
+    }
+    @media (min-width: 1024px) {
+      .features { grid-template-columns: repeat(4, 1fr); }
+      .feature, .feature:nth-child(even) { padding: 44px 28px; border-left: 1px solid var(--line); }
+      .feature:first-child { border-left: 0; padding-left: 0; }
+      .feature:last-child { padding-right: 0; }
+    }
+
+    .gallery {
+      margin-top: clamp(56px, 9vw, 104px);
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .gallery { grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 20px; }
+      .gallery .photo-placeholder:first-child { grid-row: span 2; height: 100%; aspect-ratio: auto; min-height: 520px; }
+    }
+
+    .specs {
+      margin-top: clamp(56px, 9vw, 104px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+    }
+    .spec {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .spec:nth-child(odd) { padding-right: 12px; }
+    .spec:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+    .spec dt {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .spec dd { margin: 0; font-family: var(--serif); font-size: clamp(19px, 2.2vw, 24px); }
+    @media (min-width: 900px) {
+      .specs { grid-template-columns: repeat(4, 1fr); }
+      .spec, .spec:nth-child(odd), .spec:nth-child(even) { padding: 26px 24px; border-left: 1px solid var(--line); }
+      .spec:first-child { border-left: 0; padding-left: 0; }
+    }
+
+    /* =========================================================
+       9. OFFRES
+       ========================================================= */
+    .offers {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+    @media (min-width: 900px) { .offers { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+    .offer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 28px 22px 26px;
+    }
+    @media (min-width: 640px) { .offer { padding: 36px 32px 32px; } }
+
+    .offer--featured {
+      border-color: var(--bronze);
+      background: var(--white);
+    }
+    .offer__badge {
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bronze);
+      color: var(--white);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      white-space: nowrap;
+    }
+    .offer .photo-placeholder { margin-bottom: 28px; }
+    .offer h3 { font-size: 26px; }
+    .offer__desc { color: var(--muted); margin-top: 10px; font-size: 15px; }
+    .offer__price {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .offer__price strong {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 1;
+    }
+    .offer__price span { font-size: 13px; color: var(--muted); }
+    .offer ul {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 28px;
+      font-size: 14.5px;
+    }
+    .offer li {
+      position: relative;
+      padding: 7px 0 7px 22px;
+    }
+    .offer li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 17px;
+      width: 10px; height: 1px;
+      background: var(--bronze);
+    }
+    .offer .btn { margin-top: auto; width: 100%; }
+
+    .offers-note { margin-top: 32px; text-align: center; }
+
+    /* =========================================================
+       10. COMPARATIF
+       ========================================================= */
+    .compare-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(26px, 4.6vw, 44px);
+      line-height: 1.2;
+      max-width: 860px;
+      margin: 0 0 clamp(44px, 7vw, 72px);
+      padding-left: 22px;
+      border-left: 1px solid var(--bronze);
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    .compare th, .compare td {
+      text-align: left;
+      vertical-align: top;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .compare thead th {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 0;
+      border-bottom-color: var(--text);
+    }
+    .compare thead th.is-us { color: var(--bronze); }
+    .compare tbody th {
+      font-weight: 400;
+      color: var(--muted);
+      width: 30%;
+      padding-right: 20px;
+    }
+    .compare td { padding-right: 20px; }
+    .compare td.is-us {
+      font-family: var(--serif);
+      font-size: 19px;
+      color: var(--text);
+    }
+    .compare td:last-child { color: var(--muted); padding-right: 0; }
+
+    /* Sur mobile : chaque ligne devient une petite carte */
+    @media (max-width: 719px) {
+      .compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: 100%; }
+      .compare tr { padding: 22px 0; border-bottom: 1px solid var(--line); }
+      .compare tbody tr:first-child { border-top: 1px solid var(--line); }
+      .compare th, .compare td { border: 0; padding: 0; }
+      .compare tbody th {
+        width: 100%;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .compare td {
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: 12px;
+        padding: 4px 0;
+      }
+      .compare td::before {
+        content: attr(data-label);
+        font-family: var(--sans);
+        font-size: 12px;
+        color: var(--muted);
+        padding-top: 3px;
+      }
+      .compare td.is-us::before { color: var(--bronze); }
+    }
+
+    .compare-foot { margin-top: 22px; max-width: 760px; }
+
+    /* =========================================================
+       11. GUIDE
+       ========================================================= */
+    .guide-block + .guide-block { margin-top: clamp(64px, 10vw, 112px); }
+    .guide-block__head {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .guide-block__head h3 { font-size: clamp(26px, 3.6vw, 34px); }
+    .guide-block__head p { color: var(--muted); margin: 0; }
+
+    .steps {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: grid;
+      gap: 0;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      counter-reset: step;
+    }
+    .step {
+      counter-increment: step;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 4px 12px;
+    }
+    .step::before {
+      content: "0" counter(step);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 30px;
+      line-height: 1;
+      color: var(--bronze);
+      grid-row: span 2;
+    }
+    .step h4 {
+      margin: 2px 0 6px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+    .step .photo-placeholder { grid-column: 1 / -1; margin-top: 20px; }
+
+    @media (min-width: 900px) {
+      .steps { grid-template-columns: repeat(3, 1fr); border-top: 0; }
+      .step {
+        display: flex;
+        flex-direction: column;
+        padding: 32px 28px 0;
+        border-bottom: 0;
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+      .step:first-child { border-left: 0; padding-left: 0; }
+      .step:last-child { padding-right: 0; }
+      .step::before { margin-bottom: 20px; }
+      .step .photo-placeholder { margin-top: 24px; order: 3; }
+    }
+
+    .tbc {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--bronze);
+      border: 1px solid var(--bronze);
+      padding: 1px 6px;
+      margin-left: 4px;
+      vertical-align: 1px;
+      white-space: nowrap;
+    }
+
+    .precautions {
+      margin-top: clamp(64px, 10vw, 112px);
+      border: 1px solid var(--line);
+      padding: 28px 22px;
+      display: grid;
+      gap: 24px;
+    }
+    @media (min-width: 640px) { .precautions { padding: 40px; } }
+    @media (min-width: 900px) { .precautions { grid-template-columns: 1fr 2fr; gap: 48px; } }
+    .precautions h3 { font-size: 28px; }
+    .precautions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+    @media (min-width: 640px) { .precautions ul { grid-template-columns: 1fr 1fr; column-gap: 32px; } }
+    .precautions li {
+      padding: 14px 0 14px 22px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      font-size: 15px;
+    }
+    .precautions li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 25px;
+      width: 10px; height: 1px;
+      background: var(--bronze);
+    }
+
+    /* =========================================================
+       12. RECHARGES
+       ========================================================= */
+    .refill {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 900px) { .refill { grid-template-columns: 1fr 1fr; gap: 80px; } }
+
+    .timeline {
+      margin: 36px 0 0;
+      border-top: 1px solid var(--line);
+    }
+    .timeline__row {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .timeline__row dt {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--bronze);
+    }
+    .timeline__row dd { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .refill__cta {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .refill__price {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .refill__price strong { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1; }
+    .refill__price span { color: var(--muted); font-size: 14px; }
+    @media (min-width: 560px) { .refill__cta .btn { align-self: flex-start; min-width: 280px; } }
+
+    /* =========================================================
+       13. FAQ
+       ========================================================= */
+    .faq { border-top: 1px solid var(--line); max-width: 860px; }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 24px 40px 24px 0;
+      position: relative;
+      font-family: var(--serif);
+      font-size: clamp(19px, 2.4vw, 23px);
+      line-height: 1.3;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::before,
+    .faq summary::after {
+      content: "";
+      position: absolute;
+      right: 4px; top: 50%;
+      width: 14px; height: 1px;
+      background: var(--bronze);
+      transition: transform .3s var(--ease);
+    }
+    .faq summary::after { transform: rotate(90deg); }
+    .faq details[open] summary::after { transform: rotate(0deg); }
+    .faq details > div { padding: 0 40px 26px 0; color: var(--muted); }
+    .faq details > div p:last-child { margin: 0; }
+
+    /* =========================================================
+       14. LANCEMENT (formulaire email)
+       ========================================================= */
+    .launch {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .launch .eyebrow { justify-content: center; }
+    .launch .eyebrow::after {
+      content: "";
+      width: 28px; height: 1px;
+      background: var(--bronze);
+    }
+    .launch h2 { font-size: clamp(34px, 6.4vw, 60px); max-width: 760px; }
+    .launch h2 em { color: var(--bronze); }
+    .launch > p { color: var(--muted); max-width: 520px; margin: 22px auto 0; }
+
+    .signup {
+      width: 100%;
+      max-width: 560px;
+      margin-top: 40px;
+      text-align: left;
+    }
+    .signup__row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .signup label.visually-hidden,
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .signup input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      min-height: 54px;
+      padding: 14px 18px;
+      font-family: var(--sans);
+      font-size: 16px; /* évite le zoom iOS */
+      font-weight: 300;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color .25s var(--ease);
+    }
+    .signup input[type="email"]::placeholder { color: #8f8476; }
+    .signup input[type="email"]:focus { outline: none; border-color: var(--bronze); }
+    .signup input[aria-invalid="true"] { border-color: #9a4a3a; }
+    @media (min-width: 560px) {
+      .signup__row { flex-direction: row; gap: 0; }
+      .signup__row input[type="email"] { border-right: 0; }
+    }
+
+    .signup__consent {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .signup__consent input {
+      flex: none;
+      width: 16px; height: 16px;
+      margin: 2px 0 0;
+      accent-color: var(--bronze);
+    }
+    .signup__msg {
+      min-height: 1.5em;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .signup__msg.is-error { color: #9a4a3a; }
+    .signup__msg.is-ok { color: var(--bronze); }
+
+    .signup.is-done .signup__row,
+    .signup.is-done .signup__consent { display: none; }
+    .signup.is-done .signup__msg {
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    /* =========================================================
+       15. FOOTER
+       ========================================================= */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 64px 0 40px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer__grid {
+      display: grid;
+      gap: 40px;
+    }
+    @media (min-width: 900px) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+    .footer .logo { align-items: flex-start; }
+    .footer__about { margin-top: 22px; max-width: 340px; }
+    .footer h4 {
+      margin: 0 0 16px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--text); }
+    .footer__bottom {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+    }
+    @media (min-width: 720px) { .footer__bottom { flex-direction: row; justify-content: space-between; } }
+
+    /* =========================================================
+       16. APPARITION AU DÉFILEMENT
+       ========================================================= */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .no-js .reveal { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="no-js">
+  <a class="skip-link" href="#accueil">Aller au contenu</a>
+
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="logo" href="#accueil" aria-label="CERAÏA, retour à l'accueil">
+        <span class="logo__name">CERAÏA</span>
+        <span class="logo__rule" aria-hidden="true"></span>
+        <span class="logo__tag">Douche filtrante</span>
+      </a>
+
+      <nav aria-label="Navigation principale">
+        <ul class="nav__links">
+          <li><a href="#produit">Produit</a></li>
+          <li><a href="#offres">Offres</a></li>
+          <li><a href="#comparatif">Comparatif</a></li>
+          <li><a href="#guide">Guide</a></li>
+          <li><a href="#recharges">Recharges</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#lancement">Lancement</a></li>
+        </ul>
+      </nav>
+
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul>
+      <li><a href="#produit">Produit <small>01</small></a></li>
+      <li><a href="#offres">Offres <small>02</small></a></li>
+      <li><a href="#comparatif">Comparatif <small>03</small></a></li>
+      <li><a href="#guide">Guide <small>04</small></a></li>
+      <li><a href="#recharges">Recharges <small>05</small></a></li>
+      <li><a href="#faq">FAQ <small>06</small></a></li>
+    </ul>
+    <a class="btn" href="#lancement">Soyez prévenu du lancement</a>
+  </div>
+
+  <main>
+
+    <!-- =========================================================
+         1. ACCUEIL
+         ========================================================= -->
+    <section class="hero" id="accueil">
+      <div class="container hero__grid">
+        <div class="hero__text reveal">
+          <div class="logo logo--large" aria-hidden="true">
+            <span class="logo__name">CERAÏA</span>
+            <span class="logo__rule"></span>
+            <span class="logo__tag">Douche filtrante</span>
+          </div>
+
+          <h1>L'eau, en mieux.</h1>
+          <p class="hero__sub">
+            Un pommeau de douche filtrant au design épuré, pensé à Nantes.
+            Moins de chlore, moins d'odeur de chlore, une eau plus agréable au quotidien.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn" href="#lancement">
+              Soyez prévenu du lancement <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="btn btn-amazon js-amazon" href="#" aria-disabled="true">
+              <span class="btn-amazon__label">Acheter sur Amazon</span>
+              <span class="btn-amazon__soon">Bientôt disponible</span>
+            </a>
+          </div>
+
+          <div class="hero__meta">
+            <span>Marque française</span>
+            <span>Née à Nantes</span>
+            <span>Raccord standard G1/2</span>
+          </div>
+        </div>
+
+        <!-- PHOTO : Photo principale du pommeau CERAÏA. Tête en anneau blanc mat, logo gravé visible, sur fond sable clair, lumière naturelle douce. Format vertical 4:5. -->
+        <div class="photo-placeholder ratio-4x5 reveal">
+          <span>Photo à venir : le pommeau CERAÏA en anneau blanc mat, logo gravé, sur fond sable</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         2. PRODUIT
+         ========================================================= -->
+    <section class="section section--sand" id="produit">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Le produit</span>
+          <h2>Une douche, <em>simplement</em> plus douce.</h2>
+          <p>Deux étapes de filtration, une forme en anneau et une installation sans outil. L'essentiel, sans rien de superflu.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <div class="feature__icon" aria-hidden="true">
+              <!-- Goutte -->
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 5c6 8.5 13 16 13 24a13 13 0 0 1-26 0c0-8 7-15.5 13-24z"/>
+                <path d="M17 30a7 7 0 0 0 7 7"/>
+              </svg>
+            </div>
+            <h3>Moins de chlore</h3>
+            <p>Jusqu'à 98 % de chlore en moins pour une eau plus agréable au quotidien, et moins d'odeur de chlore dans la salle de bain.</p>
+            <span class="note">Test du fabricant, filtre neuf, eau à 40 °C, méthode NSF/ANSI 177.</span>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon" aria-hidden="true">
+              <!-- Deux couches -->
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="17" y="6" width="14" height="36" rx="7"/>
+                <path d="M17 18h14M17 30h14"/>
+                <circle cx="24" cy="12" r="1"/>
+                <circle cx="21" cy="24" r="1"/><circle cx="27" cy="24" r="1"/>
+                <circle cx="24" cy="36" r="1"/>
+              </svg>
+            </div>
+            <h3>Double filtration</h3>
+            <p>Une cartouche de sulfite de calcium logée dans le manche, complétée par une couche de KDF dans la tête. Deux étapes, un seul geste.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon" aria-hidden="true">
+              <!-- Anneau -->
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="18" r="12"/>
+                <circle cx="24" cy="18" r="7"/>
+                <path d="M24 30v13"/>
+              </svg>
+            </div>
+            <h3>Design en anneau</h3>
+            <p>Une tête circulaire en blanc mat, traitée anti-UV pour garder sa teinte, avec le logo gravé. Discret, il se fond dans toutes les salles de bain.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon" aria-hidden="true">
+              <!-- Main / rotation -->
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="24" r="17"/>
+                <path d="M24 12v12l7 5"/>
+                <path d="M38 9v6h-6"/>
+              </svg>
+            </div>
+            <h3>Installé en 30 secondes</h3>
+            <p>Raccord standard G1/2 : il se visse à la main sur votre flexible, sans outil ni plombier. Le joint est fourni.</p>
+          </article>
+        </div>
+
+        <div class="gallery">
+          <!-- PHOTO : Vue en situation. Le pommeau CERAÏA fixé dans une douche à carreaux clairs, eau qui coule, lumière du matin. Format vertical. -->
+          <div class="photo-placeholder ratio-4x5">
+            <span>Photo à venir : CERAÏA en situation dans une douche lumineuse, eau qui coule</span>
+          </div>
+          <!-- PHOTO : Gros plan sur le logo CERAÏA gravé dans le blanc mat de la tête en anneau. Format paysage. -->
+          <div class="photo-placeholder ratio-16x9">
+            <span>Photo à venir : gros plan sur le logo gravé et la finition blanc mat</span>
+          </div>
+          <!-- PHOTO : Vue éclatée ou à plat : manche ouvert, cartouche de sulfite de calcium sortie, joint et tête posés sur un fond sable. Format paysage. -->
+          <div class="photo-placeholder ratio-16x9">
+            <span>Photo à venir : le manche ouvert et la cartouche de recharge posés à plat</span>
+          </div>
+        </div>
+
+        <dl class="specs">
+          <div class="spec"><dt>Débit</dt><dd>9,5 L/min</dd></div>
+          <div class="spec"><dt>Jet</dt><dd>1 mode</dd></div>
+          <div class="spec"><dt>Raccord</dt><dd>Standard G1/2</dd></div>
+          <div class="spec"><dt>Cartouche</dt><dd>Tous les 2 mois env.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. OFFRES
+         ========================================================= -->
+    <section class="section" id="offres">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Les offres</span>
+          <h2>Choisissez votre <em>formule</em>.</h2>
+          <p>Le pommeau seul, le kit complet avec flexible, ou les recharges pour continuer.</p>
+        </div>
+
+        <div class="offers">
+          <article class="offer reveal">
+            <!-- PHOTO : Le pommeau CERAÏA seul, posé ou suspendu, fond sable uni. Format carré. -->
+            <div class="photo-placeholder ratio-1x1">
+              <span>Photo à venir : le pommeau CERAÏA seul</span>
+            </div>
+            <h3>Pommeau CERAÏA</h3>
+            <p class="offer__desc">Le pommeau filtrant, prêt à visser sur votre flexible.</p>
+            <div class="offer__price"><strong>49,90 €</strong></div>
+            <ul>
+              <li>Pommeau en anneau blanc mat</li>
+              <li>Cartouche de sulfite de calcium incluse</li>
+              <li>Joint fourni, raccord G1/2</li>
+            </ul>
+            <a class="btn btn-amazon js-amazon" href="#" aria-disabled="true">
+              <span class="btn-amazon__label">Acheter sur Amazon</span>
+              <span class="btn-amazon__soon">Bientôt disponible</span>
+            </a>
+          </article>
+
+          <article class="offer offer--featured reveal">
+            <span class="offer__badge">Le plus complet</span>
+            <!-- PHOTO : Le kit : pommeau CERAÏA + flexible blanc de 150 cm enroulé, fond sable. Format carré. -->
+            <div class="photo-placeholder ratio-1x1">
+              <span>Photo à venir : le pommeau et son flexible blanc enroulé</span>
+            </div>
+            <h3>Kit pommeau + flexible</h3>
+            <p class="offer__desc">Le pommeau et un flexible blanc assorti de 150 cm.</p>
+            <div class="offer__price"><strong>57,90 €</strong></div>
+            <ul>
+              <li>Pommeau en anneau blanc mat</li>
+              <li>Flexible blanc 150 cm</li>
+              <li>Cartouche incluse, joint fourni</li>
+            </ul>
+            <a class="btn btn-amazon js-amazon" href="#" aria-disabled="true">
+              <span class="btn-amazon__label">Acheter sur Amazon</span>
+              <span class="btn-amazon__soon">Bientôt disponible</span>
+            </a>
+          </article>
+
+          <article class="offer reveal">
+            <!-- PHOTO : Deux cartouches de recharge CERAÏA côte à côte, dans ou devant leur emballage. Format carré. -->
+            <div class="photo-placeholder ratio-1x1">
+              <span>Photo à venir : le pack de deux cartouches de recharge</span>
+            </div>
+            <h3>Pack 2 recharges</h3>
+            <p class="offer__desc">Deux cartouches de sulfite de calcium pour le manche.</p>
+            <div class="offer__price"><strong>19,90 €</strong><span>environ 4 mois de filtration</span></div>
+            <ul>
+              <li>2 cartouches de recharge</li>
+              <li>Une cartouche tous les 2 mois environ</li>
+              <li>Remplacement en quelques secondes</li>
+            </ul>
+            <a class="btn btn-amazon js-amazon" href="#" aria-disabled="true">
+              <span class="btn-amazon__label">Acheter sur Amazon</span>
+              <span class="btn-amazon__soon">Bientôt disponible</span>
+            </a>
+          </article>
+        </div>
+
+        <p class="note offers-note">Prix TTC indicatifs. Vente prévue sur Amazon au lancement.</p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. COMPARATIF
+         ========================================================= -->
+    <section class="section section--sand" id="comparatif">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Comparatif</span>
+          <h2>Un comparatif <em>honnête</em>.</h2>
+          <p>CERAÏA face à un pommeau filtrant premium classique, tel qu'on en trouve couramment sur le marché.</p>
+        </div>
+
+        <blockquote class="compare-quote reveal">
+          Le design d'un pommeau à 80 €, des recharges 2 fois moins chères.
+        </blockquote>
+
+        <div class="reveal">
+          <table class="compare">
+            <caption class="visually-hidden">Comparaison entre CERAÏA et un pommeau filtrant premium classique</caption>
+            <thead>
+              <tr>
+                <th scope="col">Critère</th>
+                <th scope="col" class="is-us">CERAÏA</th>
+                <th scope="col">Pommeau filtrant premium classique</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Prix du pommeau</th>
+                <td class="is-us" data-label="CERAÏA">49,90 €</td>
+                <td data-label="Classique">Environ 80 €</td>
+              </tr>
+              <tr>
+                <th scope="row">Coût des recharges par an</th>
+                <td class="is-us" data-label="CERAÏA">Environ 60 €</td>
+                <td data-label="Classique">130 à 150 €</td>
+              </tr>
+              <tr>
+                <th scope="row">Filtration</th>
+                <td class="is-us" data-label="CERAÏA">Sulfite de calcium + KDF</td>
+                <td data-label="Classique">Variable selon les modèles</td>
+              </tr>
+              <tr>
+                <th scope="row">Design</th>
+                <td class="is-us" data-label="CERAÏA">Anneau blanc mat</td>
+                <td data-label="Classique">Souvent chromé</td>
+              </tr>
+              <tr>
+                <th scope="row">Service client</th>
+                <td class="is-us" data-label="CERAÏA">En français, réponse sous 24 h</td>
+                <td data-label="Classique">Variable</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note compare-foot">
+            Coût annuel CERAÏA calculé sur 6 cartouches par an (une tous les 2 mois environ) au prix du pack de 2 à 19,90 €.
+            Les valeurs du pommeau classique sont des moyennes de prix constatées et peuvent varier.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. GUIDE
+         ========================================================= -->
+    <section class="section" id="guide">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Guide</span>
+          <h2>Installer, <em>entretenir</em>.</h2>
+          <p>Aucun outil, aucun plombier. Quelques gestes suffisent.</p>
+        </div>
+
+        <div class="guide-block reveal">
+          <div class="guide-block__head">
+            <h3>Installation en 3 étapes</h3>
+            <p>Environ 30 secondes, à la main.</p>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <h4>Dévisser l'ancien pommeau</h4>
+              <p>Tournez-le dans le sens inverse des aiguilles d'une montre pour le retirer du flexible.</p>
+              <!-- PHOTO : Main qui dévisse un ancien pommeau de son flexible. Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : dévissage de l'ancien pommeau</span></div>
+            </li>
+            <li class="step">
+              <h4>Placer le joint et visser CERAÏA</h4>
+              <p>Insérez le joint fourni dans le raccord, puis vissez CERAÏA à la main, sans forcer.</p>
+              <!-- PHOTO : Gros plan sur le joint placé dans le raccord, puis main qui visse CERAÏA. Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : mise en place du joint et vissage à la main</span></div>
+            </li>
+            <li class="step">
+              <h4>Laisser couler l'eau froide</h4>
+              <p>Faites couler l'eau froide pendant 30 secondes avant la première douche.</p>
+              <!-- PHOTO : CERAÏA installé, eau froide qui coule. Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : premier rinçage à l'eau froide</span></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="guide-block reveal">
+          <div class="guide-block__head">
+            <h3>Changer la cartouche</h3>
+            <p>Tous les 2 mois environ.</p>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <h4>Ouvrir le manche</h4>
+              <p>Ouvrez le manche du pommeau pour accéder à la cartouche. <span class="tbc">GESTE À CONFIRMER</span></p>
+              <!-- PHOTO : Mains qui ouvrent le manche du pommeau (geste exact à confirmer). Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : ouverture du manche</span></div>
+            </li>
+            <li class="step">
+              <h4>Remplacer la cartouche</h4>
+              <p>Retirez la cartouche usagée et insérez une cartouche neuve dans le bon sens.</p>
+              <!-- PHOTO : Cartouche usagée retirée, cartouche neuve insérée dans le manche. Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : remplacement de la cartouche</span></div>
+            </li>
+            <li class="step">
+              <h4>Refermer et rincer</h4>
+              <p>Refermez le manche, puis laissez couler l'eau pendant 30 secondes.</p>
+              <!-- PHOTO : Manche refermé, eau qui coule. Format paysage. -->
+              <div class="photo-placeholder ratio-16x9"><span>Photo à venir : manche refermé et rinçage</span></div>
+            </li>
+          </ol>
+        </div>
+
+        <aside class="precautions reveal" aria-labelledby="precautions-title">
+          <div>
+            <span class="eyebrow">À savoir</span>
+            <h3 id="precautions-title">Précautions d'usage</h3>
+          </div>
+          <ul>
+            <li>Eau à 60 °C maximum <span class="tbc">À CONFIRMER</span></li>
+            <li>Ne pas exposer au gel</li>
+            <li>Ne pas boire l'eau filtrée</li>
+            <li>Joint et cartouches hors de portée des jeunes enfants</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. RECHARGES
+         ========================================================= -->
+    <section class="section section--sand" id="recharges">
+      <div class="container refill">
+        <div class="reveal">
+          <span class="eyebrow">Recharges</span>
+          <h2 style="font-size: clamp(32px, 6vw, 56px);">Une cartouche, <em style="color: var(--bronze);">tous les 2 mois</em>.</h2>
+          <p style="margin-top: 22px; color: var(--muted); max-width: 520px;">
+            La cartouche de sulfite de calcium s'use au fil des douches. Pour garder une eau agréable, remplacez-la tous les 2 mois environ.
+            Selon l'eau de votre région, elle peut changer de couleur : c'est normal, et ce n'est pas un défaut.
+          </p>
+
+          <dl class="timeline">
+            <div class="timeline__row"><dt>Jour 1</dt><dd>Cartouche neuve, rinçage de 30 secondes.</dd></div>
+            <div class="timeline__row"><dt>Mois 1</dt><dd>La cartouche peut prendre une teinte différente selon votre eau.</dd></div>
+            <div class="timeline__row"><dt>Mois 2</dt><dd>Moment de la remplacer par une cartouche neuve.</dd></div>
+          </dl>
+
+          <div class="refill__cta">
+            <div class="refill__price"><strong>19,90 €</strong><span>le pack de 2, environ 4 mois de filtration</span></div>
+            <a class="btn btn-amazon js-amazon" href="#" aria-disabled="true">
+              <span class="btn-amazon__label">Acheter les recharges sur Amazon</span>
+              <span class="btn-amazon__soon">Bientôt disponible</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- PHOTO : Une cartouche neuve à côté d'une cartouche usagée, pour montrer le changement de teinte possible. Fond sable, lumière douce. Format vertical 3:4. -->
+        <div class="photo-placeholder ratio-3x4 reveal">
+          <span>Photo à venir : cartouche neuve et cartouche usagée côte à côte</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         7. FAQ
+         ========================================================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Questions fréquentes</span>
+          <h2>Vos <em>questions</em>.</h2>
+        </div>
+
+        <div class="faq reveal">
+          <details>
+            <summary>CERAÏA est-il compatible avec ma douche ?</summary>
+            <div><p>CERAÏA utilise un raccord standard G1/2, celui de la grande majorité des flexibles de douche en France. Si votre flexible est usé ou d'une autre couleur, le kit avec flexible blanc de 150 cm est une bonne option.</p></div>
+          </details>
+          <details>
+            <summary>Que signifie « jusqu'à 98 % de chlore en moins » ?</summary>
+            <div><p>C'est le résultat d'un test du fabricant, réalisé avec un filtre neuf et une eau à 40 °C, selon la méthode NSF/ANSI 177. L'efficacité diminue naturellement avec l'usure de la cartouche, d'où un remplacement tous les 2 mois environ.</p></div>
+          </details>
+          <details>
+            <summary>À quelle fréquence changer la cartouche ?</summary>
+            <div><p>Tous les 2 mois environ. Un pack de 2 cartouches couvre donc environ 4 mois de filtration.</p></div>
+          </details>
+          <details>
+            <summary>La cartouche a changé de couleur, est-ce normal ?</summary>
+            <div><p>Oui. Selon la composition de l'eau de votre région, la cartouche peut changer de teinte. Ce n'est pas un défaut.</p></div>
+          </details>
+          <details>
+            <summary>Combien de modes de jet propose CERAÏA ?</summary>
+            <div><p>Un seul, pensé pour une douche simple et enveloppante, avec un débit de 9,5 L/min.</p></div>
+          </details>
+          <details>
+            <summary>Peut-on boire l'eau filtrée ?</summary>
+            <div><p>Non. CERAÏA est conçu uniquement pour la douche. L'eau qui en sort n'est pas destinée à être bue.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         8. LANCEMENT (formulaire email)
+         ========================================================= -->
+    <section class="section section--sand" id="lancement">
+      <div class="container launch reveal">
+        <span class="eyebrow">Lancement</span>
+        <h2>Soyez prévenu <em>du lancement</em>.</h2>
+        <p>Laissez votre email : vous serez parmi les premiers informés de la disponibilité de CERAÏA. Un seul message, pas de spam.</p>
+
+        <form class="signup" id="signup" novalidate>
+          <div class="signup__row">
+            <label class="visually-hidden" for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.fr" autocomplete="email" inputmode="email" required />
+            <button class="btn" type="submit">M'inscrire <span class="arrow" aria-hidden="true"></span></button>
+          </div>
+          <label class="signup__consent">
+            <input type="checkbox" id="consent" name="consent" required />
+            <span>J'accepte de recevoir un email de CERAÏA au lancement. Désinscription possible à tout moment.</span>
+          </label>
+          <p class="signup__msg" id="signup-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="logo" href="#accueil" aria-label="CERAÏA, retour à l'accueil">
+            <span class="logo__name">CERAÏA</span>
+            <span class="logo__rule" aria-hidden="true"></span>
+            <span class="logo__tag">Douche filtrante</span>
+          </a>
+          <p class="footer__about">Une marque française, née à Nantes. Un pommeau de douche filtrant pour une eau plus agréable au quotidien.</p>
+        </div>
+        <div>
+          <h4>Découvrir</h4>
+          <ul>
+            <li><a href="#produit">Le produit</a></li>
+            <li><a href="#offres">Les offres</a></li>
+            <li><a href="#comparatif">Comparatif</a></li>
+            <li><a href="#recharges">Recharges</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aide</h4>
+          <ul>
+            <li><a href="#guide">Guide d'installation</a></li>
+            <li><a href="#faq">Questions fréquentes</a></li>
+            <li><a href="#lancement">Être prévenu du lancement</a></li>
+            <!-- À compléter : adresse email du service client -->
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> CERAÏA. Tous droits réservés.</span>
+        <span>Jusqu'à 98 % de chlore en moins : test du fabricant, filtre neuf, eau à 40 °C, méthode NSF/ANSI 177.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================
+       CONFIGURATION
+       Remplissez AMAZON_URL avec le lien de la fiche produit :
+       tous les boutons « Acheter sur Amazon » s'activeront
+       automatiquement et ouvriront ce lien dans un nouvel onglet.
+       ========================================================= */
+    const AMAZON_URL = "";
+
+    /* Optionnel : URL d'un service de formulaire (Formspree, Brevo,
+       webhook...) qui reçoit l'email en POST JSON. Laisser vide pour
+       une simple confirmation à l'écran. */
+    const SIGNUP_ENDPOINT = "";
+
+    (function () {
+      "use strict";
+      document.body.classList.remove("no-js");
+
+      /* ---------- Boutons Amazon ---------- */
+      const amazonButtons = document.querySelectorAll(".js-amazon");
+      const amazonReady = typeof AMAZON_URL === "string" && AMAZON_URL.trim() !== "";
+
+      amazonButtons.forEach(function (btn) {
+        if (amazonReady) {
+          btn.href = AMAZON_URL.trim();
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
+          btn.removeAttribute("aria-disabled");
+          btn.removeAttribute("tabindex");
+        } else {
+          btn.setAttribute("aria-disabled", "true");
+          btn.setAttribute("tabindex", "-1");
+          btn.removeAttribute("href");
+          btn.setAttribute("role", "link");
+          btn.addEventListener("click", function (e) { e.preventDefault(); });
+        }
+      });
+
+      /* ---------- Navigation : ombre au défilement ---------- */
+      const nav = document.getElementById("nav");
+      function onScroll() { nav.classList.toggle("is-scrolled", window.scrollY > 8); }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* ---------- Menu burger ---------- */
+      const burger = document.getElementById("burger");
+      const menu = document.getElementById("mobile-menu");
+
+      function setMenu(open) {
+        burger.setAttribute("aria-expanded", String(open));
+        burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+        menu.classList.toggle("is-open", open);
+        menu.setAttribute("aria-hidden", String(!open));
+        document.body.classList.toggle("menu-open", open);
+      }
+      burger.addEventListener("click", function () {
+        setMenu(burger.getAttribute("aria-expanded") !== "true");
+      });
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { setMenu(false); });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) { setMenu(false); burger.focus(); }
+      });
+      window.matchMedia("(min-width: 1024px)").addEventListener("change", function (mq) {
+        if (mq.matches) setMenu(false);
+      });
+
+      /* ---------- Lien actif dans la navigation ---------- */
+      const links = document.querySelectorAll(".nav__links a");
+      const sections = Array.prototype.map.call(links, function (a) {
+        return document.querySelector(a.getAttribute("href"));
+      }).filter(Boolean);
+
+      if ("IntersectionObserver" in window) {
+        const spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              links.forEach(function (a) {
+                a.classList.toggle("is-active", a.getAttribute("href") === "#" + entry.target.id);
+              });
+            }
+          });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        sections.forEach(function (s) { spy.observe(s); });
+
+        /* ---------- Apparition douce au défilement ---------- */
+        const revealer = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+        document.querySelectorAll(".reveal").forEach(function (el) { revealer.observe(el); });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+      }
+
+      /* ---------- Formulaire email ---------- */
+      const form = document.getElementById("signup");
+      const email = document.getElementById("email");
+      const consent = document.getElementById("consent");
+      const msg = document.getElementById("signup-msg");
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      function showMsg(text, type) {
+        msg.textContent = text;
+        msg.className = "signup__msg" + (type ? " is-" + type : "");
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const value = email.value.trim();
+
+        if (!EMAIL_RE.test(value)) {
+          email.setAttribute("aria-invalid", "true");
+          showMsg("Merci d'indiquer une adresse email valide.", "error");
+          email.focus();
+          return;
+        }
+        email.removeAttribute("aria-invalid");
+
+        if (!consent.checked) {
+          showMsg("Merci de cocher la case pour confirmer votre inscription.", "error");
+          consent.focus();
+          return;
+        }
+
+        function done() {
+          form.classList.add("is-done");
+          showMsg("Merci, nous vous écrirons au lancement.", "ok");
+        }
+
+        if (SIGNUP_ENDPOINT.trim() === "") { done(); return; }
+
+        const submit = form.querySelector("button[type=submit]");
+        submit.disabled = true;
+        showMsg("Envoi en cours...", "");
+
+        fetch(SIGNUP_ENDPOINT.trim(), {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ email: value, source: "ceraia-landing" })
+        }).then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          done();
+        }).catch(function () {
+          submit.disabled = false;
+          showMsg("Une erreur est survenue. Merci de réessayer dans un instant.", "error");
+        });
+      });
+
+      email.addEventListener("input", function () {
+        if (email.getAttribute("aria-invalid")) { email.removeAttribute("aria-invalid"); showMsg("", ""); }
+      });
+
+      /* ---------- Année du footer ---------- */
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
