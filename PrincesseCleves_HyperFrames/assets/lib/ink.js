@@ -137,11 +137,12 @@
   // data-w = index du mot dans la phrase (0, 1, 2…). sceneStart = début absolu de la scène.
   INK.karaoke = function (tl, els, words, sceneStart, o) {
     o = o || {};
-    var grey = o.grey || INK.C.gris, ink = o.ink || INK.C.encre, lead = o.lead != null ? o.lead : 0.02;
+    // le mot est entièrement noir « lead » secondes avant son début (0,05 s par défaut)
+    var grey = o.grey || INK.C.gris, ink = o.ink || INK.C.encre, lead = o.lead != null ? o.lead : 0.05, dur = 0.06;
     for (var i = 0; i < els.length; i++) {
       var w = words[+els[i].dataset.w];
       if (!w) continue;
-      tl.fromTo(els[i], { color: grey }, { color: ink, duration: 0.1, ease: 'none' }, Math.max(0, w[1] - sceneStart - lead));
+      tl.fromTo(els[i], { color: grey }, { color: ink, duration: dur, ease: 'none' }, Math.max(0, w[1] - sceneStart - lead - dur));
     }
   };
   INK.wordTime = function (words, i, sceneStart) { return words[i][1] - sceneStart; };
@@ -153,7 +154,7 @@
 
   // Écriture à la plume : la ligne se révèle de gauche à droite, la plume suit le bord.
   INK.write = function (tl, line, t, dur, nib) {
-    tl.fromTo(line, { clipPath: 'inset(-30% 100% -30% -2%)' }, { clipPath: 'inset(-30% 0% -30% -2%)', duration: dur, ease: 'none' }, t);
+    tl.fromTo(line, { clipPath: 'inset(-30% 103% -30% -3%)' }, { clipPath: 'inset(-30% 0% -30% -3%)', duration: dur, ease: 'none' }, t);
     if (nib) {
       var w = line.offsetWidth, x0 = line.offsetLeft, y0 = line.offsetTop + line.offsetHeight * 0.62;
       tl.set(nib, { opacity: 1 }, t);
@@ -164,6 +165,114 @@
         tl.to(nib, { yPercent: (k % 2 ? -1 : 1) * 60, duration: dur / steps, ease: 'sine.inOut' }, t + k * dur / steps);
       }
       tl.set(nib, { opacity: 0, yPercent: 0 }, t + dur + 0.05);
+    }
+  };
+
+  // ---------- apparitions communes ----------
+  // visible de tIn à tOut, en coupe franche
+  INK.cut = function (tl, el, tIn, tOut) {
+    tl.set(el, { opacity: 0 }, 0);
+    tl.set(el, { opacity: 1 }, tIn);
+    if (tOut != null) tl.set(el, { opacity: 0 }, tOut);
+  };
+  // pièce de collage qui se pose sur le papier (légère rotation finale o.rot)
+  INK.pin = function (tl, el, t, o) {
+    o = o || {}; var r = o.rot || 0, dir = r >= 0 ? 1 : -1;
+    tl.fromTo(el, { opacity: 0, scale: o.from || 1.07, rotation: r + 3 * dir, x: o.dx || 0, y: o.dy != null ? o.dy : -14 },
+      { opacity: 1, scale: 1, rotation: r, x: 0, y: 0, duration: o.dur || 0.45, ease: o.ease || 'expo.out' }, t);
+  };
+  // retrait d'une pièce (sortie plus courte que l'entrée)
+  INK.unpin = function (tl, el, t, o) {
+    o = o || {};
+    tl.to(el, { opacity: 0, x: o.dx || 0, y: o.dy != null ? o.dy : -20, duration: o.dur || 0.25, ease: 'power3.in' }, t);
+  };
+  // fondu court (légendes)
+  INK.fade = function (tl, el, t, dur) {
+    tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: dur || 0.35, ease: 'power2.out' }, t);
+  };
+  // mots qui apparaissent en coupe franche au moment où ils sont dits (lead s avant ; data-w = index du mot)
+  INK.wordsIn = function (tl, els, words, sceneStart, lead) {
+    lead = lead != null ? lead : 0.05;
+    for (var i = 0; i < els.length; i++) {
+      var w = words[+els[i].dataset.w];
+      if (!w) continue;
+      tl.set(els[i], { opacity: 0 }, 0);
+      tl.set(els[i], { opacity: 1 }, Math.max(0, w[1] - sceneStart - lead));
+    }
+  };
+  // suite de coupes franches à des temps donnés
+  INK.seqIn = function (tl, els, times) {
+    for (var i = 0; i < els.length; i++) { tl.set(els[i], { opacity: 0 }, 0); tl.set(els[i], { opacity: 1 }, times[i]); }
+  };
+  // petits points qui dérivent lentement (déterministe)
+  INK.drift = function (tl, els, t, dur, amp, seed) {
+    var r = INK.rng(seed || 3);
+    for (var i = 0; i < els.length; i++) {
+      tl.fromTo(els[i], { x: 0, y: 0 }, { x: (r() * 2 - 1) * amp, y: (r() * 2 - 1) * amp, duration: dur, ease: 'sine.inOut' }, t);
+    }
+  };
+
+  // ---------- page de livre en 3D (citations) ----------
+  // cfg : { scene, phrase, S (début absolu), ox, oy (point focal), width (page), rotX, rotZ, entree: 'tourne'|'monte',
+  //         attrAt (temps local d'écriture de l'attribution, sinon pendant la dernière ligne), descente (recadrage final) }
+  // Dans la page : spans .kw[data-w] (mots de la citation), .mk[data-w] (surlignages), p.attribution .l (lignes d'attribution).
+  INK.livre = function (tl, root, cfg) {
+    return INK.withLayout(root, function () { return INK._livre(tl, root, cfg); });
+  };
+  INK._livre = function (tl, root, cfg) {
+    var S = cfg.S, W = INK.words(cfg.scene, cfg.phrase), t = function (i) { return W[i][1] - S; };
+    var stage = root.querySelector('.livre-stage'), cam = root.querySelector('.livre-cam'), leaf = root.querySelector('.livre-leaf'), page = root.querySelector('.livre-page');
+    stage.style.perspectiveOrigin = cfg.ox + 'px ' + cfg.oy + 'px';
+    cam.style.left = cfg.ox + 'px'; cam.style.top = cfg.oy + 'px';
+    page.style.width = cfg.width + 'px'; page.style.height = (cfg.height || 2000) + 'px';
+    var kws = Array.prototype.slice.call(page.querySelectorAll('.kw'));
+    var lines = [];
+    kws.forEach(function (el) {
+      var top = Math.round(el.offsetTop / 20) * 20, L = null;
+      for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - top) < 30) L = lines[k];
+      if (!L) lines.push({ top: top, w: +el.dataset.w });
+    });
+    lines.sort(function (a, b) { return a.top - b.top; });
+    var X0 = -(cfg.width / 2), yOf = function (L) { return -(L.top + 36); };
+    var rx = cfg.rotX != null ? cfg.rotX : 24, rz = cfg.rotZ != null ? cfg.rotZ : -2.5, t0 = cfg.t0 || 0;
+    // entrée : la page tourne (ou monte) et la caméra se pose
+    tl.fromTo(cam, { rotationX: rx + 14, rotationZ: rz - 1.5, z: -260 }, { rotationX: rx, rotationZ: rz, z: 0, duration: 1.1, ease: 'power3.out' }, t0);
+    tl.fromTo(cam, { rotationZ: rz }, { rotationZ: rz + 1.3, duration: 7, ease: 'none', immediateRender: false }, t0 + 1.1);
+    tl.fromTo(leaf, { x: X0 + 20, y: yOf(lines[0]) + (cfg.entree === 'monte' ? 520 : 40) }, { x: X0, y: yOf(lines[0]), duration: cfg.entree === 'monte' ? 0.9 : 1.1, ease: 'power3.out' }, t0);
+    if (cfg.entree !== 'monte') {
+      tl.fromTo(page, { rotationY: -104 }, { rotationY: 0, duration: 0.75, ease: 'power2.out' }, t0 + 0.05);
+      tl.fromTo(page.querySelector('.ombre'), { opacity: 1 }, { opacity: 0, duration: 0.7, ease: 'power1.out' }, t0 + 0.1);
+    } else {
+      tl.set(page.querySelector('.ombre'), { opacity: 0 }, 0);
+      tl.fromTo(page, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t0);
+    }
+    for (var k = 1; k < lines.length; k++) {
+      tl.to(leaf, { y: yOf(lines[k]), x: X0 + 10 * k, duration: 0.7, ease: 'power2.inOut' }, Math.max(t0 + 1.2, t(lines[k].w) - 0.42));
+    }
+    // karaoké : chaque mot est noir 0,05 s avant son début
+    INK.karaoke(tl, kws, W, S);
+    Array.prototype.forEach.call(page.querySelectorAll('.mk'), function (mk) { INK.highlight(tl, mk, t(+mk.dataset.w) - 0.05, 0.3); });
+    // attribution : s'écrit sous la citation
+    var attr = page.querySelectorAll('p.attribution .l'), last = lines[lines.length - 1];
+    var ta = cfg.attrAt != null ? cfg.attrAt : t(last.w) + 0.25;
+    for (var a = 0; a < attr.length; a++) INK.write(tl, attr[a], ta + a * 0.8, attr[a].textContent.length > 18 ? 0.75 : 0.45);
+    tl.to(leaf, { y: yOf(last) - (cfg.descente != null ? cfg.descente : 80), duration: 1.0, ease: 'power2.inOut' }, ta);
+    return { t: t, lines: lines, cam: cam, leaf: leaf, page: page, W: W };
+  };
+
+  // Exécute fn avec la scène mesurable : HyperFrames masque (display:none) les scènes hors de leur créneau,
+  // et les mesures (offsetLeft, offsetTop…) valent alors 0. On affiche temporairement les ancêtres masqués
+  // (visibility:hidden, donc rien ne s'affiche), on mesure, puis on rétablit exactement l'état d'origine.
+  INK.withLayout = function (el, fn) {
+    var changed = [];
+    for (var n = el; n && n.nodeType === 1 && n !== document.documentElement; n = n.parentElement) {
+      if (getComputedStyle(n).display === 'none') {
+        changed.push([n, n.style.display, n.style.visibility]);
+        n.style.display = 'block'; n.style.visibility = 'hidden';
+      }
+    }
+    try { return fn(); } finally {
+      for (var i = changed.length - 1; i >= 0; i--) { changed[i][0].style.display = changed[i][1]; changed[i][0].style.visibility = changed[i][2]; }
     }
   };
 

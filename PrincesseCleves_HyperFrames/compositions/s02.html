@@ -25,6 +25,10 @@
     #s02-page p { margin: 0 0 0; text-indent: 0; }
     #s02-page p.citation { text-align: left; }
     #s02-page p + p { text-indent: 1.4em; }
+    /* attribution imprimée juste sous la citation, sur une zone dégagée */
+    #s02-page p.s02-attribution { text-indent: 0; margin: 34px 0 150px 0; font-style: italic; font-size: 46px; line-height: 62px; color: #161412; }
+    #s02-page p.s02-attribution .r { font-style: normal; }
+    #s02-page p.s02-attribution .l { display: block; white-space: nowrap; }
     /* lettrine de l'incipit */
     #s02-lettrine { float: left; position: relative; width: 252px; height: 252px; margin: 8px 30px 0 0; }
     #s02-lettrine svg { position: absolute; inset: 0; overflow: visible; }
@@ -56,14 +60,11 @@
     .piece img, .piece video { display: block; width: 100%; height: 100%; object-fit: cover; }
     .piece .cadre { position: relative; width: 100%; height: 100%; overflow: hidden; }
     .cartel { position: absolute; font-family: "IM FELL English", serif; font-style: italic; font-size: 34px; line-height: 40px; color: #161412; }
-    #s02-chenonceau { left: 1300px; top: 112px; width: 540px; height: 367px; }
-    #s02-cartel-chenonceau { left: 1306px; top: 494px; width: 520px; }
+    #s02-chenonceau { left: 1290px; top: 112px; width: 530px; height: 360px; }
+    #s02-cartel-chenonceau { left: 1296px; top: 488px; width: 524px; }
     #s02-bal { left: 1290px; top: 604px; width: 520px; height: 313px; }
-    #s02-cartel-bal { left: 1296px; top: 930px; width: 560px; }
+    #s02-cartel-bal { left: 1296px; top: 928px; width: 524px; }
     #s02-bal-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    #s02-attribution { left: 110px; top: 862px; padding: 16px 28px 18px; background: #f7f3ea; box-shadow: 0 1px 2px rgba(22,20,18,0.22), 0 6px 16px rgba(22,20,18,0.14); }
-    #s02-attribution .l { display: block; white-space: nowrap; }
-    #s02-attribution .r { font-style: normal; }
     #s02-ovale { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; pointer-events: none; }
     #s02-ovale path { fill: none; stroke: #161412; stroke-linecap: round; filter: url(#boil); }
   </style>
@@ -113,8 +114,12 @@
               <span class="kw" data-w="20">de</span>
               <span class="kw" data-w="21"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul1" d="M1 6 C 30 3, 60 8, 99 4" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>Henri</b></span>
               <span class="kw" data-w="22"><i class="ul"><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path id="s02-ul2" d="M1 5 C 35 8, 70 3, 92 6" pathLength="1000" vector-effect="non-scaling-stroke" /></svg></i><b>second</b></span><span class="kw" data-w="22" id="s02-point">.</span>
-              <span class="autour">Ce prince était galant, bien fait, et amoureux&#160;: quoique sa passion pour Diane de Poitiers, duchesse de Valentinois, eût commencé il y avait plus de vingt ans, elle n’en était pas moins violente, et il n’en donnait pas des témoignages moins éclatants.</span>
             </p>
+            <p class="s02-attribution">
+              <span class="l" id="s02-attr1">— Madame de Lafayette, <span class="r">La Princesse de Clèves</span>, 1678</span>
+              <span class="l" id="s02-attr2">première phrase du roman</span>
+            </p>
+            <p class="autour">Ce prince était galant, bien fait, et amoureux&#160;: quoique sa passion pour Diane de Poitiers, duchesse de Valentinois, eût commencé il y avait plus de vingt ans, elle n’en était pas moins violente, et il n’en donnait pas des témoignages moins éclatants.</p>
             <p class="autour">Comme il réussissait admirablement dans tous les exercices du corps, il en faisait une de ses plus grandes occupations&#160;: c’était tous les jours des parties de chasse et de paume, des ballets, des courses de bagues, ou de semblables divertissements. Les couleurs et les chiffres de madame de Valentinois paraissaient par-tout, et elle paraissait elle-même avec tous les ajustements que pouvait avoir mademoiselle de la Marck, sa petite-fille, qui était alors à marier.</p>
             <p class="autour">La présence de la reine autorisait la sienne&#160;: cette princesse était belle, quoiqu’elle eût passé la première jeunesse&#160;; elle aimait la grandeur, la magnificence, et les plaisirs.</p>
             <div id="s02-shade"></div>
@@ -130,18 +135,14 @@
 
     <!-- collage autour de la page -->
     <div class="piece" id="s02-chenonceau"><div class="cadre"><img src="assets/nb/photo_chenonceau_arches_aube.jpg" alt="Château de Chenonceau" /></div></div>
-    <div class="cartel" id="s02-cartel-chenonceau">Chenonceau, château de Diane de Poitiers et de Catherine de Médicis</div>
+    <div class="cartel" id="s02-cartel-chenonceau">Chenonceau, château de Diane de Poitiers<br />et de Catherine de Médicis</div>
     <div class="piece" id="s02-bal">
       <div class="cadre" id="s02-bal-cadre">
         <img src="assets/nb/archive_bal_cour_valois_1582.jpg" alt="Bal à la cour des Valois, 1582" />
         <video id="s02-bal-video" class="clip" data-start="8.7" data-duration="0.9" data-track-index="2" muted playsinline src="assets/nb/ia_video_bal_danse_1920x828.mp4"></video>
       </div>
     </div>
-    <div class="cartel" id="s02-cartel-bal">Bal à la cour des Valois, 1582 · Gallica&#160;/&#160;BnF</div>
-    <div class="cartel" id="s02-attribution">
-      <span class="l" id="s02-attr1">— Madame de Lafayette, <span class="r">La Princesse de Clèves</span>, 1678</span>
-      <span class="l" id="s02-attr2">première phrase du roman</span>
-    </div>
+    <div class="cartel" id="s02-cartel-bal">Bal à la cour des Valois, 1582<br />Gallica&#160;/&#160;BnF</div>
 
     <!-- cadre ovale gravé du bal animé -->
     <svg id="s02-ovale" viewBox="0 0 1920 1080">
@@ -161,6 +162,7 @@
       INK.shapes(root);
 
       INK.fontsReady(['60px "IM FELL English"', 'italic 34px "IM FELL English"', '38px "IM FELL English SC"']).then(() => {
+        INK.withLayout(root, () => {
         const page = root.querySelector("#s02-page");
         // ---- mesure des lignes de la citation (une seule fois, avant les tweens)
         const kws = Array.from(page.querySelectorAll(".kw")).filter((el) => el.id !== "s02-L");
@@ -184,6 +186,8 @@
           const tk = Math.max(1.2, t(lines[k].w) - 0.42);
           tl.to("#s02-leaf", { y: yOf(lines[k]), x: X0 + 12 * k, duration: 0.7, ease: "power2.inOut" }, tk);
         }
+        // la caméra descend un peu pour cadrer la dernière ligne et l'attribution
+        tl.to("#s02-leaf", { y: yOf(lines[lines.length - 1]) - 80, duration: 1.0, ease: "power2.inOut" }, t(19));
 
         // ---- lettrine : le cadre se dessine sur « La »
         ["#s02-cadre1", "#s02-cadre2", "#s02-cadre3", "#s02-cadre4"].forEach((id, i) => INK.draw(tl, root.querySelector(id), t(0) - 0.25 + i * 0.09, 0.28, "power2.out"));
@@ -193,30 +197,29 @@
         tl.fromTo("#s02-dot0", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, t(0) + 0.55);
 
         // ---- karaoké mot à mot
-        INK.karaoke(tl, page.querySelectorAll(".kw"), W, S);
-        INK.highlight(tl, root.querySelector("#s02-mk1"), t(1) + 0.05, 0.3);
-        INK.highlight(tl, root.querySelector("#s02-mk2"), t(4) + 0.05, 0.3);
-        INK.draw(tl, root.querySelector("#s02-ul1"), t(21) + 0.02, 0.22, "power1.inOut");
-        INK.draw(tl, root.querySelector("#s02-ul2"), t(22) + 0.02, 0.22, "power1.inOut");
+        INK.karaoke(tl, page.querySelectorAll(".kw"), W, S); // chaque mot est noir 0,05 s avant son début
+        INK.highlight(tl, root.querySelector("#s02-mk1"), t(1) - 0.05, 0.3);
+        INK.highlight(tl, root.querySelector("#s02-mk2"), t(4) - 0.05, 0.3);
+        INK.draw(tl, root.querySelector("#s02-ul1"), t(21) - 0.05, 0.22, "power1.inOut");
+        INK.draw(tl, root.querySelector("#s02-ul2"), t(22) - 0.05, 0.22, "power1.inOut");
         // le point final devient le point rouge
-        tl.fromTo("#s02-point", { color: "#161412", scale: 1 }, { color: "#b3261e", scale: 1.5, transformOrigin: "50% 80%", duration: 0.25, ease: "back.out(3)", immediateRender: false }, t(22) + 0.3);
+        tl.fromTo("#s02-point", { color: "#161412", scale: 1 }, { color: "#b3261e", scale: 1.5, transformOrigin: "50% 80%", duration: 0.25, ease: "back.out(3)", immediateRender: false }, t(22) + 0.25);
 
         // ---- collage : Chenonceau sur « France », le Bal sur « les dernières années »
         tl.fromTo("#s02-chenonceau", { opacity: 0, scale: 1.08, rotation: 4, y: -18 }, { opacity: 1, scale: 1, rotation: 1.5, y: 0, duration: 0.45, ease: "expo.out" }, t(9) - 0.05);
-        INK.write(tl, root.querySelector("#s02-cartel-chenonceau"), t(9) + 0.3, 0.7);
+        tl.fromTo("#s02-cartel-chenonceau", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t(9) + 0.3);
         tl.fromTo("#s02-bal", { opacity: 0, scale: 1.08, rotation: -4.5, y: 18 }, { opacity: 1, scale: 1, rotation: -1.2, y: 0, duration: 0.45, ease: "expo.out" }, t(16) - 0.05);
-        INK.write(tl, root.querySelector("#s02-cartel-bal"), t(16) + 0.3, 0.6);
-        tl.fromTo("#s02-attribution", { opacity: 0, rotation: -2.5, y: 14 }, { opacity: 1, rotation: -1, y: 0, duration: 0.4, ease: "expo.out" }, t(14) - 0.1);
-        INK.write(tl, root.querySelector("#s02-attr1"), t(14) + 0.15, 0.85);
-        INK.write(tl, root.querySelector("#s02-attr2"), t(14) + 1.0, 0.45);
+        tl.fromTo("#s02-cartel-bal", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t(16) + 0.3);
+        // attribution : s'écrit sous la citation pendant sa dernière ligne
+        INK.write(tl, root.querySelector("#s02-attr1"), t(19) - 0.05, 0.75);
+        INK.write(tl, root.querySelector("#s02-attr2"), t(19) + 0.72, 0.4);
 
         // ---- fin : la caméra recule, le Bal vient au centre et s'anime dans un ovale gravé
-        const tEnd = t(22) + 0.2; // ≈ 8,4 s
+        const tEnd = t(22) + 0.55; // ≈ 8,6 s : laisse lire l'attribution
         tl.to("#s02-cam", { z: -1100, rotationX: 14, rotationZ: -4, duration: 1.0, ease: "power2.inOut" }, tEnd);
         tl.to("#s02-page", { opacity: 0.45, duration: 0.8, ease: "power1.inOut" }, tEnd + 0.2);
         tl.to(["#s02-dof-h1", "#s02-dof-h2", "#s02-dof-b1", "#s02-dof-b2"], { opacity: 0.4, duration: 0.6 }, tEnd);
         tl.to(["#s02-chenonceau", "#s02-cartel-chenonceau"], { x: 90, opacity: 0, duration: 0.3, ease: "power3.in" }, tEnd);
-        tl.to("#s02-attribution", { x: -90, opacity: 0, duration: 0.3, ease: "power3.in" }, tEnd + 0.05);
         tl.to("#s02-cartel-bal", { opacity: 0, duration: 0.2, ease: "power1.in" }, tEnd);
         // le Bal (520×313) rejoint le centre : 960,520 ; échelle 1,74 ≈ ovale 904×545
         const bal = root.querySelector("#s02-bal");
@@ -229,6 +232,7 @@
         INK.draw(tl, root.querySelector("#s02-ov3"), tEnd + 0.78, 0.4, "power2.out");
         tl.fromTo("#s02-bal-video", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, tEnd + 0.55);
 
+        });
         window.__timelines["s02"] = tl;
       });
     })();

@@ -1,0 +1,43 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s00-p1 { left: 110px; top: 92px; width: 860px; height: 371px; }
+    #s00-p2 { left: 960px; top: 150px; width: 860px; height: 371px; }
+    #s00-p3 { left: 150px; top: 566px; width: 860px; height: 371px; }
+    #s00-p4 { left: 930px; top: 606px; width: 860px; height: 371px; }
+    #s00-balai path { stroke: #161412; stroke-width: 1500; stroke-linecap: round; fill: none; filter: url(#boil); }
+  </style>
+  <div id="root" data-composition-id="s00" data-width="1920" data-height="1080">
+    <!-- quatre images qui claquent sur les impacts : bal, aveu, jardin, mère mourante -->
+    <div class="piece" id="s00-p1"><img src="assets/nb/ia_bal_salle.jpg" alt="Le bal" /></div>
+    <div class="piece" id="s00-p2"><img src="assets/nb/ia_aveu_couple.jpg" alt="L'aveu" /></div>
+    <div class="piece" id="s00-p3"><img src="assets/nb/ia_jardin_nuit.jpg" alt="Le jardin la nuit" /></div>
+    <div class="piece" id="s00-p4"><img src="assets/nb/ia_mere_mourante.jpg" alt="La mère mourante" /></div>
+    <svg class="encre" id="s00-cercles" viewBox="0 0 1920 1080">
+      <path id="s00-c1" data-shape="circle" data-c="817,165" data-r="66,78" data-seed="101" />
+      <path id="s00-c2" data-shape="circle" data-c="1457,250" data-r="70,82" data-seed="102" />
+      <path id="s00-c3" data-shape="circle" data-c="714,728" data-r="78,70" data-seed="103" />
+      <path id="s00-c4" data-shape="circle" data-c="1150,712" data-r="72,80" data-seed="104" />
+    </svg>
+    <!-- le grand trait d'encre qui balaie tout -->
+    <svg class="encre" id="s00-balai" viewBox="0 0 1920 1080"><path id="s00-trait" d="M -700 620 C 300 520, 1500 640, 2650 470" pathLength="1000" /></svg>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s00"]');
+      const $ = (s) => root.querySelector(s);
+      INK.shapes(root);
+      // 0 / 0,43 / 0,85 / 1,28 : chaque image claque, un cercle d'encre se referme d'un coup
+      [[0.0, "#s00-p1", "#s00-c1", -1.5], [0.43, "#s00-p2", "#s00-c2", 1.2], [0.85, "#s00-p3", "#s00-c3", 1.0], [1.28, "#s00-p4", "#s00-c4", -1.3]].forEach(([t, p, c, r]) => {
+        tl.fromTo(p, { opacity: 0, scale: 1.14, rotation: r * 2.5 }, { opacity: 1, scale: 1, rotation: r, duration: 0.16, ease: "expo.out" }, t);
+        INK.draw(tl, $(c), t + 0.04, 0.18, "power3.out");
+      });
+      // 1,8 s : le trait d'encre balaie tout, puis le papier reste vide jusqu'à 2,6 s
+      INK.draw(tl, $("#s00-trait"), 1.8, 0.28, "power2.in");
+      tl.set(["#s00-p1", "#s00-p2", "#s00-p3", "#s00-p4", "#s00-cercles"], { opacity: 0 }, 2.1);
+      INK.undraw(tl, $("#s00-trait"), 2.1, 0.3, "power2.out");
+      window.__timelines["s00"] = tl;
+    })();
+  </script>
+</template>

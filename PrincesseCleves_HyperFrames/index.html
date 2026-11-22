@@ -7,6 +7,7 @@
     <script src="assets/lib/gsap.min.js"></script>
     <script src="assets/lib/words.js"></script>
     <script src="assets/lib/ink.js"></script>
+    <link rel="stylesheet" href="assets/lib/ink.css" />
     <style>
       @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
       @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Italic-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: italic; }
@@ -48,9 +49,26 @@
       <!-- Bande-son définitive : référence absolue, jamais coupée ni décalée -->
       <audio id="bande-son" class="clip" data-start="0" data-duration="212" data-track-index="0" data-volume="1" src="assets/audio/bande_son_finale_212s.m4a"></audio>
 
-      <!-- Scènes (une sous-composition par scène) -->
+      <!-- Scènes (une sous-composition par scène, bout à bout : S00 → S18) -->
+      <div id="s00" data-composition-id="s00" data-composition-src="compositions/s00.html" data-start="0" data-duration="2.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="2.6" data-duration="7.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
       <div id="s02" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="10" data-duration="9.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="19.6" data-duration="16.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/s04.html" data-start="36" data-duration="9.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/s05.html" data-start="45.6" data-duration="16.3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/s06.html" data-start="61.9" data-duration="22.7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
       <div id="s07" data-composition-id="s07" data-composition-src="compositions/s07.html" data-start="84.6" data-duration="24.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s08" data-composition-id="s08" data-composition-src="compositions/s08.html" data-start="109" data-duration="7.2" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s09" data-composition-id="s09" data-composition-src="compositions/s09.html" data-start="116.2" data-duration="10.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s10" data-composition-id="s10" data-composition-src="compositions/s10.html" data-start="126.6" data-duration="9.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s11" data-composition-id="s11" data-composition-src="compositions/s11.html" data-start="136" data-duration="11.2" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s12" data-composition-id="s12" data-composition-src="compositions/s12.html" data-start="147.2" data-duration="10.8" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s13" data-composition-id="s13" data-composition-src="compositions/s13.html" data-start="158" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s14" data-composition-id="s14" data-composition-src="compositions/s14.html" data-start="164" data-duration="3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s15" data-composition-id="s15" data-composition-src="compositions/s15.html" data-start="167" data-duration="10.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s16" data-composition-id="s16" data-composition-src="compositions/s16.html" data-start="177.5" data-duration="5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s17" data-composition-id="s17" data-composition-src="compositions/s17.html" data-start="182.5" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="s18" data-composition-id="s18" data-composition-src="compositions/s18.html" data-start="186.5" data-duration="25.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });

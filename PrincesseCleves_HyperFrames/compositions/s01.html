@@ -1,0 +1,56 @@
+<template>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s01-scene { position: absolute; inset: 0; transform-origin: 50% 45%; }
+    #s01-annee { left: 712px; top: 110px; font-size: 300px; line-height: 1; filter: url(#boil-texte); }
+    /* la main à la plume (recadrée dans ia_plume_encrier.png) ; la pointe est au point d'ancrage */
+    #s01-main { position: absolute; left: 0; top: 0; width: 522px; height: 339px; margin: -310px 0 0 -20px; overflow: hidden; filter: drop-shadow(0 8px 14px rgba(22,20,18,0.2)); }
+    #s01-main img { position: absolute; left: -752px; top: 0; width: 1274px; height: 339px; }
+    #s01-goutte { position: absolute; left: 0; top: 0; width: 22px; height: 28px; margin: -14px 0 0 -11px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #161412; }
+    #s01-l1 { top: 540px; font-size: 120px; font-weight: 700; }
+    #s01-l2 { top: 690px; font-size: 120px; font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="s01" data-width="1920" data-height="1080">
+    <div id="s01-scene">
+      <div class="fell" id="s01-annee">1678</div>
+      <div class="moyen centre mots" id="s01-l1"><span data-w="0">Un</span> <span data-w="1">roman</span> <span data-w="2">paraît.</span></div>
+      <div class="moyen centre mots" id="s01-l2"><span data-w="3">Sans</span> <span data-w="4">nom</span> <span data-w="5">d’auteur.</span></div>
+      <div class="point-rouge" id="s01-point"></div>
+      <div id="s01-goutte"></div>
+    </div>
+    <div id="s01-main"><img src="assets/nb/ia_plume_encrier.png" alt="Une main tient une plume" /></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s01"]');
+      const $ = (s) => root.querySelector(s);
+      INK.fontsReady(['300px "IM FELL English"', '700 120px "Source Serif 4"']).then(() => {
+        INK.withLayout(root, () => {
+        const an = $("#s01-annee");
+        const x0 = an.offsetLeft, x1 = an.offsetLeft + an.offsetWidth, yb = an.offsetTop + an.offsetHeight * 0.78;
+        // 2,8 s : la main arrive ; 3,2 → 4,1 s : « 1678 » s'écrit sous la pointe de la plume
+        tl.fromTo("#s01-main", { x: x0 + 420, y: yb - 160, opacity: 0, rotation: 8 }, { x: x0, y: yb, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, 0.15);
+        tl.fromTo(an, { clipPath: "inset(-20% 103% -20% -3%)" }, { clipPath: "inset(-20% 0% -20% -3%)", duration: 0.9, ease: "none" }, 0.6);
+        tl.to("#s01-main", { x: x1, duration: 0.9, ease: "none" }, 0.6);
+        for (let k = 0; k < 10; k++) tl.to("#s01-main", { y: yb + (k % 2 ? -14 : 12), duration: 0.09, ease: "sine.inOut" }, 0.6 + k * 0.09);
+        tl.to("#s01-main", { x: x1 + 520, y: yb - 220, opacity: 0, rotation: 10, duration: 0.4, ease: "power3.in" }, 1.6);
+        // une goutte tombe de la plume… et devient le point rouge
+        tl.fromTo("#s01-goutte", { x: x1, y: yb, opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.08 }, 1.5);
+        tl.to("#s01-goutte", { x: 960, y: 940, duration: 0.42, ease: "power2.in" }, 1.58);
+        tl.to("#s01-goutte", { scaleX: 1.8, scaleY: 0.35, opacity: 0, duration: 0.12, ease: "power2.out" }, 2.0);
+        tl.fromTo("#s01-point", { x: 960, y: 940, scale: 0, opacity: 1 }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 2.0);
+        // 4,2 s : « Un roman paraît. Sans nom d'auteur. » mot par mot, en coupe franche
+        INK.seqIn(tl, root.querySelectorAll(".mots span"), [1.6, 1.85, 2.1, 2.8, 3.05, 3.3]);
+        // poussée lente de la caméra, puis le papier se vide (9,6 s)
+        tl.fromTo("#s01-scene", { scale: 1 }, { scale: 1.035, duration: 5.0, ease: "none" }, 2.0);
+        tl.set(["#s01-annee", "#s01-l1", "#s01-l2"], { opacity: 0 }, 7.0);
+        tl.to("#s01-point", { scale: 0, duration: 0.25, ease: "power2.in" }, 7.1);
+        });
+        window.__timelines["s01"] = tl;
+      });
+    })();
+  </script>
+</template>

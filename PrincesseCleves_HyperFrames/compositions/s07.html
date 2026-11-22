@@ -25,6 +25,11 @@
     #s07-ecrit .ligne { position: absolute; left: 0; white-space: nowrap; filter: url(#boil-texte); }
     #s07-ecrit em { font-style: italic; }
     #s07-plume-pt { position: absolute; left: 0; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #161412; opacity: 0; }
+    #s07-date { position: absolute; left: 1010px; top: 612px; font-family: "IM FELL English", serif; font-size: 190px; line-height: 1; white-space: nowrap; transform-origin: 0 0; filter: url(#boil-texte); }
+    #s07-date-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; pointer-events: none; }
+    #s07-date-svg path { fill: none; stroke: #161412; stroke-width: 6; stroke-linecap: round; filter: url(#boil); }
+    #s07-vers { opacity: 0; }
+    #s07-plume-pt2 { position: absolute; left: 0; top: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #161412; opacity: 0; }
     #s07-point { position: absolute; left: 0; top: 0; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: #b3261e; opacity: 0; }
 
     /* gros mots barrés */
@@ -46,7 +51,7 @@
     .fumee-cadre video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
     #s07-fumee-cadre { transform-origin: 55% 30%; }
     #s07-fumee-cadre-b { transform-origin: 45% 32%; opacity: 0.75; }
-    #s07-carton-texte { position: absolute; left: 160px; right: 160px; top: 330px; text-align: center; font-family: "Source Serif 4", serif; font-weight: 700; font-size: 104px; line-height: 132px; letter-spacing: -0.01em; color: #161412; }
+    #s07-carton-texte { position: absolute; left: 100px; right: 100px; top: 315px; text-align: center; font-family: "Source Serif 4", serif; font-weight: 700; font-size: 120px; line-height: 152px; letter-spacing: -0.01em; color: #161412; }
     #s07-carton-texte span { display: inline-block; }
     #s07-carton-texte .q { color: #b3261e; font-size: 1.12em; line-height: 0.9; }
   </style>
@@ -106,9 +111,13 @@
         </svg>
         <div id="s07-ecrit">
           <div class="ligne" id="s07-l1" style="top:0">Chrétien de Troyes,</div>
-          <div class="ligne" id="s07-l2" style="top:92px"><em>Le Chevalier de la charrette</em>, vers 1180</div>
+          <div class="ligne" id="s07-l2" style="top:92px"><em>Le Chevalier de la charrette</em>, <span id="s07-vers">vers 1180</span></div>
           <div id="s07-plume-pt"></div>
         </div>
+        <!-- grand « vers 1180 » écrit sur « Cinq siècles plus tôt », qui rejoint ensuite la ligne écrite -->
+        <div id="s07-date"><span id="s07-date-txt">vers 1180</span></div>
+        <svg id="s07-date-svg" viewBox="0 0 1920 1080"><path id="s07-date-trait" data-shape="line" data-p="1000,842,1690,826" data-bow="10" data-wobble="3" data-seed="81" /></svg>
+        <div id="s07-plume-pt2"></div>
         <div id="s07-point"></div>
       </div>
 
@@ -136,14 +145,18 @@
       INK.shapes(root);
 
       INK.fontsReady(['200px "Source Serif 4"', 'italic 68px "IM FELL English"', '60px "IM FELL English"', 'italic 34px "IM FELL English"']).then(() => {
+        INK.withLayout(root, () => {
         // ===== A. 84,6 : changement de monde, le papier devient parchemin =====
-        tl.fromTo("#s07-medieval", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.5, ease: "power2.inOut" }, 0);
-        ["#s07-r1", "#s07-r2", "#s07-r3", "#s07-r4"].forEach((id, i) => INK.draw(tl, $(id), 0.3 + i * 0.16, 0.36, "power1.inOut"));
-        INK.draw(tl, $("#s07-r5"), 0.7, 0.6); INK.draw(tl, $("#s07-r6"), 0.8, 0.6);
+        tl.fromTo("#s07-medieval", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.3, ease: "power2.out" }, 0);
+        ["#s07-r1", "#s07-r2", "#s07-r3", "#s07-r4"].forEach((id) => INK.draw(tl, $(id), 0.04, 0.3, "power2.out"));
+        INK.draw(tl, $("#s07-r5"), 0.1, 0.3, "power2.out"); INK.draw(tl, $("#s07-r6"), 0.1, 0.3, "power2.out");
 
         // ===== B. « Cinq siècles plus tôt… Lancelot » : l'enluminure, la loupe =====
-        tl.fromTo("#s07-enlu", { opacity: 0, scale: 1.06, rotation: -4 }, { opacity: 1, scale: 1, rotation: -1.2, duration: 0.5, ease: "expo.out" }, t(0, 0) - 0.1);
-        INK.write(tl, $("#s07-cartel-enlu"), t(0, 0) + 0.35, 1.1);
+        tl.fromTo("#s07-enlu", { opacity: 0, scale: 1.06, rotation: -4 }, { opacity: 1, scale: 1, rotation: -1.2, duration: 0.34, ease: "expo.out" }, 0.02); // en place à 84,96 s
+        tl.fromTo("#s07-cartel-enlu", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.3);
+        // « Cinq siècles plus tôt » : un grand « vers 1180 » s'écrit à la plume
+        INK.write(tl, $("#s07-date"), t(0, 0) - 0.05, 1.05, $("#s07-plume-pt2"));
+        INK.draw(tl, $("#s07-date-trait"), t(0, 3) + 0.12, 0.35, "power2.out");
         INK.draw(tl, $("#s07-cercle"), t(0, 6) - 0.05, 0.42, "power2.inOut"); // se referme sur « Lancelot »
         INK.draw(tl, $("#s07-tan1"), t(0, 7) + 0.12, 0.25, "power2.out");
         INK.draw(tl, $("#s07-tan2"), t(0, 7) + 0.16, 0.25, "power2.out");
@@ -164,6 +177,12 @@
         tl.to("#s07-point", { scale: 0.6, duration: 0.3, ease: "power2.out" }, t(0, 14) + 0.6);
 
         // ===== E. « Chrétien de Troyes… » : écrit à la plume =====
+        const date = $("#s07-date"), ecrit = $("#s07-ecrit"), l2 = $("#s07-l2"), vers = $("#s07-vers"), txt = $("#s07-date-txt");
+        const sc = 60 / 190;
+        const dx = ecrit.offsetLeft + l2.offsetLeft + vers.offsetLeft - (date.offsetLeft + txt.offsetLeft * sc);
+        const dy = ecrit.offsetTop + l2.offsetTop + vers.offsetTop - (date.offsetTop + txt.offsetTop * sc);
+        tl.to("#s07-date-trait", { opacity: 0, duration: 0.2 }, t(1, 0) - 0.4);
+        tl.fromTo("#s07-date", { x: 0, y: 0, scale: 1 }, { x: dx, y: dy, scale: sc, duration: 0.6, ease: "power2.inOut", immediateRender: false }, t(1, 0) - 0.4);
         INK.write(tl, $("#s07-l1"), t(1, 0) - 0.05, 0.95, $("#s07-plume-pt"));
         INK.write(tl, $("#s07-l2"), t(1, 0) + 1.0, 1.55, $("#s07-plume-pt"));
 
@@ -177,8 +196,8 @@
         [1, 2, 3].forEach((k) => {
           const p = k + 1; // phrases 2, 3, 4
           const rang = $("#s07-rang" + k), petits = rang.querySelectorAll(".petit span"), gros = $("#s07-g" + k);
-          petits.forEach((el, i) => tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none" }, t(p, i) - 0.02));
-          const tg = t(p, 3) - 0.02; // le gros mot claque quand il est dit
+          petits.forEach((el, i) => tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.04, ease: "none" }, t(p, i) - 0.09)); // visible 0,05 s avant le mot
+          const tg = t(p, 3) - 0.09; // le gros mot claque quand il est dit
           tl.fromTo(gros, { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.18, ease: "expo.out" }, tg);
           // rature rouge sur l'impact (au plus tôt juste après l'apparition du mot)
           const x = rang.offsetLeft + gros.offsetLeft, y = rang.offsetTop + gros.offsetTop, w = gros.offsetWidth, h = gros.offsetHeight;
@@ -216,6 +235,7 @@
           }
         });
 
+        });
         window.__timelines["s07"] = tl;
       });
     })();

@@ -1,0 +1,78 @@
+<template>
+  <style>
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
+    /* la mère et sa fille (recadrage de ia_mere_conseil.png, 1568×828 → hauteur 400) */
+    #s04-mere { left: 1196px; top: 150px; width: 644px; height: 400px; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
+    #s04-mere img { left: -113px; top: 0; width: 757px; height: 400px; }
+    /* son reflet : la princesse seule, inversée et pâlie */
+    #s04-reflet { left: 1499px; top: 150px; width: 340px; height: 400px; opacity: 0; }
+    #s04-reflet img { left: -416px; top: 0; width: 757px; height: 400px; transform: scaleY(-1); }
+    #s04-reflet-masque { position: absolute; inset: 0; -webkit-mask-image: linear-gradient(rgba(0,0,0,0.9), transparent 92%); mask-image: linear-gradient(rgba(0,0,0,0.9), transparent 92%); }
+    #s04-filet { position: absolute; left: 1490px; top: 552px; width: 360px; height: 20px; overflow: visible; }
+  </style>
+  <div id="root" data-composition-id="s04" data-width="1920" data-height="1080">
+    <div class="livre-stage">
+      <div class="livre-cam">
+        <div class="livre-leaf">
+          <div class="livre-page">
+            <div class="entete">La Princesse de Clèves</div>
+            <p class="autour">Je n’eusse jamais soupçonné cette haine, interrompit madame de Clèves, après avoir vu le soin que la reine avait d’écrire à M. le connétable pendant sa prison, la joie qu’elle a témoignée à son retour, et comme elle l’appelle toujours mon compère, aussi bien que le roi.</p>
+            <p class="citation">
+              <span class="kw" data-w="0">«&#160;Si</span>
+              <span class="kw" data-w="1">vous</span>
+              <span class="kw" data-w="2">jugez</span>
+              <span class="kw" data-w="3">sur</span>
+              <span class="kw" data-w="4">les</span>
+              <span class="kw" data-w="5"><i class="mk" data-w="5"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>apparences</b></span>
+              <span class="kw" data-w="6">en</span>
+              <span class="kw" data-w="7">ce</span>
+              <span class="kw" data-w="8">lieu-ci,</span>
+              <span class="kw" data-w="9">vous</span>
+              <span class="kw" data-w="10">serez</span>
+              <span class="kw" data-w="11">souvent</span>
+              <span class="kw" data-w="12">trompée&#160;:</span>
+              <span class="kw" data-w="13">ce</span>
+              <span class="kw" data-w="14">qui</span>
+              <span class="kw" data-w="15">paraît</span>
+              <span class="kw" data-w="16">n’est</span>
+              <span class="kw" data-w="17">presque</span>
+              <span class="kw" data-w="18">jamais</span>
+              <span class="kw" data-w="19">la</span>
+              <span class="kw" data-w="20"><i class="mk" data-w="20"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 3 Q 25 2 50 4 T 98 3 L 99 18 Q 74 17 50 19 T 1 16 Z" /></svg></i><b>vérité.&#160;»</b></span>
+            </p>
+            <p class="attribution"><span class="l">— Madame de Chartres à sa fille</span></p>
+            <p class="autour">Mais pour revenir à madame de Valentinois, vous savez qu’elle s’appelle Diane de Poitiers&#160;: sa maison est très-illustre&#160;; elle vient des anciens ducs d’Aquitaine&#160;: son aïeule était fille naturelle de Louis XI, et enfin il n’y a rien que de grand dans sa naissance.</p>
+            <div class="ombre"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dof h1"></div><div class="dof h2"></div><div class="dof b1"></div><div class="dof b2"></div>
+
+    <div class="recadre" id="s04-reflet"><div id="s04-reflet-masque"><img src="assets/nb/ia_mere_conseil.png" alt="" /></div></div>
+    <div class="recadre" id="s04-mere"><img src="assets/nb/ia_mere_conseil.png" alt="Madame de Chartres conseille sa fille" /></div>
+    <svg class="encre" viewBox="0 0 1920 1080"><path id="s04-ligne" data-shape="line" data-p="1500,556,1838,552" data-wobble="1.5" data-seed="151" style="stroke-width:2.5" /></svg>
+  </div>
+  <script>
+    (function () {
+      const S = 36.0;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s04"]');
+      const $ = (s) => root.querySelector(s);
+      INK.shapes(root);
+      INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
+        const L = INK.livre(tl, root, { scene: "S04", phrase: 0, S, ox: 620, oy: 470, width: 1150, rotX: 24, rotZ: 2.5 });
+        // la mère et sa fille, à côté de la page
+        INK.pin(tl, "#s04-mere", 0.3, { rot: 0, dur: 0.5 });
+        // « ce qui paraît » : la princesse se dédouble en miroir (copie inversée et pâlie)
+        const tp = L.t(13) - 0.05;
+        INK.draw(tl, $("#s04-ligne"), tp, 0.35, "power2.out");
+        tl.fromTo("#s04-reflet", { opacity: 0, y: 0 }, { opacity: 0.42, y: 404, duration: 0.7, ease: "power2.out" }, tp + 0.1);
+        window.__timelines["s04"] = tl;
+      });
+    })();
+  </script>
+</template>

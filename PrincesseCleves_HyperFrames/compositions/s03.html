@@ -1,0 +1,142 @@
+<template>
+  <style>
+    @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
+    @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    /* temps 1 : Henri II, « 1558. » */
+    #s03-henri { left: 150px; top: 120px; width: 430px; height: 566px; overflow: hidden; }
+    #s03-henri img { object-position: 50% 0%; height: 106%; }
+    #s03-cartel-henri { left: 156px; top: 712px; }
+    #s03-1558 { left: 690px; top: 150px; font-size: 260px; }
+    #s03-cour { left: 696px; top: 500px; font-size: 96px; font-weight: 700; }
+    /* temps 2 : l'arbre de la cour */
+    #s03-arbre { position: absolute; inset: 0; transform-origin: 50% 35%; }
+    .s03-port { width: 300px; height: 392px; top: 112px; overflow: hidden; }
+    .s03-port img { object-position: 50% 0%; height: 112%; }
+    #s03-t-henri { left: 230px; } #s03-t-cath { left: 810px; } #s03-t-marie { left: 1390px; }
+    #s03-ct-henri { left: 236px; top: 536px; } #s03-ct-cath { left: 816px; top: 536px; } #s03-ct-marie { left: 1396px; top: 536px; }
+    #s03-fetes { top: 700px; font-size: 100px; font-weight: 800; }
+    #s03-chevaux-cadre { position: absolute; left: 480px; top: 560px; width: 960px; height: 540px; mix-blend-mode: multiply; overflow: hidden; }
+    #s03-chevaux { position: absolute; left: 0; top: 0; width: 960px; height: 540px; object-fit: cover; }
+    #s03-etincelles-cadre { position: absolute; inset: 0; mix-blend-mode: multiply; }
+    #s03-etincelles { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    #s03-constel circle { fill: #161412; }
+    #s03-constel path { stroke-width: 2.2; }
+    /* temps 4 : le regard */
+    #s03-regard { left: 210px; top: 206px; width: 1500px; height: 646px; }
+    #s03-regard .cadre { transform-origin: 32% 60%; }
+  </style>
+  <div id="root" data-composition-id="s03" data-width="1920" data-height="1080">
+    <!-- temps 1 -->
+    <div class="calque" id="s03-temps1">
+      <div class="piece archive" id="s03-henri"><img src="assets/nb/archive_henri_II_clouet.jpg" alt="Henri II par François Clouet" /></div>
+      <div class="cartel" id="s03-cartel-henri">Henri II, roi de France,<br />par François Clouet</div>
+      <div class="gros" id="s03-1558">1558.</div>
+      <div class="moyen mots" id="s03-cour"><span data-w="0">La</span> <span data-w="1">cour</span> <span data-w="2">du</span> <span data-w="3">roi</span> <span data-w="4">Henri</span> <span data-w="5">II.</span></div>
+    </div>
+    <!-- temps 2 et 3 : l'arbre généalogique de la cour -->
+    <div class="calque" id="s03-temps2">
+      <div id="s03-arbre">
+        <div class="piece archive s03-port" id="s03-t-henri"><img src="assets/nb/archive_henri_II_clouet.jpg" alt="Henri II" /></div>
+        <div class="piece archive s03-port" id="s03-t-cath"><img src="assets/nb/archive_catherine_de_medicis_clouet.jpg" alt="Catherine de Médicis" /></div>
+        <div class="piece archive s03-port" id="s03-t-marie"><img src="assets/nb/archive_marie_stuart_clouet.jpg" alt="Marie Stuart" /></div>
+        <div class="cartel" id="s03-ct-henri">Henri II, roi de France,<br />par François Clouet</div>
+        <div class="cartel" id="s03-ct-cath">Catherine de Médicis,<br />par François Clouet</div>
+        <div class="cartel" id="s03-ct-marie">Marie Stuart, la reine dauphine<br />(atelier Clouet)</div>
+        <svg class="encre" id="s03-liens" viewBox="0 0 1920 1080">
+          <path id="s03-l1" data-shape="line" data-p="534,300,806,300" data-wobble="2.5" data-seed="121" />
+          <path id="s03-l2" data-shape="line" data-p="670,302,670,646" data-wobble="2" data-seed="122" style="stroke-width:3" />
+          <path id="s03-l3" data-shape="line" data-p="670,646,1540,646" data-wobble="2.5" data-seed="123" style="stroke-width:3" />
+          <path id="s03-l4" data-shape="line" data-p="1540,646,1540,618" data-wobble="1" data-seed="124" style="stroke-width:3" />
+          <!-- « des ambitions » : flèches de rivalité -->
+          <path id="s03-a1" data-shape="line" data-p="1100,220,1392,236" data-bow="-46" data-wobble="3" data-seed="125" />
+          <path id="s03-a1h" d="M1366 214 L 1394 236 L 1364 254" pathLength="1000" />
+          <path id="s03-a2" data-shape="line" data-p="1392,420,1104,406" data-bow="-46" data-wobble="3" data-seed="126" />
+          <path id="s03-a2h" d="M1130 386 L 1102 406 L 1132 426" pathLength="1000" />
+        </svg>
+      </div>
+      <div class="gros centre mots" id="s03-fetes"><span data-w="0">Des</span> <span data-w="1">fêtes.</span> <span data-w="2">Des</span> <span data-w="3">bals.</span> <span data-w="4">Des</span> <span data-w="5">tournois.</span></div>
+      <div id="s03-chevaux-cadre">
+        <video id="s03-chevaux" class="clip" data-start="6.55" data-duration="2.5" data-track-index="2" muted playsinline src="assets/nb/pexels_chevaux_silhouettes_ralenti_NB.mp4"></video>
+      </div>
+      <div id="s03-etincelles-cadre">
+        <video id="s03-etincelles" class="clip" data-start="10.2" data-duration="2.4" data-media-start="2" data-track-index="3" muted playsinline src="assets/nb/pexels_etincelles_points_noirs_sur_blanc.mp4"></video>
+      </div>
+      <svg class="encre" id="s03-constel" viewBox="0 0 1920 1080"></svg>
+    </div>
+    <!-- temps 4 : « une réputation se perd en un regard » -->
+    <div class="calque" id="s03-temps4">
+      <div class="piece" id="s03-regard"><div class="cadre"><img src="assets/nb/ia_regard_larme.jpg" alt="Un regard" /></div></div>
+      <svg class="encre" viewBox="0 0 1920 1080"><path id="s03-oeil" data-shape="circle" data-c="694,594" data-r="132,86" data-seed="131" style="stroke-width:6" /></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 19.6;
+      const tl = gsap.timeline({ paused: true });
+      const root = document.querySelector('[data-composition-id="s03"]');
+      const $ = (s) => root.querySelector(s);
+      const P = [0, 1, 2, 3, 4].map((p) => INK.words("S03", p));
+      const t = (p, i) => P[p][i][1] - S;
+      INK.shapes(root);
+      // constellation : points semés (graine fixe), reliés par des traits
+      const svg = $("#s03-constel"), r = INK.rng(1558), pts = [];
+      for (let i = 0; i < 26; i++) {
+        const x = 160 + r() * 1600, y = 130 + r() * 820; pts.push([x, y]);
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", (3 + r() * 6).toFixed(1));
+        c.setAttribute("id", "s03-pt" + i); svg.appendChild(c);
+      }
+      const links = [[0,3],[3,7],[7,12],[12,5],[5,9],[9,14],[14,20],[20,17],[17,22],[22,25],[2,8],[8,15],[15,19],[19,24],[1,6],[6,11]];
+      links.forEach(([a, b], k) => {
+        const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        p.setAttribute("d", INK.line(pts[a][0], pts[a][1], pts[b][0], pts[b][1], { seed: 140 + k, wobble: 1.5 }));
+        p.setAttribute("pathLength", "1000"); p.setAttribute("id", "s03-k" + k); svg.appendChild(p);
+      });
+
+      INK.fontsReady(['900 260px "Source Serif 4"', '700 96px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
+        // ===== temps 1 (19,6 → 23,6) : Henri II, « 1558. », « La cour du roi Henri II. »
+        tl.set("#s03-temps1", { opacity: 1 }, 0);
+        INK.pin(tl, "#s03-henri", 0.0, { rot: -1.2, dur: 0.35 });
+        INK.fade(tl, "#s03-cartel-henri", 0.35);
+        INK.cut(tl, "#s03-1558", t(0, 0) - 0.05);
+        INK.wordsIn(tl, root.querySelectorAll("#s03-cour span"), P[1], S);
+        tl.set("#s03-temps1", { opacity: 0 }, 4.0);
+
+        // ===== temps 2 (23,6 → 27,4) : l'arbre, sur les coupes 23,6 et 25,0
+        INK.cut(tl, "#s03-temps2", 4.0);
+        INK.pin(tl, "#s03-t-henri", 4.0, { rot: -1.2, dur: 0.3 });
+        INK.pin(tl, "#s03-t-cath", 4.05, { rot: 1.0, dur: 0.3 });
+        INK.fade(tl, "#s03-ct-henri", 4.2); INK.fade(tl, "#s03-ct-cath", 4.25);
+        INK.draw(tl, $("#s03-l1"), 4.2, 0.35, "power2.out");
+        INK.pin(tl, "#s03-t-marie", 25.0 - S, { rot: -1.4, dur: 0.25, from: 1.15 });
+        INK.fade(tl, "#s03-ct-marie", 25.15 - S);
+        INK.draw(tl, $("#s03-l2"), 25.0 - S, 0.2, "power2.in");
+        INK.draw(tl, $("#s03-l3"), 25.2 - S, 0.35, "power2.out");
+        INK.draw(tl, $("#s03-l4"), 25.52 - S, 0.1);
+        INK.wordsIn(tl, root.querySelectorAll("#s03-fetes span"), P[2], S);
+        // 26,25 : les chevaux en silhouette galopent en travers
+        tl.fromTo("#s03-chevaux-cadre", { x: 1500 }, { x: -1500, duration: 2.5, ease: "none" }, 6.55);
+        tl.set("#s03-fetes", { opacity: 0 }, 27.35 - S);
+
+        // ===== temps 3 (27,4 → 32,1) : « Derrière les sourires, des ambitions, des rumeurs, des secrets »
+        tl.fromTo("#s03-arbre", { scale: 1 }, { scale: 1.06, duration: 4.6, ease: "none" }, t(3, 0) - 0.1);
+        INK.draw(tl, $("#s03-a1"), t(3, 4) - 0.05, 0.4, "power2.out"); INK.draw(tl, $("#s03-a1h"), t(3, 4) + 0.33, 0.12);
+        INK.draw(tl, $("#s03-a2"), t(3, 4) + 0.25, 0.4, "power2.out"); INK.draw(tl, $("#s03-a2h"), t(3, 4) + 0.63, 0.12);
+        tl.fromTo("#s03-etincelles-cadre", { opacity: 0 }, { opacity: 0.9, duration: 0.4 }, t(3, 6) - 0.1);
+        const dots = Array.from(svg.querySelectorAll("circle"));
+        dots.forEach((d, i) => tl.fromTo(d, { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.18, ease: "back.out(2)" }, t(3, 6) - 0.05 + i * 0.025));
+        INK.drift(tl, dots, t(3, 6), 2.2, 26, 77);
+        links.forEach((_, k) => INK.draw(tl, $("#s03-k" + k), t(3, 7) + k * 0.06, 0.28, "power1.out"));
+        tl.set(["#s03-temps2"], { opacity: 0 }, t(4, 0) - 0.12);
+
+        // ===== temps 4 (32,1 → 36,0) : « Ici, une réputation se perd en un regard. »
+        INK.cut(tl, "#s03-temps4", t(4, 0) - 0.12);
+        INK.pin(tl, "#s03-regard", t(4, 0) - 0.12, { rot: 0.8, dur: 0.4 });
+        tl.fromTo("#s03-regard .cadre", { scale: 1.0 }, { scale: 1.12, duration: 3.8, ease: "power1.inOut" }, t(4, 0));
+        INK.draw(tl, $("#s03-oeil"), t(4, 7) - 0.4, 0.38, "power2.inOut"); // se referme sur « regard »
+        window.__timelines["s03"] = tl;
+      });
+    })();
+  </script>
+</template>

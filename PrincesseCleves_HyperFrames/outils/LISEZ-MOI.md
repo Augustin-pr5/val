@@ -6,8 +6,9 @@ Lancés une fois depuis la racine du projet, ils régénèrent ce qui n'est pas 
 |---|---|
 | `prep_nb.sh <projet>` | Crée `assets/nb/` : toutes les images et vidéos en noir et blanc avec la formule du prompt (`grayscale(1) contrast(1.12) brightness(1.04) sepia(.08)`), calculée une fois pour toutes (les bougies restent en couleur). |
 | `textures.py <projet>/assets/textures` | Papier ivoire `#F5F1E8` à grain fixe + parchemin (S07). |
-| `align2.py <projet> <dossier_travail>` | Transcription phrase par phrase (whisper.cpp `medium`, français, horodatage DTW) calée sur `timeline.json`. |
-| `build_words.py <dtw_rows.json> <words.json>` | Construit `words.json` à partir de l'alignement et affiche l'écart à `timeline.json`. |
+| `mms_align.py <projet> <travail> <sortie.json>` | **Alignement forcé** du texte exact de `timeline.json` sur l'audio (modèle CTC MMS de Meta, ONNX `onnx-community/mms-300m-1130-forced-aligner-ONNX`, onnxruntime). |
+| `refine_starts.py <projet> <entrée.json> <sortie.json>` | Recule chaque début de mot jusqu'à l'attaque réelle (énergie large bande, ≤ 0,15 s) : le modèle CTC marque une lettre au milieu de son son. Donne `words.json`. |
+| `align2.py`, `build_words.py` | Ancienne méthode (Whisper DTW), gardée pour mémoire : dérivait de 0,1–0,3 s dans les longues phrases. |
 | `spectro.py <projet> <début> <fin> <sortie.png>` | Spectrogramme + repères de mots, pour vérifier le calage à l'œil. |
 
 `assets/lib/words.js` est généré depuis `words.json` (mêmes données, chargées par les scènes).
