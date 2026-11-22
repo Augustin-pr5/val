@@ -10,7 +10,7 @@
     /* son reflet : la princesse seule, inversée et pâlie */
     #s04-reflet { left: 1499px; top: 150px; width: 340px; height: 400px; opacity: 0; }
     #s04-reflet img { left: -416px; top: 0; width: 757px; height: 400px; transform: scaleY(-1); }
-    #s04-reflet-masque { position: absolute; inset: 0; -webkit-mask-image: linear-gradient(rgba(0,0,0,0.9), transparent 92%); mask-image: linear-gradient(rgba(0,0,0,0.9), transparent 92%); }
+    #s04-reflet-masque { position: absolute; inset: 0; -webkit-mask-image: linear-gradient(transparent 0, rgba(0,0,0,0.85) 18%, transparent 92%), linear-gradient(to right, transparent 0, #000 15%); mask-image: linear-gradient(transparent 0, rgba(0,0,0,0.85) 18%, transparent 92%), linear-gradient(to right, transparent 0, #000 15%); -webkit-mask-composite: source-in; mask-composite: intersect; }
     #s04-filet { position: absolute; left: 1490px; top: 552px; width: 360px; height: 20px; overflow: visible; }
   </style>
   <div id="root" data-composition-id="s04" data-width="1920" data-height="1080">
@@ -36,7 +36,7 @@
     <div class="dof h1"></div><div class="dof h2"></div><div class="dof b1"></div><div class="dof b2"></div>
 
     <div class="recadre" id="s04-reflet"><div id="s04-reflet-masque"><img src="assets/nb/ia_mere_conseil.png" alt="" /></div></div>
-    <div class="recadre" id="s04-mere"><img src="assets/nb/ia_mere_conseil.png" alt="Madame de Chartres conseille sa fille" /></div>
+    <div class="recadre fondu-bg fondu-h" id="s04-mere"><img src="assets/nb/ia_mere_conseil.png" alt="Madame de Chartres conseille sa fille" /></div>
     <svg class="encre" viewBox="0 0 1920 1080"><path id="s04-ligne" data-shape="line" data-p="1500,556,1838,552" data-wobble="1.5" data-seed="151" style="stroke-width:2.5" /></svg>
   </div>
   <script>

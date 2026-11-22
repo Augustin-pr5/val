@@ -40,6 +40,7 @@
     #s07-mots .gros { font-family: "Source Serif 4", serif; font-weight: 900; font-size: 200px; line-height: 1; letter-spacing: -0.02em; }
     #s07-mots span { display: inline-block; }
     #s07-ratures path { stroke: #b3261e; stroke-width: 20; }
+    #s07-balai path { stroke: #161412; stroke-width: 1500; stroke-linecap: round; fill: none; }
 
     /* ---------- retour au XVIIe siècle : la femme qui écrit ---------- */
     #s07-femme { left: 150px; top: 190px; width: 1060px; height: 616px; }
@@ -132,6 +133,9 @@
         </svg>
       </div>
     </div>
+
+    <!-- ~99,5 s : le balayage d'encre entre le monde médiéval et le XVIIe siècle -->
+    <svg class="encre" id="s07-balai" viewBox="0 0 1920 1080"><path id="s07-trait" d="M -700 470 C 400 620, 1500 500, 2650 640" pathLength="1000" /></svg>
   </div>
 
   <script>
@@ -206,11 +210,13 @@
         });
 
         // ===== G. « Madame de Lafayette pose une autre question » : retour au papier du XVIIe =====
-        const tWipe = t(5, 0) - 0.42;
-        tl.fromTo("#s07-medieval", { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.45, ease: "power2.inOut", immediateRender: false }, tWipe);
-        tl.set("#s07-medieval", { opacity: 0 }, tWipe + 0.46);
+        // un grand trait d'encre balaie tout l'écran ; les deux mondes s'échangent sous l'encre (jamais superposés)
+        const tWipe = t(5, 0) - 0.33; // écran entièrement couvert à 99,82 s, la femme apparaît avant « Madame » (100,15)
+        INK.draw(tl, $("#s07-trait"), tWipe - 0.28, 0.28, "power2.in");
+        tl.set("#s07-medieval", { opacity: 0 }, tWipe);
         tl.set("#s07-plume", { opacity: 0 }, 0);
         tl.set("#s07-plume", { opacity: 1 }, tWipe);
+        INK.undraw(tl, $("#s07-trait"), tWipe + 0.02, 0.3, "power2.out");
         tl.fromTo("#s07-femme", { rotation: -1, scale: 1.02 }, { rotation: -1, scale: 1, duration: 4, ease: "none" }, tWipe);
         // sa plume trace un grand « ? »
         INK.draw(tl, $("#s07-q"), t(5, 3) - 0.2, 1.75, "power1.inOut");

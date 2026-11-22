@@ -251,13 +251,13 @@
       tl.fromTo(page.querySelector('.ombre'), { opacity: 1 }, { opacity: 0, duration: 0.7, ease: 'power1.out' }, t0 + 0.1);
     } else {
       tl.set(page.querySelector('.ombre'), { opacity: 0 }, 0);
-      tl.fromTo(page, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t0);
+      tl.fromTo(page, { opacity: cfg.o0 != null ? cfg.o0 : 0 }, { opacity: 1, duration: 0.3 }, t0); // o0 = 1 : la page est là dès la première image
     }
     for (var k = 1; k < lines.length; k++) {
       tl.to(leaf, { y: yOf(lines[k]), x: X0 + 10 * k, duration: 0.7, ease: 'power2.inOut' }, Math.max(t0 + 1.2, t(lines[k].w) - 0.42));
     }
     // karaoké : chaque mot est noir 0,05 s avant son début
-    INK.karaoke(tl, kws, W, S);
+    INK.karaoke(tl, kws, W, S, cfg.karaoke);
     Array.prototype.forEach.call(page.querySelectorAll('.mk'), function (mk) { INK.highlight(tl, mk, t(+mk.dataset.w) - 0.05, 0.3); });
     // attribution : s'écrit sous la citation
     var attr = page.querySelectorAll('p.attribution .l'), last = lines[lines.length - 1];

@@ -6,6 +6,10 @@
     #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
     #s08-mere { left: 1290px; top: 110px; width: 520px; height: 224px; }
     #s08-point { left: 960px; top: 560px; opacity: 0; }
+    /* la citation du précipice : plus grande que le texte de la page, imprimée au bord de la page */
+    #root .livre-page .citation .ligne { font-size: 84px; height: 120px; line-height: 120px; color: rgba(22, 20, 18, 0.5); }
+    #root .livre-page .citation .mk { top: 30px; bottom: 10px; }
+    #root .livre-page p.attribution { font-size: 52px; line-height: 66px; }
   </style>
   <div id="root" data-composition-id="s08" data-width="1920" data-height="1080">
     <div class="livre-stage">
@@ -16,7 +20,8 @@
             <div class="avant autour" data-layout-ignore>Il y a déjà long-temps que je me suis aperçue de cette inclination&#160;; mais je ne vous en ai pas voulu parler d’abord, de peur de vous en faire apercevoir vous-même. Vous ne la connaissez que trop présentement&#160;:</div>
             <!-- la citation est imprimée au bord de la page -->
             <div class="citation">
-              <div class="ligne"><span class="kw" data-w="0">«&#160;Vous</span> <span class="kw" data-w="1">êtes</span> <span class="kw" data-w="2">sur</span> <span class="kw" data-w="3">le</span> <span class="kw" data-w="4">bord</span> <span class="kw" data-w="5">du</span> <span class="kw" data-w="6"><i class="mk" data-w="6"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>précipice.&#160;»</b></span></div>
+              <div class="ligne"><span class="kw" data-w="0">«&#160;Vous</span> <span class="kw" data-w="1">êtes</span> <span class="kw" data-w="2">sur</span> <span class="kw" data-w="3">le</span> <span class="kw" data-w="4">bord</span></div>
+              <div class="ligne"><span class="kw" data-w="5">du</span> <span class="kw" data-w="6"><i class="mk" data-w="6"><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M1 4 Q 20 1 45 3 T 99 2 L 98 17 Q 70 19 48 17 T 2 18 Z" /></svg></i><b>précipice.&#160;»</b></span></div>
             </div>
             <p class="attribution"><span class="l">— Madame de Chartres, mourante</span></p>
             <div class="ombre"></div>
@@ -39,7 +44,8 @@
       INK.shapes(root);
       INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
         const W = INK.words("S08", 0);
-        const L = INK.livre(tl, root, { scene: "S08", phrase: 0, S, ox: 900, oy: 470, width: 1150, height: "fit", q: 640, rotX: 26, rotZ: -1.5, entree: "monte",
+        const L = INK.livre(tl, root, { scene: "S08", phrase: 0, S, ox: 900, oy: 470, width: 1150, height: 1080, q: 720, lh: 120, rotX: 18, rotZ: -1.5, entree: "monte",
+                                       karaoke: { grey: "rgba(22, 20, 18, 0.5)" },
                                        attrAt: W[6][1] - S + 0.45, descente: 70 });
         INK.pin(tl, "#s08-mere", 0.35, { rot: 1.2, dur: 0.5 });
         // la caméra bascule par-dessus le bord de la page

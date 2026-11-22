@@ -4,7 +4,9 @@
     @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
     @font-face { font-family: "IM FELL English SC"; src: url("assets/fonts/IMFellEnglish-SmallCaps.ttf") format("truetype"); font-weight: 400; font-style: normal; }
     #root { position: absolute; inset: 0; overflow: hidden; color: #161412; }
-    #s10-elle { left: 1250px; top: 200px; width: 588px; height: 600px; }
+    /* la princesse est posée sur le bord bas de l'écran (bord coupé du détourage) */
+    #s10-elle { left: 1215px; top: 440px; width: 625px; height: 640px; }
+    #s10-elle img { object-position: 50% 100%; }
     /* le seul plan sombre (et en couleur) du film : les bougies */
     #s10-nuit { position: absolute; inset: 0; background: #000; }
     #s10-bougies { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
@@ -43,8 +45,9 @@
       const root = document.querySelector('[data-composition-id="s10"]');
       INK.fontsReady(['58px "IM FELL English"', 'italic 46px "IM FELL English"', '34px "IM FELL English SC"']).then(() => {
         const W = INK.words("S10", 0);
-        INK.livre(tl, root, { scene: "S10", phrase: 0, S, ox: 640, oy: 480, width: 1150, q: 760, rotX: 22, rotZ: -2.5, t0: 0.3 });
-        INK.pin(tl, "#s10-elle", 0.6, { rot: 0, dur: 0.6, dy: 0 });
+        INK.livre(tl, root, { scene: "S10", phrase: 0, S, ox: 640, oy: 480, width: 1150, q: 880, rotX: 22, rotZ: -2.5, t0: 0, entree: "monte", o0: 1 }); // la page est là dès 126,6 s (première image)
+        // la princesse (posée sur le bord bas de l'écran) monte depuis le bas, visible dès la première image
+        tl.fromTo("#s10-elle", { opacity: 1, y: 140 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0);
         INK.cut(tl, "#s10-nuit", 134.0 - S);
         tl.set("#s10-livre", { opacity: 0 }, 134.0 - S);
         window.__timelines["s10"] = tl;

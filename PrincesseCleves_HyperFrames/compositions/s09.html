@@ -21,8 +21,8 @@
     #s09-oeil .pupille { fill: #161412; stroke: none; }
     #s09-toile path { stroke-width: 2.4; }
     /* la fuite */
-    #s09-carrosse { left: 0; top: 230px; width: 716px; height: 560px; }
-    #s09-double, #s09-elle { left: 602px; top: 200px; width: 716px; height: 560px; }
+    #s09-carrosse { left: 0; top: 230px; width: 732px; height: 560px; }
+    #s09-double, #s09-elle { left: 594px; top: 200px; width: 732px; height: 560px; }
     #s09-double img { transform: scaleX(-1); }
   </style>
   <div id="root" data-composition-id="s09" data-width="1920" data-height="1080">
@@ -39,7 +39,7 @@
       <div class="gros centre s09-mot mots" id="s09-m2"><span data-w="0">Les</span> <span data-w="1">lettres</span> <span data-w="2">perdues.</span></div>
     </div>
     <div class="calque" id="s09-c">
-      <div class="detoure" id="s09-eventail"><img src="assets/nb/ia_chuchotement_eventail.png" alt="Chuchotements derrière un éventail" /></div>
+      <div class="detoure fondu-b fondu-h" id="s09-eventail"><img src="assets/nb/ia_chuchotement_eventail.png" alt="Chuchotements derrière un éventail" /></div>
       <svg class="encre" viewBox="0 0 1920 1080">
         <path id="s09-o1" d="M 640 250 A 300 300 0 0 0 640 520" pathLength="1000" />
         <path id="s09-o2" d="M 560 200 A 380 380 0 0 0 560 580" pathLength="1000" style="stroke-width:4" />
@@ -61,11 +61,11 @@
     </div>
     <div class="calque" id="s09-e">
       <svg class="encre" viewBox="0 0 1920 1080"><path id="s09-route" data-shape="line" data-p="90,880,1830,860" data-bow="-18" data-wobble="3" data-seed="191" style="stroke-width:5" /></svg>
-      <div class="detoure" id="s09-carrosse"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle fuit" /></div>
+      <div class="detoure fondu-b fondu-h" id="s09-carrosse"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle fuit" /></div>
     </div>
     <div class="calque" id="s09-f">
-      <div class="detoure" id="s09-double"><img src="assets/nb/ia_carrosse_fuite.png" alt="" /></div>
-      <div class="detoure" id="s09-elle"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle se fuit elle-même" /></div>
+      <div class="detoure fondu-b fondu-h" id="s09-double"><img src="assets/nb/ia_carrosse_fuite.png" alt="" /></div>
+      <div class="detoure fondu-b fondu-h" id="s09-elle"><img src="assets/nb/ia_carrosse_fuite.png" alt="Elle se fuit elle-même" /></div>
     </div>
   </div>
   <script>

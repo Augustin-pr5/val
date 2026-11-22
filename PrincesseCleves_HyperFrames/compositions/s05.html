@@ -4,14 +4,14 @@
     @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
     #root { position: absolute; inset: 0; overflow: hidden; }
     /* la princesse (recadrage de ia_princesse_miroir.png : partie droite) */
-    #s05-elle { left: 200px; top: 170px; width: 613px; height: 760px; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
-    #s05-elle img { left: -847px; top: 0; width: 1460px; height: 760px; }
+    #s05-elle { left: 200px; top: 170px; width: 575px; height: 760px; }
+    #s05-elle img { left: -939px; top: 0; width: 1514px; height: 760px; }
     #s05-nom { left: 880px; top: 320px; font-size: 100px; font-style: italic; filter: url(#boil-texte); }
     #s05-vertu { left: 990px; top: 590px; font-size: 200px; }
     /* temps 2 : mariage avec Clèves */
-    #s05-elle2 { left: 1270px; top: 200px; width: 517px; height: 640px; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
-    #s05-elle2 img { left: -713px; top: 0; width: 1230px; height: 640px; }
-    #s05-cleves { left: 110px; top: 220px; width: 710px; height: 600px; filter: drop-shadow(0 6px 14px rgba(22,20,18,0.18)); }
+    #s05-elle2 { left: 1300px; top: 200px; width: 485px; height: 640px; }
+    #s05-elle2 img { left: -790px; top: 0; width: 1275px; height: 640px; }
+    #s05-cleves { left: 110px; top: 220px; width: 710px; height: 600px; }
     #s05-cleves img { left: -304px; top: 0; width: 1014px; height: 600px; }
     #s05-masson { left: 770px; top: 120px; width: 380px; height: 584px; z-index: 2; }
     #s05-cartel-masson { left: 760px; top: 720px; width: 400px; text-align: center; z-index: 3; }
@@ -21,7 +21,7 @@
   <div id="root" data-composition-id="s05" data-width="1920" data-height="1080">
     <!-- temps 1 : « Elle s'appelle Mademoiselle de Chartres… la vertu. » -->
     <div class="calque" id="s05-t1">
-      <div class="recadre" id="s05-elle"><img src="assets/nb/ia_princesse_miroir.png" alt="Mademoiselle de Chartres" /></div>
+      <div class="recadre fondu-bg fondu-h" id="s05-elle"><img src="assets/nb/ia_princesse_miroir.png" alt="Mademoiselle de Chartres" /></div>
       <div class="fell" id="s05-nom">Mademoiselle de Chartres</div>
       <div class="plume-pt" id="s05-plume"></div>
       <svg class="encre" viewBox="0 0 1920 1080">
@@ -32,8 +32,8 @@
     </div>
     <!-- temps 2 et 3 : Clèves, la gravure, AIMER ≠ ESTIMER -->
     <div class="calque" id="s05-t2">
-      <div class="recadre" id="s05-cleves"><img src="assets/nb/ia_prince_cleves.png" alt="Le prince de Clèves" /></div>
-      <div class="recadre" id="s05-elle2"><img src="assets/nb/ia_princesse_miroir.png" alt="La princesse" /></div>
+      <div class="recadre fondu-bg fondu-h" id="s05-cleves"><img src="assets/nb/ia_prince_cleves.png" alt="Le prince de Clèves" /></div>
+      <div class="recadre fondu-bg fondu-h" id="s05-elle2"><img src="assets/nb/ia_princesse_miroir.png" alt="La princesse" /></div>
       <div class="piece archive" id="s05-masson"><img src="assets/nb/archive_rencontre_masson_1878.jpg" alt="La rencontre, gravure de Masson" /></div>
       <div class="cartel" id="s05-cartel-masson">Gravure de Masson,<br />éd. Quantin, 1878<br />Gallica&#160;/&#160;BnF</div>
       <svg class="encre" viewBox="0 0 1920 1080">

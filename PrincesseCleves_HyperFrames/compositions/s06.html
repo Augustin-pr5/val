@@ -4,10 +4,13 @@
     #root { position: absolute; inset: 0; overflow: hidden; }
     #s06-bal { left: 160px; top: 190px; width: 1600px; height: 690px; }
     #s06-bal video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    #s06-mains { left: 1440px; top: 330px; width: 272px; height: 560px; }
+    #s06-mains { left: 1380px; top: 330px; width: 378px; height: 560px; }
     #s06-titre { top: 440px; font-size: 160px; }
-    #s06-nemours { left: 1010px; top: 250px; width: 779px; height: 620px; }
-    #s06-elle { left: 200px; top: 250px; width: 599px; height: 620px; }
+    /* médaillons ovales : les bords coupés des détourages restent hors de l'ovale */
+    #s06-nemours { left: 1110px; top: 140px; width: 540px; height: 660px; }
+    #s06-nemours img { left: -158px; top: -20px; width: 952px; height: 760px; }
+    #s06-elle, #s06-elle2 { left: 270px; top: 140px; width: 540px; height: 660px; }
+    #s06-elle img, #s06-elle2 img { left: -280px; top: -10px; width: 1019px; height: 980px; }
     #s06-yeux .oeil path { stroke-width: 3; }
     #s06-yeux .oeil circle { fill: #161412; }
     #s06-vol { left: 566px; top: 190px; width: 788px; height: 700px; }
@@ -19,17 +22,18 @@
       <div class="piece" id="s06-bal"><div class="cadre" id="s06-bal-cadre">
         <video id="s06-bal-video" class="clip" data-start="0" data-duration="5.7" data-playback-rate="0.88" data-track-index="2" muted playsinline src="assets/nb/ia_video_bal_danse_1920x828.mp4"></video>
       </div></div>
-      <div class="detoure" id="s06-mains"><img src="assets/nb/ia_mains_danse.png" alt="Deux mains pour la danse" /></div>
+      <div class="detoure fondu-g" id="s06-mains"><img src="assets/nb/ia_mains_danse.png" alt="Deux mains pour la danse" /></div>
     </div>
     <!-- B. coupure nette : « Le duc de Nemours. » -->
     <div class="gros centre mots" id="s06-titre"><span>Le</span> <span>duc</span> <span>de</span> <span>Nemours</span><span class="rouge-txt" id="s06-point">.</span></div>
     <!-- C. Nemours et la princesse ; la cour les regarde -->
     <div class="calque" id="s06-c">
-      <div class="detoure" id="s06-elle"><img src="assets/nb/ia_princesse_fenetre.png" alt="La princesse" /></div>
-      <div class="detoure" id="s06-nemours"><img src="assets/nb/ia_duc_nemours.png" alt="Le duc de Nemours" /></div>
+      <div class="medaillon" id="s06-elle"><img src="assets/nb/ia_princesse_fenetre.png" alt="La princesse" /></div>
+      <div class="medaillon" id="s06-nemours"><img src="assets/nb/ia_duc_nemours.png" alt="Le duc de Nemours" /></div>
       <svg class="encre" viewBox="0 0 1920 1080">
-        <path id="s06-cercle" data-shape="circle" data-c="1361,405" data-r="150,178" data-seed="171" style="stroke-width:6" />
-        <path id="s06-lien" data-shape="line" data-p="560,330,1330,392" data-bow="-40" data-wobble="2" data-seed="172" style="stroke-width:5" />
+        <path id="s06-cercle" data-shape="circle" data-c="1380,470" data-r="278,338" data-seed="171" data-wobble="0.015" data-sweep="368" style="stroke-width:6" />
+        <path id="s06-ovale-elle" data-shape="circle" data-c="540,470" data-r="278,338" data-seed="175" data-wobble="0.015" data-sweep="368" style="stroke-width:6" />
+        <path id="s06-lien" data-shape="line" data-p="560,236,1300,306" data-bow="-40" data-wobble="2" data-seed="172" style="stroke-width:5" />
       </svg>
       <svg class="encre" id="s06-yeux" viewBox="0 0 1920 1080"></svg>
     </div>
@@ -37,9 +41,10 @@
     <div class="detoure" id="s06-vol"><img src="assets/nb/ia_vol_du_portrait.png" alt="Il vole son portrait" /><div class="point-rouge" id="s06-pr"></div></div>
     <!-- E et F. « Elle le voit faire. Et elle se tait. » -->
     <div class="calque" id="s06-e">
-      <div class="detoure" id="s06-elle2" style="left:200px;top:250px;width:599px;height:620px"><img src="assets/nb/ia_princesse_fenetre.png" alt="Elle le voit faire" /></div>
+      <div class="medaillon" id="s06-elle2"><img src="assets/nb/ia_princesse_fenetre.png" alt="Elle le voit faire" /></div>
       <svg class="encre" viewBox="0 0 1920 1080">
-        <path id="s06-regard" data-shape="line" data-p="560,330,1830,420" data-bow="-30" data-wobble="2" data-seed="173" style="stroke-width:3" />
+        <path id="s06-ovale-elle2" data-shape="circle" data-c="540,470" data-r="278,338" data-seed="175" data-wobble="0.015" data-sweep="368" style="stroke-width:6" />
+        <path id="s06-regard" data-shape="line" data-p="580,236,1830,420" data-bow="-30" data-wobble="2" data-seed="173" style="stroke-width:3" />
       </svg>
     </div>
     <svg class="encre" id="s06-f" viewBox="0 0 1920 1080"><path id="s06-tait" data-shape="line" data-p="760,560,1160,556" data-wobble="1.5" data-seed="174" style="stroke-width:7" /></svg>
@@ -80,6 +85,7 @@
           tl.fromTo("#s06-nemours", { scale: 1.12 }, { scale: 1, duration: 0.18, ease: "expo.out" }, 70.6 - S);
           INK.draw(tl, $("#s06-cercle"), 70.62 - S, 0.2, "power3.out");
           tl.fromTo("#s06-elle", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.9, ease: "power2.out" }, 72.6 - S);
+          INK.draw(tl, $("#s06-ovale-elle"), 72.9 - S, 0.6, "power2.out");
           // « Toute la cour les regarde » : les yeux s'ouvrent tout autour
           Array.from(yeux.children).forEach((g, i) => tl.fromTo(g, { opacity: 0 }, { opacity: 1, duration: 0.06 }, t(1, 0) - 0.05 + i * 0.032));
           // « Eux ne voient qu'eux » : un trait les relie, le reste devient gris
@@ -92,6 +98,7 @@
           tl.to("#s06-vol", { x: 1560, rotation: 8, duration: 0.7, ease: "power3.in" }, t(3, 5) + 0.1);
           // E. « Elle le voit faire. »
           INK.cut(tl, "#s06-e", t(4, 0) - 0.1, t(5, 0) - 0.1);
+          INK.draw(tl, $("#s06-ovale-elle2"), t(4, 0) - 0.1, 0.01, "none");
           INK.draw(tl, $("#s06-regard"), t(4, 0), 0.7, "power2.out");
           // F. « Et elle se tait. » : un trait qui ferme une bouche, puis le blanc
           INK.draw(tl, $("#s06-tait"), t(5, 0) - 0.05, 0.8, "power1.inOut");

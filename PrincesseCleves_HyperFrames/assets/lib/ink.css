@@ -63,3 +63,15 @@
 .livre-page .citation { position: absolute; left: 100px; right: 100px; height: 1px; }
 .livre-page .citation .ligne { position: absolute; left: 0; height: 86px; line-height: 86px; white-space: nowrap; }
 .livre-page p.attribution { position: absolute; left: 100px; margin: 0; }
+
+/* Bords coupés net d'un personnage : fondu de 15 % sur chaque bord concerné (h = haut, b = bas, g = gauche, d = droite).
+   Les classes se cumulent (ex. « fondu-bg fondu-h ») : un seul masque, deux dégradés croisés. */
+.fondu-h, .fondu-b, .fondu-g, .fondu-d, .fondu-bg, .fondu-bd {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fh, 0%), #000 calc(100% - var(--fb, 0%)), transparent 100%), linear-gradient(to right, transparent 0, #000 var(--fg, 0%), #000 calc(100% - var(--fd, 0%)), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fh, 0%), #000 calc(100% - var(--fb, 0%)), transparent 100%), linear-gradient(to right, transparent 0, #000 var(--fg, 0%), #000 calc(100% - var(--fd, 0%)), transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
+.fondu-h { --fh: 15%; } .fondu-b { --fb: 15%; } .fondu-g { --fg: 15%; } .fondu-d { --fd: 15%; }
+.fondu-bg { --fb: 15%; --fg: 15%; } .fondu-bd { --fb: 15%; --fd: 15%; }
+/* médaillon ovale : le personnage est découpé dans un ovale, dont le contour est tracé à l'encre */
+.medaillon { position: absolute; overflow: hidden; border-radius: 50%; }
+.medaillon > img { position: absolute; display: block; }

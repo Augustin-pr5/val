@@ -21,9 +21,18 @@
 - S02 : « magnificence » et « galanterie » surlignés en rouge, « Henri second » souligné à l'encre.
 - Texte flou autour des citations : vrai texte du roman, édition Lepetit 1820 (Wikisource, domaine public) ; la phrase citée est exactement celle du prompt.
 - Noir et blanc : la formule du prompt (`grayscale(1) contrast(1.12) brightness(1.04) sepia(.08)`) est appliquée une fois pour toutes aux fichiers (`assets/nb/`). Exceptions en couleur : les bougies (S10) et le cachet de cire rouge (S09).
-- S11 : la silhouette « dans l'ombre » est le détourage de Nemours rempli d'encre (`assets/nb/silhouette_nemours.png`).
+- S01 : la main qui écrit « 1678 » (`ia_main_plume.png`) et l'encrier posé à côté (`element_encrier.png`).
+- S11 : la silhouette « dans l'ombre » est `silhouette_ombre_homme.png`, collée au bord haut de l'écran, à moitié cachée derrière l'image du jardin ; des ondes d'encre vont de la fenêtre du pavillon vers elle.
+- Bords coupés net des personnages : jamais au milieu du papier. Soit collés au bord de l'écran (S10, S14), soit fondus sur 15 % (classes cumulables `fondu-h`, `fondu-b`, `fondu-g`, `fondu-d` dans `ink.css`), soit dans un médaillon ovale tracé à l'encre (S06).
+- S07 → XVIIe siècle (≈ 99,5 s) : un grand trait d'encre couvre tout l'écran, les deux mondes s'échangent dessous, jamais superposés.
+- S08 : la citation du précipice est composée en 84 px sur deux lignes, au bord bas de la page, juste avant la bascule.
 
 ## Rendu
 ```
 node .claude/skills/hyperframes/scripts/plugin-cli.mjs render --fps 25 --quality delivery -o PrincesseCleves_BA_dessinee_1080p_HQ.mp4
+```
+Version légère (< 100 Mo), réencodée depuis la HQ en deux passes, piste audio copiée telle quelle :
+```
+ffmpeg -y -i PrincesseCleves_BA_dessinee_1080p_HQ.mp4 -c:v libx264 -preset slow -b:v 3000k -pass 1 -an -f null /dev/null
+ffmpeg -i PrincesseCleves_BA_dessinee_1080p_HQ.mp4 -c:v libx264 -preset slow -b:v 3000k -pass 2 -pix_fmt yuv420p -r 25 -c:a copy -movflags +faststart PrincesseCleves_BA_dessinee_1080p_leger.mp4
 ```
