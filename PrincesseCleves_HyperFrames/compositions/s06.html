@@ -2,10 +2,11 @@
   <style>
     @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
     #root { position: absolute; inset: 0; overflow: hidden; }
-    #s06-bal { left: 160px; top: 190px; width: 1600px; height: 690px; }
+    /* le bal en plein cadre : tout le faste de la cour, puis la coupure nette sur le papier vide (67,6) */
+    #s06-bal { left: 0; top: 0; width: 1920px; height: 1080px; padding: 0; box-shadow: none; background: #161412; }
     #s06-bal video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     #s06-mains { left: 1380px; top: 330px; width: 378px; height: 560px; }
-    #s06-titre { top: 440px; font-size: 160px; }
+    #s06-titre { top: 430px; font-size: 180px; }
     /* médaillons ovales : les bords coupés des détourages restent hors de l'ovale */
     #s06-nemours { left: 1110px; top: 140px; width: 540px; height: 660px; }
     #s06-nemours img { left: -158px; top: -20px; width: 952px; height: 760px; }
@@ -69,11 +70,10 @@
         const c = document.createElementNS(NS, "circle"); c.setAttribute("r", "9");
         g.appendChild(p); g.appendChild(c); yeux.appendChild(g);
       }
-      INK.fontsReady(['900 160px "Source Serif 4"']).then(() => {
+      INK.fontsReady(['900 180px "Source Serif 4"']).then(() => {
         INK.withLayout(root, () => {
           // A. le bal (61,9 → 67,6)
-          INK.pin(tl, "#s06-bal", 0, { rot: -0.6, dur: 0.5 });
-          tl.fromTo("#s06-bal-cadre", { scale: 1 }, { scale: 1.06, duration: 5.7, ease: "none" }, 0);
+          tl.fromTo("#s06-bal-cadre", { scale: 1.0 }, { scale: 1.08, duration: 5.7, ease: "none" }, 0); // coupe franche sur le bal, lente poussée
           INK.pin(tl, "#s06-mains", t(0, 11) - 0.1, { rot: 4, dur: 0.4 }); // « danser »
           tl.set("#s06-a", { opacity: 0 }, 67.6 - S);                       // coupure nette
           // B. « Le duc de Nemours. » mot par mot, le point final est le point rouge
@@ -84,6 +84,7 @@
           INK.cut(tl, "#s06-c", 70.6 - S);
           tl.fromTo("#s06-nemours", { scale: 1.12 }, { scale: 1, duration: 0.18, ease: "expo.out" }, 70.6 - S);
           INK.draw(tl, $("#s06-cercle"), 70.62 - S, 0.2, "power3.out");
+          tl.fromTo("#s06-c", { scale: 1 }, { scale: 1.025, duration: t(3, 0) - 0.1 - (70.6 - S), ease: "none" }, 70.6 - S); // lente poussée
           tl.fromTo("#s06-elle", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.9, ease: "power2.out" }, 72.6 - S);
           INK.draw(tl, $("#s06-ovale-elle"), 72.9 - S, 0.6, "power2.out");
           // « Toute la cour les regarde » : les yeux s'ouvrent tout autour

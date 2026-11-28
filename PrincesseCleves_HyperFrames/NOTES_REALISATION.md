@@ -27,6 +27,13 @@
 - S07 → XVIIe siècle (≈ 99,5 s) : un grand trait d'encre couvre tout l'écran, les deux mondes s'échangent dessous, jamais superposés.
 - S08 : la citation du précipice est composée en 84 px sur deux lignes, au bord bas de la page, juste avant la bascule.
 
+## Rythme « bande-annonce »
+- Grands mots tous entre 140 et 300 px (Source Serif 700–900). « Des fêtes. / Des bals. / Des tournois. » s'enchaînent en trois coupes franches sur la voix.
+- Aucun plan figé : lentes poussées de caméra (2 à 6 %) sur S01, S03, S05, S06, S12, S13, S16, rapprochement sur la gravure de *L'aveu* (S11), marges de 80 px respectées.
+- S06 : le bal en plein cadre (61,9 → 67,6), puis coupure nette sur le papier vide sur l'impact de 67,6 s.
+- S13 : chaque mot claque sur son impact (158 / 160 / 162).
+- S15 : après la plongée dans le point rouge, le point bat comme un cœur sur les pulsations de basse de la bande-son (175,45 · 175,85 · 176,27 · 176,70 · 177,10 s), avec des ondes d'encre.
+
 ## Rendu
 ```
 node .claude/skills/hyperframes/scripts/plugin-cli.mjs render --fps 25 --quality delivery -o PrincesseCleves_BA_dessinee_1080p_HQ.mp4

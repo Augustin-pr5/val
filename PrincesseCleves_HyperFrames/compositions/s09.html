@@ -3,12 +3,12 @@
     @font-face { font-family: "Source Serif 4"; src: url("assets/fonts/SourceSerif4-Variable.ttf") format("truetype"); font-weight: 200 900; font-style: normal; }
     @font-face { font-family: "IM FELL English"; src: url("assets/fonts/IMFellEnglish-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
     #root { position: absolute; inset: 0; overflow: hidden; }
-    .s09-mot { font-size: 130px; }
+    .s09-mot { font-size: 150px; }
     /* tournois */
     #s09-tournoi { left: 460px; top: 96px; width: 1000px; height: 638px; }
     #s09-cartel-tournoi { left: 466px; top: 750px; }
     #s09-joute { left: 1240px; top: 290px; width: 552px; height: 472px; }
-    #s09-m1 { top: 830px; }
+    #s09-m1 { top: 815px; }
     /* lettres perdues */
     #s09-lettre { left: 410px; top: 130px; width: 1100px; height: 486px; }
     #s09-cachet { left: 726px; top: 372px; width: 360px; height: 277px; }
@@ -17,7 +17,7 @@
     #s09-eventail { left: 482px; top: 100px; width: 955px; height: 560px; }
     #s09-m3 { top: 720px; }
     /* le regard piège */
-    #s09-m4 { top: 800px; font-size: 110px; font-weight: 800; }
+    #s09-m4 { top: 790px; font-size: 140px; font-weight: 800; }
     #s09-oeil .pupille { fill: #161412; stroke: none; }
     #s09-toile path { stroke-width: 2.4; }
     /* la fuite */
@@ -89,7 +89,7 @@
         const p = document.createElementNS(NS, "path"); p.setAttribute("d", INK.smooth(pts)); p.setAttribute("pathLength", "1000"); p.setAttribute("class", "fil"); toile.appendChild(p);
       });
       INK.shapes(root);
-      INK.fontsReady(['900 130px "Source Serif 4"', '800 110px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
+      INK.fontsReady(['900 150px "Source Serif 4"', '800 140px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
         INK.withLayout(root, () => {
           const cuts = [0, t(1, 0) - 0.1, t(2, 0) - 0.1, t(3, 0) - 0.1, t(4, 0) - 0.1, t(6, 0) - 0.1, 10.4];
           ["#s09-a", "#s09-b", "#s09-c", "#s09-d", "#s09-e", "#s09-f"].forEach((id, k) => INK.cut(tl, id, cuts[k], cuts[k + 1]));

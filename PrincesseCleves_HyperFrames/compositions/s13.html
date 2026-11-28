@@ -31,6 +31,11 @@
       INK.draw(tl, $("#s13-spirale"), 2.1, 0.9, "power1.out");
       INK.cut(tl, "#s13-c", 4.0, 5.9);
       INK.draw(tl, $("#s13-horizon"), 4.1, 0.9, "power2.inOut");
+      // chaque mot claque sur son impact, puis la caméra avance lentement
+      ["#s13-a", "#s13-b", "#s13-c"].forEach((id, k) => {
+        tl.fromTo(id + " .s13-mot", { scale: 1.16 }, { scale: 1, duration: 0.22, ease: "expo.out" }, k * 2);
+        tl.fromTo(id, { scale: 1 }, { scale: 1.04, duration: 1.9, ease: "none" }, k * 2);
+      });
       window.__timelines["s13"] = tl;
     })();
   </script>

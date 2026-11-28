@@ -8,14 +8,15 @@
     #s03-henri img { object-position: 50% 0%; height: 106%; }
     #s03-cartel-henri { left: 156px; top: 712px; }
     #s03-1558 { left: 690px; top: 150px; font-size: 260px; }
-    #s03-cour { left: 696px; top: 500px; font-size: 96px; font-weight: 700; }
+    #s03-cour { left: 696px; top: 430px; font-size: 150px; font-weight: 700; line-height: 1.12; }
     /* temps 2 : l'arbre de la cour */
     #s03-arbre { position: absolute; inset: 0; transform-origin: 50% 35%; }
     .s03-port { width: 300px; height: 392px; top: 112px; overflow: hidden; }
     .s03-port img { object-position: 50% 0%; height: 112%; }
     #s03-t-henri { left: 230px; } #s03-t-cath { left: 810px; } #s03-t-marie { left: 1390px; }
     #s03-ct-henri { left: 236px; top: 536px; } #s03-ct-cath { left: 816px; top: 536px; } #s03-ct-marie { left: 1396px; top: 536px; }
-    #s03-fetes { top: 700px; font-size: 100px; font-weight: 800; }
+    /* « Des fêtes. » / « Des bals. » / « Des tournois. » : trois coupes franches, très gros */
+    .s03-f { top: 690px; font-size: 180px; font-weight: 800; }
     #s03-chevaux-cadre { position: absolute; left: 480px; top: 560px; width: 960px; height: 540px; mix-blend-mode: multiply; overflow: hidden; }
     #s03-chevaux { position: absolute; left: 0; top: 0; width: 960px; height: 540px; object-fit: cover; }
     #s03-etincelles-cadre { position: absolute; inset: 0; mix-blend-mode: multiply; }
@@ -32,7 +33,7 @@
       <div class="piece archive" id="s03-henri"><img src="assets/nb/archive_henri_II_clouet.jpg" alt="Henri II par François Clouet" /></div>
       <div class="cartel" id="s03-cartel-henri">Henri II, roi de France,<br />par François Clouet</div>
       <div class="gros" id="s03-1558">1558.</div>
-      <div class="moyen mots" id="s03-cour"><span data-w="0">La</span> <span data-w="1">cour</span> <span data-w="2">du</span> <span data-w="3">roi</span> <span data-w="4">Henri</span> <span data-w="5">II.</span></div>
+      <div class="moyen mots" id="s03-cour"><span data-w="0">La</span> <span data-w="1">cour</span><br /><span data-w="2">du</span> <span data-w="3">roi</span> <span data-w="4">Henri</span> <span data-w="5">II.</span></div>
     </div>
     <!-- temps 2 et 3 : l'arbre généalogique de la cour -->
     <div class="calque" id="s03-temps2">
@@ -55,7 +56,9 @@
           <path id="s03-a2h" d="M1130 386 L 1102 406 L 1132 426" pathLength="1000" />
         </svg>
       </div>
-      <div class="gros centre mots" id="s03-fetes"><span data-w="0">Des</span> <span data-w="1">fêtes.</span> <span data-w="2">Des</span> <span data-w="3">bals.</span> <span data-w="4">Des</span> <span data-w="5">tournois.</span></div>
+      <div class="gros centre mots s03-f" id="s03-f1"><span data-w="0">Des</span> <span data-w="1">fêtes.</span></div>
+      <div class="gros centre mots s03-f" id="s03-f2"><span data-w="2">Des</span> <span data-w="3">bals.</span></div>
+      <div class="gros centre mots s03-f" id="s03-f3"><span data-w="4">Des</span> <span data-w="5">tournois.</span></div>
       <div id="s03-chevaux-cadre">
         <video id="s03-chevaux" class="clip" data-start="6.55" data-duration="2.5" data-track-index="2" muted playsinline src="assets/nb/pexels_chevaux_silhouettes_ralenti_NB.mp4"></video>
       </div>
@@ -94,10 +97,11 @@
         p.setAttribute("pathLength", "1000"); p.setAttribute("id", "s03-k" + k); svg.appendChild(p);
       });
 
-      INK.fontsReady(['900 260px "Source Serif 4"', '700 96px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
+      INK.fontsReady(['900 260px "Source Serif 4"', '700 150px "Source Serif 4"', '800 180px "Source Serif 4"', 'italic 34px "IM FELL English"']).then(() => {
         // ===== temps 1 (19,6 → 23,6) : Henri II, « 1558. », « La cour du roi Henri II. »
         tl.set("#s03-temps1", { opacity: 1 }, 0);
         INK.pin(tl, "#s03-henri", 0.0, { rot: -1.2, dur: 0.35 });
+        tl.fromTo("#s03-temps1", { scale: 1 }, { scale: 1.04, duration: 4.0, ease: "none" }, 0); // lente poussée de caméra
         INK.fade(tl, "#s03-cartel-henri", 0.35);
         INK.cut(tl, "#s03-1558", t(0, 0) - 0.05);
         INK.wordsIn(tl, root.querySelectorAll("#s03-cour span"), P[1], S);
@@ -114,10 +118,15 @@
         INK.draw(tl, $("#s03-l2"), 25.0 - S, 0.2, "power2.in");
         INK.draw(tl, $("#s03-l3"), 25.2 - S, 0.35, "power2.out");
         INK.draw(tl, $("#s03-l4"), 25.52 - S, 0.1);
-        INK.wordsIn(tl, root.querySelectorAll("#s03-fetes span"), P[2], S);
+        // chaque groupe chasse le précédent (coupe franche sur la voix)
+        INK.wordsIn(tl, root.querySelectorAll(".s03-f span"), P[2], S);
+        tl.set("#s03-f1", { opacity: 0 }, t(2, 2) - 0.05);
+        tl.set("#s03-f2", { opacity: 0 }, t(2, 4) - 0.05);
+        [["#s03-f1", 0], ["#s03-f2", 2], ["#s03-f3", 4]].forEach(([id, i]) =>
+          tl.fromTo(id, { scale: 1.12 }, { scale: 1, duration: 0.2, ease: "expo.out" }, t(2, i) - 0.05));
         // 26,25 : les chevaux en silhouette galopent en travers
         tl.fromTo("#s03-chevaux-cadre", { x: 1500 }, { x: -1500, duration: 2.5, ease: "none" }, 6.55);
-        tl.set("#s03-fetes", { opacity: 0 }, 27.35 - S);
+        tl.set("#s03-f3", { opacity: 0 }, 27.35 - S);
 
         // ===== temps 3 (27,4 → 32,1) : « Derrière les sourires, des ambitions, des rumeurs, des secrets »
         tl.fromTo("#s03-arbre", { scale: 1 }, { scale: 1.06, duration: 4.6, ease: "none" }, t(3, 0) - 0.1);

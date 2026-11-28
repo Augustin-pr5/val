@@ -9,6 +9,9 @@
     #s15-auteur { top: 772px; font-size: 64px; font-style: italic; }
     #s15-sep { color: transparent; }
     #s15-point { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+    /* « à l'intérieur d'un cœur » : le point rouge bat sur les pulsations de la musique */
+    #s15-coeur { position: absolute; left: 960px; top: 540px; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: #b3261e; opacity: 0; }
+    .s15-onde { position: absolute; left: 960px; top: 540px; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 3px solid #161412; opacity: 0; }
   </style>
   <div id="root" data-composition-id="s15" data-width="1920" data-height="1080">
     <div id="s15-scene">
@@ -17,6 +20,8 @@
       <div class="fell centre" id="s15-auteur">Madame de Lafayette <span id="s15-sep">·</span> 1678</div>
       <div class="point-rouge" id="s15-point"></div>
     </div>
+    <div class="s15-onde" id="s15-onde1"></div><div class="s15-onde" id="s15-onde2"></div><div class="s15-onde" id="s15-onde3"></div>
+    <div id="s15-coeur"></div>
   </div>
   <script>
     (function () {
@@ -44,6 +49,16 @@
           tl.fromTo("#s15-scene", { scale: 1.035 }, { scale: 130, transformOrigin: `${px}px ${py}px`, duration: 1.7, ease: "power3.in", immediateRender: false }, tp);
           tl.to("#s15-point", { backgroundColor: "#f5f1e8", duration: 0.45, ease: "power1.in" }, tp + 0.6);
           tl.set("#s15-scene", { opacity: 0 }, tp + 1.72);
+          // de l'autre côté du point : un cœur qui bat (pulsations de basse mesurées dans la bande-son)
+          const tc = tp + 1.72;
+          tl.fromTo("#s15-coeur", { opacity: 1, scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, tc);
+          [[175.45, 1.4], [175.85, 1.18], [176.27, 1.4], [176.70, 1.18], [177.10, 1.4]].forEach(([b, k]) => {
+            tl.fromTo("#s15-coeur", { scale: 1 }, { scale: k, duration: 0.06, ease: "power2.out", immediateRender: false }, b - S - 0.03);
+            tl.to("#s15-coeur", { scale: 1, duration: 0.26, ease: "power2.in" }, b - S + 0.03);
+          });
+          [[175.45, "#s15-onde1"], [176.27, "#s15-onde2"], [177.10, "#s15-onde3"]].forEach(([b, id]) =>
+            tl.fromTo(id, { opacity: 0.8, scale: 1 }, { opacity: 0, scale: 6, duration: 0.75, ease: "power2.out", immediateRender: false }, b - S - 0.02));
+          tl.to("#s15-coeur", { scale: 0, duration: 0.12, ease: "power2.in" }, 177.36 - S);
         });
         window.__timelines["s15"] = tl;
       });

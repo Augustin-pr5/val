@@ -50,7 +50,7 @@
       INK.unpin(tl, "#s11-jardin", tm + 0.1, { dx: 0, dy: 140, dur: 0.4 });
       INK.pin(tl, "#s11-masson", tm + 0.45, { rot: 1, dur: 0.5 });
       INK.fade(tl, "#s11-cartel", tm + 0.8);
-      tl.fromTo("#s11-masson img", { scale: 1 }, { scale: 1.05, duration: 4.6, ease: "none" }, tm + 0.5);
+      tl.fromTo("#s11-masson img", { scale: 1, transformOrigin: "50% 58%" }, { scale: 1.2, duration: 4.7, ease: "power1.inOut" }, tm + 0.5); // la caméra s'approche de l'aveu
       window.__timelines["s11"] = tl;
     })();
   </script>

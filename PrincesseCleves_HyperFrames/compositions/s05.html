@@ -60,6 +60,9 @@
         (() => {
           // ===== temps 1
           tl.fromTo("#s05-elle", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+          // lentes poussées de caméra (les plans ne restent jamais figés ; marges de 80 px respectées)
+          tl.fromTo("#s05-t1", { scale: 1, transformOrigin: "70% 50%" }, { scale: 1.04, duration: t(2, 0) - 0.12, ease: "none" }, 0);
+          tl.fromTo("#s05-t2", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.03, duration: 61.9 - S - (t(2, 0) - 0.12), ease: "none" }, t(2, 0) - 0.12);
           INK.write(tl, $("#s05-nom"), t(0, 2) - 0.05, 1.15, $("#s05-plume"), { x: 880, y: 320 + 78, w: 922 }); // le nom s'écrit à la plume
           INK.draw(tl, $("#s05-enclos"), t(1, 4) - 0.05, 0.9, "power2.inOut"); // « loin de la cour »
           INK.draw(tl, $("#s05-regle"), t(1, 11) - 0.05, 0.45, "power2.out");  // « une seule règle »
